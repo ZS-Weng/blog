@@ -1,0 +1,20 @@
+project:
+  type: website
+  output-dir: docs
+
+website:
+  title: "Zaishan's Blog"
+  navbar:
+    right:
+      - about.qmd
+      - icon: github
+        href: https://github.com/
+      - icon: linkedin
+        href: https://www.linkedin.com/in/zaishan-weng/
+format:
+  html:
+    theme: cosmo
+    css: styles.css
+
+
+
