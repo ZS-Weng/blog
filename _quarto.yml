@@ -5,8 +5,12 @@ project:
 website:
   title: "Zaishan's Blog"
   navbar:
+    search: true
+    collapse: true
     right:
       - about.qmd
+      - text: "Blog"
+      - text: "Videos & Articles"
       - icon: github
         href: https://github.com/ZS-Weng
       - icon: linkedin
