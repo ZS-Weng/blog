@@ -3,21 +3,28 @@ project:
   output-dir: docs
 
 website:
-  title: "Zaishan's Blog"
+  title: "Zaishan Weng"
   navbar:
     search: true
     collapse: true
     right:
-      - about.qmd
+      - text: "Home"
+        href: about.qmd
       - text: "Blog"
+        href: about.qmd
       - text: "Videos & Articles"
+        href: about.qmd
       - icon: github
         href: https://github.com/ZS-Weng
       - icon: linkedin
         href: https://www.linkedin.com/in/zaishan-weng/
+
+  page-footer:
+    left: "© Copyright 2023 Zaishan Weng"
 format:
   html:
-    theme: cosmo
+    theme: 
+      light: [cosmo, theme.scss]
     css: styles.css
 
 
