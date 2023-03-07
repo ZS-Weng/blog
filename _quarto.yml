@@ -9,11 +9,11 @@ website:
     collapse: true
     right:
       - text: "Home"
-        href: about.qmd
+        href: index.qmd
       - text: "Blog"
-        href: about.qmd
+        href: blog.qmd
       - text: "Videos & Articles"
-        href: about.qmd
+        href: index.qmd
       - icon: github
         href: https://github.com/ZS-Weng
       - icon: linkedin

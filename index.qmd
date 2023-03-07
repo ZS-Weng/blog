@@ -1,13 +1,29 @@
 ---
-title: "Data Science and AI"
-listing:
-  contents: posts
-  sort: "date desc"
-  type: default
-  categories: true
-  sort-ui: false
-  filter-ui: false
-page-layout: full
-title-block-banner: false
----
+title: "Zaishan Weng"
+image: zaishan_photo.jpg
+about:
+  template: trestles
+  links:
+    - icon: twitter
+      text: Twitter
+      href: https://twitter.com
+    - icon: linkedin
+      text: LinkedIn
+      href: https://www.linkedin.com/in/zaishan-weng/
+    - icon: github
+      text: Github
+      href: https://github.com/ZS-Weng
 
+---
+::: {.column-page}
+
+## About Myself
+
+I’m a a techno-functional consultant and solutions architect with over 14 years of experience leading strategic digital transformation, data analytics and data science initiatives in the retail, government, health & security and restaurant industries. A dynamic & passionate professional who specializes in driving innovation, delivering large and complex projects, and advising senior executives on leveraging technology to drive business outcomes. A data scientist/engineer with proven track record in deploying impactful and productive AI products.
+
+I am passionate about the impact and difference technology has made and strive to explore ways of making existing work simpler and easier so that we can have the time to focus on bigger visions.
+
+## Quick Links
+
+
+:::

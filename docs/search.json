@@ -9,9 +9,9 @@
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "Data Science and AI",
+    "title": "Zaishan Weng",
     "section": "",
-    "text": "Post With Code\n\n\n\n\n\n\n\nnews\n\n\ncode\n\n\nanalysis\n\n\n\n\n\n\n\n\n\n\n\nFeb 27, 2023\n\n\nHarlow Malloc\n\n\n\n\n\n\n  \n\n\n\n\nWelcome To My Blog\n\n\n\n\n\n\n\nnews\n\n\n\n\n\n\n\n\n\n\n\nFeb 24, 2023\n\n\nTristan O’Malley\n\n\n\n\n\n\nNo matching items"
+    "text": "I’m a a techno-functional consultant and solutions architect with over 14 years of experience leading strategic digital transformation, data analytics and data science initiatives in the retail, government, health & security and restaurant industries. A dynamic & passionate professional who specializes in driving innovation, delivering large and complex projects, and advising senior executives on leveraging technology to drive business outcomes. A data scientist/engineer with proven track record in deploying impactful and productive AI products.\nI am passionate about the impact and difference technology has made and strive to explore ways of making existing work simpler and easier so that we can have the time to focus on bigger visions."
   },
   {
     "objectID": "posts/post-with-code/index.html",
@@ -26,5 +26,26 @@
     "title": "Welcome To My Blog",
     "section": "",
     "text": "This is the first post in a Quarto blog. Welcome!\n\nSince this post doesn’t specify an explicit image, the first image in the post will be used in the listing page of posts."
+  },
+  {
+    "objectID": "blog.html",
+    "href": "blog.html",
+    "title": "Data Science and AI",
+    "section": "",
+    "text": "Post With Code\n\n\n\n\n\n\n\nnews\n\n\ncode\n\n\nanalysis\n\n\n\n\n\n\n\n\n\n\n\nFeb 27, 2023\n\n\nHarlow Malloc\n\n\n\n\n\n\n  \n\n\n\n\nWelcome To My Blog\n\n\n\n\n\n\n\nnews\n\n\n\n\n\n\n\n\n\n\n\nFeb 24, 2023\n\n\nTristan O’Malley\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "index.html#bio",
+    "href": "index.html#bio",
+    "title": "Zaishan Weng",
+    "section": "Bio",
+    "text": "Bio\nI’m a PhD candidate in at SUNY-ESF, working on new tools to make complex, broad-scale systems easier for humans to understand. Right now, that means I split my time between predictive modeling (to monitor forest carbon sequestration across New York State, track the development of early-successional forests, and more) and visualization (including using game engines as a GIS and making it easier to make reproducible VR environments for research). By training I’m either an ecologist (specializing in landscape and translational ecology) or environmental scientist; professionally, I’ve worked as a data analyst, software engineer, and chicken farmer.\nOn this site I keep a list of my publications, presentations, and my CV, as well as a technical blog."
+  },
+  {
+    "objectID": "index.html#selected-projects",
+    "href": "index.html#selected-projects",
+    "title": "Zaishan Weng",
+    "section": "Selected Projects",
+    "text": "Selected Projects\n\nPublications"
   }
 ]
