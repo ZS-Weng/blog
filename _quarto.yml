@@ -4,6 +4,7 @@ project:
 
 website:
   title: "Zaishan Weng"
+  description: "This is Zaishan's personal Blog."
   navbar:
     search: true
     collapse: true
