@@ -1,0 +1,6 @@
+---
+title: "Data cleaning on SAP data extracts in .txt format with Regex and Python"
+date: "2022-06-25"
+categories: [news, code, analysis]
+image: "sap_data_format.png"
+---
