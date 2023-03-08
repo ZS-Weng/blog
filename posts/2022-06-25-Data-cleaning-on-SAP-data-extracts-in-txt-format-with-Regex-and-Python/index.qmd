@@ -1,0 +1,39 @@
+---
+title: "Data cleaning on SAP data extracts in .txt format with Regex and Python"
+date: "2022-06-25"
+categories: [news, code, analysis]
+image: "sap_data_format.png"
+---
+
+## Introduction
+
+During one of our recent projects involving the procure to pay process, our team encountered SAP raw data extracted from the system in .txt format which proved to be difficult to clean using traditional methods like readlines() or split() by delimiters due to some inherent data inconsistencies.
+
+Regex matching proved to be helpful for such scenarios to clean the data.
+
+## Common SAP tables in Procure to Pay process
+First, lets go through what are common data tables extracted from SAP as part of the Procure to Pay process.
+
+**Accounting Related Tables**
+
+* BKPF: Accounting Document Header
+* BSAK: Accounting: Secondary Index for Vendors
+* BSEG: Accounting Document Segment
+
+**Purchase Order related Tables**
+
+* EKKO: Purchasing Document Header
+* EKPO: Purchasing Document Item
+* EKBE: History per Purchasing Document
+* EKKN: Account Assignment in Purchasing Document
+
+**Material Tables**
+
+* MAKT: Material Descriptions
+
+There are various websites which provide additional information about the SAP tables.
+
+* https://www.se80.co.uk/training-education/sap-tables/
+* https://www.tcodesearch.com/sap-tables/detail?id=BSEG (Might need to enter through changing the id in URL without requiring premium membership)
+
+![Example of Data Dictionary for BSEG Table Source: https://www.se80.co.uk/](bseg_table.png)

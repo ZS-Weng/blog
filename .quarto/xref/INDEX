@@ -13,5 +13,11 @@
   },
   "blog.qmd": {
     "blog.html": "57ccdd57"
+  },
+  "posts/2022-06-22-Data-cleaning-on-SAP-data-extracts-in-txt-format-with-Regex-and-Python/index.qmd": {
+    "index.html": "87580742"
+  },
+  "posts/2022-06-25-Data-cleaning-on-SAP-data-extracts-in-txt-format-with-Regex-and-Python/index.qmd": {
+    "index.html": "dda756b3"
   }
 }
