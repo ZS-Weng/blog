@@ -3,10 +3,10 @@ title: "Zaishan's Blog"
 listing:
   contents: posts
   sort: "date desc"
-  type: default # grid or `default` or `table`; each type has its own set of yaml options to include
+  type: grid # grid or `default` or `table`; each type has its own set of yaml options to include
   categories: true
-  sort-ui: false
-  filter-ui: false
+  sort-ui: true
+  filter-ui: true
 page-layout: full
 title-block-banner: false
 ---

@@ -70,9 +70,9 @@ ul.task-list li input[type="checkbox"] {
     }
 
     const options = {
-      valueNames: ['listing-date','listing-title','listing-author','listing-image','listing-description','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
+      valueNames: ['listing-title','listing-author','listing-date','listing-image','listing-description','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
       
-      searchColumns: ["listing-date","listing-title","listing-author","listing-image","listing-description","listing-categories"],
+      searchColumns: ["listing-title","listing-author","listing-date","listing-image","listing-description","listing-categories"],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
@@ -145,7 +145,7 @@ ul.task-list li input[type="checkbox"] {
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         
-    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(8)</span></div><div class="category" data-category="Data Analytics">Data Analytics <span class="quarto-category-count">(7)</span></div><div class="category" data-category="Data Engineering">Data Engineering <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Design Thinking">Design Thinking <span class="quarto-category-count">(7)</span></div><div class="category" data-category="Python">Python <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Regex">Regex <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Requirements Gathering">Requirements Gathering <span class="quarto-category-count">(7)</span></div><div class="category" data-category="SAP">SAP <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Stakeholder Engagement">Stakeholder Engagement <span class="quarto-category-count">(7)</span></div></div></div>
+    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(7)</span></div><div class="category" data-category="Data Analytics">Data Analytics <span class="quarto-category-count">(6)</span></div><div class="category" data-category="Data Engineering">Data Engineering <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Design Thinking">Design Thinking <span class="quarto-category-count">(6)</span></div><div class="category" data-category="Python">Python <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Regex">Regex <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Requirements Gathering">Requirements Gathering <span class="quarto-category-count">(6)</span></div><div class="category" data-category="SAP">SAP <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Stakeholder Engagement">Stakeholder Engagement <span class="quarto-category-count">(6)</span></div></div></div>
 <!-- main -->
 <main class="content column-page-left" id="quarto-document-content">
 
@@ -170,21 +170,43 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<div class="quarto-listing quarto-listing-container-default" id="listing-listing">
-<div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-categories="Design Thinking,Requirements Gathering,Data Analytics,Stakeholder Engagement" data-listing-date-sort="1657209600000" data-listing-file-modified-sort="1678372150396" data-listing-reading-time-sort="0.005">
-<div class="thumbnail">
-<p><a href="./docs/docs/docs/docs/docs/docs/posts/2022-07-08-design-thinking-quick-start-guide/index.html"> <img src="./docs/docs/docs/docs/docs/docs/posts/2022-07-08-design-thinking-quick-start-guide/hopes_n_fears.png" class="thumnail-image"> </a></p>
+<div class="quarto-listing quarto-listing-container-grid" id="listing-listing">
+<div class="listing-actions-group">
+   <div class="input-group input-group-sm quarto-listing-sort">
+     <span class="input-group-text"><i class="bi bi-sort-down"></i></span>
+     <select id="listing-listing-sort" class="form-select" aria-label="Order By" onchange="window['quarto-listings']['listing-listing'].sort(this.options[this.selectedIndex].value, { order: this.options[this.selectedIndex].getAttribute('data-direction')})">
+       <option value="" disabled="" selected="" hidden="">Order By</option>
+       <option value="index" data-direction="asc">Default</option>
+         <option value="listing-title" data-direction="asc">
+          Title
+        </option>
+         <option value="listing-date-sort" data-direction="asc">
+          Date - Oldest
+        </option>
+         <option value="listing-date-sort" data-direction="desc">
+          Date - Newest
+        </option>
+         <option value="listing-author" data-direction="asc">
+          Author
+        </option>
+     </select>
+  </div>
+    <div class="input-group input-group-sm quarto-listing-filter">
+      <span class="input-group-text"><i class="bi bi-search"></i></span>
+      <input type="text" class="search form-control" placeholder="Filter">
+    </div>
 </div>
-<div class="body">
-<a href="./docs/docs/docs/docs/docs/docs/posts/2022-07-08-design-thinking-quick-start-guide/index.html">
-<h3 class="no-anchor listing-title">
+<div class="list grid quarto-listing-cols-3">
+<div class="g-col-1" data-index="0" data-categories="Design Thinking,Requirements Gathering,Data Analytics,Stakeholder Engagement" data-listing-date-sort="1657209600000" data-listing-file-modified-sort="1678372150396" data-listing-reading-time-sort="0.005">
+<a href="./docs/docs/docs/docs/docs/docs/posts/2022-07-08-design-thinking-quick-start-guide/index.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top">
+<img src="./docs/docs/docs/docs/docs/docs/posts/2022-07-08-design-thinking-quick-start-guide/hopes_n_fears.png" class="thumbnail-image card-img" style="height: 150px;">
+</p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
 Quick Start Guide on incorporating design thinking artifacts for requirements gathering during Project Initiation Phase for Agile Data Analytics Projects
-</h3>
-<div class="listing-subtitle">
-
-</div>
-</a>
+</h5>
 <div class="listing-categories">
 <div class="listing-category" onclick="window.quartoListingCategory('Design Thinking'); return false;">
 Design Thinking
@@ -199,282 +221,226 @@ Data Analytics
 Stakeholder Engagement
 </div>
 </div>
-<a href="./docs/docs/docs/docs/docs/docs/posts/2022-07-08-design-thinking-quick-start-guide/index.html">
-<div class="listing-description">
+<div class="card-text listing-description">
 
 </div>
-</a>
-</div>
-<div class="metadata">
-<a href="./docs/docs/docs/docs/docs/docs/posts/2022-07-08-design-thinking-quick-start-guide/index.html">
-<div class="listing-date">
-Jul 8, 2022
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="1" data-categories="Design Thinking,Requirements Gathering,Data Analytics,Stakeholder Engagement" data-listing-date-sort="1657209600000" data-listing-file-modified-sort="1678372150396" data-listing-reading-time-sort="0.005">
-<div class="thumbnail">
-<p><a href="./docs/docs/docs/docs/docs/posts/2022-07-08-design-thinking-quick-start-guide/index.html"> <img src="./docs/docs/docs/docs/docs/posts/2022-07-08-design-thinking-quick-start-guide/hopes_n_fears.png" class="thumnail-image"> </a></p>
-</div>
-<div class="body">
-<a href="./docs/docs/docs/docs/docs/posts/2022-07-08-design-thinking-quick-start-guide/index.html">
-<h3 class="no-anchor listing-title">
-Quick Start Guide on incorporating design thinking artifacts for requirements gathering during Project Initiation Phase for Agile Data Analytics Projects
-</h3>
-<div class="listing-subtitle">
-
-</div>
-</a>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('Design Thinking'); return false;">
-Design Thinking
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('Requirements Gathering'); return false;">
-Requirements Gathering
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('Data Analytics'); return false;">
-Data Analytics
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('Stakeholder Engagement'); return false;">
-Stakeholder Engagement
-</div>
-</div>
-<a href="./docs/docs/docs/docs/docs/posts/2022-07-08-design-thinking-quick-start-guide/index.html">
-<div class="listing-description">
-
-</div>
-</a>
-</div>
-<div class="metadata">
-<a href="./docs/docs/docs/docs/docs/posts/2022-07-08-design-thinking-quick-start-guide/index.html">
-<div class="listing-date">
-Jul 8, 2022
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="2" data-categories="Design Thinking,Requirements Gathering,Data Analytics,Stakeholder Engagement" data-listing-date-sort="1657209600000" data-listing-file-modified-sort="1678372198406" data-listing-reading-time-sort="0.005">
-<div class="thumbnail">
-<p><a href="./docs/docs/docs/docs/posts/2022-07-08-design-thinking-quick-start-guide/index.html"> <img src="./docs/docs/docs/docs/posts/2022-07-08-design-thinking-quick-start-guide/hopes_n_fears.png" class="thumnail-image"> </a></p>
-</div>
-<div class="body">
-<a href="./docs/docs/docs/docs/posts/2022-07-08-design-thinking-quick-start-guide/index.html">
-<h3 class="no-anchor listing-title">
-Quick Start Guide on incorporating design thinking artifacts for requirements gathering during Project Initiation Phase for Agile Data Analytics Projects
-</h3>
-<div class="listing-subtitle">
-
-</div>
-</a>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('Design Thinking'); return false;">
-Design Thinking
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('Requirements Gathering'); return false;">
-Requirements Gathering
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('Data Analytics'); return false;">
-Data Analytics
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('Stakeholder Engagement'); return false;">
-Stakeholder Engagement
-</div>
-</div>
-<a href="./docs/docs/docs/docs/posts/2022-07-08-design-thinking-quick-start-guide/index.html">
-<div class="listing-description">
-
-</div>
-</a>
-</div>
-<div class="metadata">
-<a href="./docs/docs/docs/docs/posts/2022-07-08-design-thinking-quick-start-guide/index.html">
-<div class="listing-date">
-Jul 8, 2022
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="3" data-categories="Design Thinking,Requirements Gathering,Data Analytics,Stakeholder Engagement" data-listing-date-sort="1657209600000" data-listing-file-modified-sort="1678372198406" data-listing-reading-time-sort="0.005">
-<div class="thumbnail">
-<p><a href="./docs/docs/docs/posts/2022-07-08-design-thinking-quick-start-guide/index.html"> <img src="./docs/docs/docs/posts/2022-07-08-design-thinking-quick-start-guide/hopes_n_fears.png" class="thumnail-image"> </a></p>
-</div>
-<div class="body">
-<a href="./docs/docs/docs/posts/2022-07-08-design-thinking-quick-start-guide/index.html">
-<h3 class="no-anchor listing-title">
-Quick Start Guide on incorporating design thinking artifacts for requirements gathering during Project Initiation Phase for Agile Data Analytics Projects
-</h3>
-<div class="listing-subtitle">
-
-</div>
-</a>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('Design Thinking'); return false;">
-Design Thinking
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('Requirements Gathering'); return false;">
-Requirements Gathering
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('Data Analytics'); return false;">
-Data Analytics
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('Stakeholder Engagement'); return false;">
-Stakeholder Engagement
-</div>
-</div>
-<a href="./docs/docs/docs/posts/2022-07-08-design-thinking-quick-start-guide/index.html">
-<div class="listing-description">
-
-</div>
-</a>
-</div>
-<div class="metadata">
-<a href="./docs/docs/docs/posts/2022-07-08-design-thinking-quick-start-guide/index.html">
-<div class="listing-date">
-Jul 8, 2022
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="4" data-categories="Design Thinking,Requirements Gathering,Data Analytics,Stakeholder Engagement" data-listing-date-sort="1657209600000" data-listing-file-modified-sort="1678372281584" data-listing-reading-time-sort="0.005">
-<div class="thumbnail">
-<p><a href="./docs/docs/posts/2022-07-08-design-thinking-quick-start-guide/index.html"> <img src="./docs/docs/posts/2022-07-08-design-thinking-quick-start-guide/hopes_n_fears.png" class="thumnail-image"> </a></p>
-</div>
-<div class="body">
-<a href="./docs/docs/posts/2022-07-08-design-thinking-quick-start-guide/index.html">
-<h3 class="no-anchor listing-title">
-Quick Start Guide on incorporating design thinking artifacts for requirements gathering during Project Initiation Phase for Agile Data Analytics Projects
-</h3>
-<div class="listing-subtitle">
-
-</div>
-</a>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('Design Thinking'); return false;">
-Design Thinking
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('Requirements Gathering'); return false;">
-Requirements Gathering
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('Data Analytics'); return false;">
-Data Analytics
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('Stakeholder Engagement'); return false;">
-Stakeholder Engagement
-</div>
-</div>
-<a href="./docs/docs/posts/2022-07-08-design-thinking-quick-start-guide/index.html">
-<div class="listing-description">
-
-</div>
-</a>
-</div>
-<div class="metadata">
-<a href="./docs/docs/posts/2022-07-08-design-thinking-quick-start-guide/index.html">
-<div class="listing-date">
-Jul 8, 2022
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="5" data-categories="Design Thinking,Requirements Gathering,Data Analytics,Stakeholder Engagement" data-listing-date-sort="1657209600000" data-listing-file-modified-sort="1678372281584" data-listing-reading-time-sort="0.005">
-<div class="thumbnail">
-<p><a href="./docs/posts/2022-07-08-design-thinking-quick-start-guide/index.html"> <img src="./docs/posts/2022-07-08-design-thinking-quick-start-guide/hopes_n_fears.png" class="thumnail-image"> </a></p>
-</div>
-<div class="body">
-<a href="./docs/posts/2022-07-08-design-thinking-quick-start-guide/index.html">
-<h3 class="no-anchor listing-title">
-Quick Start Guide on incorporating design thinking artifacts for requirements gathering during Project Initiation Phase for Agile Data Analytics Projects
-</h3>
-<div class="listing-subtitle">
-
-</div>
-</a>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('Design Thinking'); return false;">
-Design Thinking
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('Requirements Gathering'); return false;">
-Requirements Gathering
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('Data Analytics'); return false;">
-Data Analytics
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('Stakeholder Engagement'); return false;">
-Stakeholder Engagement
-</div>
-</div>
-<a href="./docs/posts/2022-07-08-design-thinking-quick-start-guide/index.html">
-<div class="listing-description">
-
-</div>
-</a>
-</div>
-<div class="metadata">
-<a href="./docs/posts/2022-07-08-design-thinking-quick-start-guide/index.html">
-<div class="listing-date">
-Jul 8, 2022
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="6" data-categories="Design Thinking,Requirements Gathering,Data Analytics,Stakeholder Engagement" data-listing-date-sort="1657209600000" data-listing-file-modified-sort="1678372281584" data-listing-reading-time-sort="0.005">
-<div class="thumbnail">
-<p><a href="./posts/2022-07-08-design-thinking-quick-start-guide/index.html"> <img src="./posts/2022-07-08-design-thinking-quick-start-guide/hopes_n_fears.png" class="thumnail-image"> </a></p>
-</div>
-<div class="body">
-<a href="./posts/2022-07-08-design-thinking-quick-start-guide/index.html">
-<h3 class="no-anchor listing-title">
-Quick Start Guide on incorporating design thinking artifacts for requirements gathering during Project Initiation Phase for Agile Data Analytics Projects
-</h3>
-<div class="listing-subtitle">
-
-</div>
-</a>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('Design Thinking'); return false;">
-Design Thinking
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('Requirements Gathering'); return false;">
-Requirements Gathering
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('Data Analytics'); return false;">
-Data Analytics
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('Stakeholder Engagement'); return false;">
-Stakeholder Engagement
-</div>
-</div>
-<a href="./posts/2022-07-08-design-thinking-quick-start-guide/index.html">
-<div class="listing-description">
-
-</div>
-</a>
-</div>
-<div class="metadata">
-<a href="./posts/2022-07-08-design-thinking-quick-start-guide/index.html">
-<div class="listing-date">
-Jul 8, 2022
-</div>
+<div class="card-attribution card-text-small justify">
 <div class="listing-author">
-Zaishan Weng
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="7" data-categories="Data Engineering,SAP,Python,Regex" data-listing-date-sort="1656086400000" data-listing-file-modified-sort="1678371668871" data-listing-reading-time-sort="4.14">
-<div class="thumbnail">
-<p><a href="./posts/2022-06-25-Data-cleaning-on-SAP-data-extracts-in-txt-format-with-Regex-and-Python/index.html"> <img src="./posts/2022-06-25-Data-cleaning-on-SAP-data-extracts-in-txt-format-with-Regex-and-Python/sap_data_format.png" class="thumnail-image"> </a></p>
-</div>
-<div class="body">
-<a href="./posts/2022-06-25-Data-cleaning-on-SAP-data-extracts-in-txt-format-with-Regex-and-Python/index.html">
-<h3 class="no-anchor listing-title">
-Data cleaning on SAP data extracts in .txt format with Regex and Python
-</h3>
-<div class="listing-subtitle">
 
 </div>
+<div class="listing-date">
+Jul 8, 2022
+</div>
+</div>
+</div>
+</div>
 </a>
+</div>
+<div class="g-col-1" data-index="1" data-categories="Design Thinking,Requirements Gathering,Data Analytics,Stakeholder Engagement" data-listing-date-sort="1657209600000" data-listing-file-modified-sort="1678372150396" data-listing-reading-time-sort="0.005">
+<a href="./docs/docs/docs/docs/docs/posts/2022-07-08-design-thinking-quick-start-guide/index.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top">
+<img src="./docs/docs/docs/docs/docs/posts/2022-07-08-design-thinking-quick-start-guide/hopes_n_fears.png" class="thumbnail-image card-img" style="height: 150px;">
+</p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Quick Start Guide on incorporating design thinking artifacts for requirements gathering during Project Initiation Phase for Agile Data Analytics Projects
+</h5>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('Design Thinking'); return false;">
+Design Thinking
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('Requirements Gathering'); return false;">
+Requirements Gathering
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('Data Analytics'); return false;">
+Data Analytics
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('Stakeholder Engagement'); return false;">
+Stakeholder Engagement
+</div>
+</div>
+<div class="card-text listing-description">
+
+</div>
+<div class="card-attribution card-text-small justify">
+<div class="listing-author">
+
+</div>
+<div class="listing-date">
+Jul 8, 2022
+</div>
+</div>
+</div>
+</div>
+</a>
+</div>
+<div class="g-col-1" data-index="2" data-categories="Design Thinking,Requirements Gathering,Data Analytics,Stakeholder Engagement" data-listing-date-sort="1657209600000" data-listing-file-modified-sort="1678372198406" data-listing-reading-time-sort="0.005">
+<a href="./docs/docs/docs/docs/posts/2022-07-08-design-thinking-quick-start-guide/index.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top">
+<img src="./docs/docs/docs/docs/posts/2022-07-08-design-thinking-quick-start-guide/hopes_n_fears.png" class="thumbnail-image card-img" style="height: 150px;">
+</p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Quick Start Guide on incorporating design thinking artifacts for requirements gathering during Project Initiation Phase for Agile Data Analytics Projects
+</h5>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('Design Thinking'); return false;">
+Design Thinking
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('Requirements Gathering'); return false;">
+Requirements Gathering
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('Data Analytics'); return false;">
+Data Analytics
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('Stakeholder Engagement'); return false;">
+Stakeholder Engagement
+</div>
+</div>
+<div class="card-text listing-description">
+
+</div>
+<div class="card-attribution card-text-small justify">
+<div class="listing-author">
+
+</div>
+<div class="listing-date">
+Jul 8, 2022
+</div>
+</div>
+</div>
+</div>
+</a>
+</div>
+<div class="g-col-1" data-index="3" data-categories="Design Thinking,Requirements Gathering,Data Analytics,Stakeholder Engagement" data-listing-date-sort="1657209600000" data-listing-file-modified-sort="1678372198406" data-listing-reading-time-sort="0.005">
+<a href="./docs/docs/docs/posts/2022-07-08-design-thinking-quick-start-guide/index.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top">
+<img src="./docs/docs/docs/posts/2022-07-08-design-thinking-quick-start-guide/hopes_n_fears.png" class="thumbnail-image card-img" style="height: 150px;">
+</p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Quick Start Guide on incorporating design thinking artifacts for requirements gathering during Project Initiation Phase for Agile Data Analytics Projects
+</h5>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('Design Thinking'); return false;">
+Design Thinking
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('Requirements Gathering'); return false;">
+Requirements Gathering
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('Data Analytics'); return false;">
+Data Analytics
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('Stakeholder Engagement'); return false;">
+Stakeholder Engagement
+</div>
+</div>
+<div class="card-text listing-description">
+
+</div>
+<div class="card-attribution card-text-small justify">
+<div class="listing-author">
+
+</div>
+<div class="listing-date">
+Jul 8, 2022
+</div>
+</div>
+</div>
+</div>
+</a>
+</div>
+<div class="g-col-1" data-index="4" data-categories="Design Thinking,Requirements Gathering,Data Analytics,Stakeholder Engagement" data-listing-date-sort="1657209600000" data-listing-file-modified-sort="1678372281584" data-listing-reading-time-sort="0.005">
+<a href="./docs/docs/posts/2022-07-08-design-thinking-quick-start-guide/index.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top">
+<img src="./docs/docs/posts/2022-07-08-design-thinking-quick-start-guide/hopes_n_fears.png" class="thumbnail-image card-img" style="height: 150px;">
+</p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Quick Start Guide on incorporating design thinking artifacts for requirements gathering during Project Initiation Phase for Agile Data Analytics Projects
+</h5>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('Design Thinking'); return false;">
+Design Thinking
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('Requirements Gathering'); return false;">
+Requirements Gathering
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('Data Analytics'); return false;">
+Data Analytics
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('Stakeholder Engagement'); return false;">
+Stakeholder Engagement
+</div>
+</div>
+<div class="card-text listing-description">
+
+</div>
+<div class="card-attribution card-text-small justify">
+<div class="listing-author">
+
+</div>
+<div class="listing-date">
+Jul 8, 2022
+</div>
+</div>
+</div>
+</div>
+</a>
+</div>
+<div class="g-col-1" data-index="5" data-categories="Design Thinking,Requirements Gathering,Data Analytics,Stakeholder Engagement" data-listing-date-sort="1657209600000" data-listing-file-modified-sort="1678372281584" data-listing-reading-time-sort="0.005">
+<a href="./docs/posts/2022-07-08-design-thinking-quick-start-guide/index.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top">
+<img src="./docs/posts/2022-07-08-design-thinking-quick-start-guide/hopes_n_fears.png" class="thumbnail-image card-img" style="height: 150px;">
+</p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Quick Start Guide on incorporating design thinking artifacts for requirements gathering during Project Initiation Phase for Agile Data Analytics Projects
+</h5>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('Design Thinking'); return false;">
+Design Thinking
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('Requirements Gathering'); return false;">
+Requirements Gathering
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('Data Analytics'); return false;">
+Data Analytics
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('Stakeholder Engagement'); return false;">
+Stakeholder Engagement
+</div>
+</div>
+<div class="card-text listing-description">
+
+</div>
+<div class="card-attribution card-text-small justify">
+<div class="listing-author">
+
+</div>
+<div class="listing-date">
+Jul 8, 2022
+</div>
+</div>
+</div>
+</div>
+</a>
+</div>
+<div class="g-col-1" data-index="6" data-categories="Data Engineering,SAP,Python,Regex" data-listing-date-sort="1656086400000" data-listing-file-modified-sort="1678371668871" data-listing-reading-time-sort="4.14">
+<a href="./posts/2022-06-25-Data-cleaning-on-SAP-data-extracts-in-txt-format-with-Regex-and-Python/index.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top">
+<img src="./posts/2022-06-25-Data-cleaning-on-SAP-data-extracts-in-txt-format-with-Regex-and-Python/sap_data_format.png" class="thumbnail-image card-img" style="height: 150px;">
+</p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Data cleaning on SAP data extracts in .txt format with Regex and Python
+</h5>
 <div class="listing-categories">
 <div class="listing-category" onclick="window.quartoListingCategory('Data Engineering'); return false;">
 Data Engineering
@@ -489,22 +455,20 @@ Python
 Regex
 </div>
 </div>
-<a href="./posts/2022-06-25-Data-cleaning-on-SAP-data-extracts-in-txt-format-with-Regex-and-Python/index.html">
-<div class="listing-description">
+<div class="card-text listing-description">
 During one of our recent projects involving the procure to pay process, our team encountered SAP raw data extracted…
 </div>
-</a>
-</div>
-<div class="metadata">
-<a href="./posts/2022-06-25-Data-cleaning-on-SAP-data-extracts-in-txt-format-with-Regex-and-Python/index.html">
-<div class="listing-date">
-Jun 25, 2022
-</div>
+<div class="card-attribution card-text-small justify">
 <div class="listing-author">
 Zaishan Weng
 </div>
-</a>
+<div class="listing-date">
+Jun 25, 2022
 </div>
+</div>
+</div>
+</div>
+</a>
 </div>
 </div>
 <div class="listing-no-matching d-none">
