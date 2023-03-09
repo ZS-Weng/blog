@@ -1,7 +1,7 @@
 ---
 title: "Zaishan's Blog"
 listing:
-  contents: [posts/**/*.qmd]
+  contents: posts
   sort: "date desc"
   type: default # grid or `default` or `table`; each type has its own set of yaml options to include
   categories: true
