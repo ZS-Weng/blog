@@ -185,6 +185,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <li><a href="#common-sap-tables-in-procure-to-pay-process" id="toc-common-sap-tables-in-procure-to-pay-process" class="nav-link" data-scroll-target="#common-sap-tables-in-procure-to-pay-process">Common SAP tables in Procure to Pay process</a></li>
   <li><a href="#format-of-sap-data-extract-in-.txt-file" id="toc-format-of-sap-data-extract-in-.txt-file" class="nav-link" data-scroll-target="#format-of-sap-data-extract-in-.txt-file">Format of SAP data extract in .txt file</a></li>
   <li><a href="#full-code-and-output" id="toc-full-code-and-output" class="nav-link" data-scroll-target="#full-code-and-output">Full Code and Output</a></li>
+  <li><a href="#detailed-walk-through-of-the-codes" id="toc-detailed-walk-through-of-the-codes" class="nav-link" data-scroll-target="#detailed-walk-through-of-the-codes">Detailed Walk-through of the codes</a></li>
+  <li><a href="#useful-learning-resource-for-python-and-regex" id="toc-useful-learning-resource-for-python-and-regex" class="nav-link" data-scroll-target="#useful-learning-resource-for-python-and-regex">Useful Learning Resource for Python and Regex</a></li>
   </ul>
 </nav>
     </div>
@@ -315,6 +317,66 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> row <span class="kw">in</span> content_split_line[<span class="dv">5</span>:<span class="op">-</span><span class="dv">2</span>]</span>
 <span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>]</span>
 <span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>df_clean <span class="op">=</span> pd.DataFrame(cleaned_content, columns<span class="op">=</span>column_header)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>Final pandas data frame output:</strong></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="final_pandas_output.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Final pandas tabular output after data cleaning</figcaption><p></p>
+</figure>
+</div>
+</section>
+<section id="detailed-walk-through-of-the-codes" class="level2">
+<h2 class="anchored" data-anchor-id="detailed-walk-through-of-the-codes">Detailed Walk-through of the codes</h2>
+<p><strong>Cleaning of newline character prior to splitting lines</strong></p>
+<p>In order to clean the (newline) characters which are not valid, we first use the read() instead of readline() method as the readline() method will split the lines by the character automatically.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">"Sample SAP Format.txt"</span>, encoding<span class="op">=</span><span class="st">"utf-8"</span>) <span class="im">as</span> f:        </span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    content_raw <span class="op">=</span> f.read()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Next, we use the Regex pattern <code>([1|-])[\n](.)|(.)[\n]([^|-])</code> to find and the invalid characters. The pattern basically detects newline that do not start with the characters 1 , | or - and do not end with the characters | or -.</p>
+<p>For the invalid newline characters found, we replace them with a space using the <code>.sub()</code> method.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>new_line_pattern <span class="op">=</span> re.<span class="bu">compile</span>(<span class="st">"([^1|-])[</span><span class="ch">\n</span><span class="st">](.)|(.)[</span><span class="ch">\n</span><span class="st">([^|-])"</span>)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>content_cleaned_newline <span class="op">=</span> new_line_pattern.sub(<span class="vs">r"\1 \2"</span>,content_raw)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>content_split_line <span class="op">=</span> content_cleaned_newline.split(<span class="st">"</span><span class="ch">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Output after cleaning and splitting lines:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="data_after_split.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">List of Data After the Line Split</figcaption><p></p>
+</figure>
+</div>
+<p><strong>Data Cleaning Steps for Individual Line</strong> Based on the above, we can see that the data we are interested in is the column header (4th line) and the rest of the data content (6th to 2nd last lines).</p>
+<p>We will first split the column by the pipe “|” delimiter and getting the columns width to create the Regex matching string pattern.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>header_string <span class="op">=</span> content_split_line[<span class="dv">3</span>]</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>column_header <span class="op">=</span> [token.strip() <span class="cf">for</span> token <span class="kw">in</span> header_string.split(<span class="st">"|"</span>)][<span class="dv">1</span>:<span class="op">-</span><span class="dv">1</span>]</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>list_column_width <span class="op">=</span> [<span class="st">"(.{"</span> <span class="op">+</span> <span class="bu">str</span>(<span class="bu">len</span>(column)) <span class="op">+</span> <span class="st">"})"</span> <span class="cf">for</span> column <span class="kw">in</span> header_string.split(<span class="st">"|"</span>)][<span class="dv">1</span>:<span class="op">-</span><span class="dv">1</span>]</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>column_string_pattern <span class="op">=</span> <span class="st">"[|]"</span> <span class="op">+</span> <span class="st">"[|]"</span>.join(list_column_width) <span class="op">+</span> <span class="st">"[|]"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>The column_string_pattern to match that is generated for the sample data will be as follows:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>[<span class="op">|</span>](.{<span class="dv">10</span>})[<span class="op">|</span>](.{<span class="dv">4</span>})[<span class="op">|</span>](.{<span class="dv">3</span>})[<span class="op">|</span>](.{<span class="dv">10</span>})[<span class="op">|</span>](.{<span class="dv">20</span>})[<span class="op">|</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>This column pattern matching pattern is dynamically generated and will be unique for each of the data extract file even for the same tables as the width is adjusted during data extract according to the content.</p>
+<p>We will then use the matching pattern to extract the rest of the data (6th to 2nd last line) with re.match().groups() instead of using the str.split() method.</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>column_pattern <span class="op">=</span> re.<span class="bu">compile</span>(column_string_pattern)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>cleaned_content <span class="op">=</span> [[token.strip() <span class="cf">for</span> token <span class="kw">in</span> column_pattern.match(row).groups()] <span class="cf">for</span> row <span class="kw">in</span> content_split_line[<span class="dv">5</span>:<span class="op">-</span><span class="dv">2</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>The output after content splitting:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="output_after_splitting.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Data in Nested List format after splitting of content of each individual line</figcaption><p></p>
+</figure>
+</div>
+<p>Here we can see that the extra delimiters e.g.&nbsp;‘Item A|B|C’ does not affect the content splitting .</p>
+<p>Finally, we combine the cleaned header columns and data into a pandas data frame.</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>df_clean <span class="op">=</span> pd.DataFrame(cleaned_content, columns<span class="op">=</span>column_header)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Final pandas Data Frame output:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="final_output.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Final cleaned data output in pandas Data Frame</figcaption><p></p>
+</figure>
+</div>
+</section>
+<section id="useful-learning-resource-for-python-and-regex" class="level2">
+<h2 class="anchored" data-anchor-id="useful-learning-resource-for-python-and-regex">Useful Learning Resource for Python and Regex</h2>
+<p>When I was starting out, I found the book Automate the Boring Stuff with Python by Al Sweigart one of the best resources to learning about Python and Regex with many practical examples.</p>
+<p>There is a free access option to the book on his website: https://automatetheboringstuff.com/ and this is the link to the specific chapter on Regex which formed the foundation on some of the implementation: https://automatetheboringstuff.com/2e/chapter7/</p>
 
 
 </section>

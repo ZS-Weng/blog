@@ -91,3 +91,77 @@ cleaned_content = [
 df_clean = pd.DataFrame(cleaned_content, columns=column_header)
 
 ```
+
+**Final pandas data frame output:**
+
+![Final pandas tabular output after data cleaning](final_pandas_output.png)
+
+## Detailed Walk-through of the codes
+
+**Cleaning of newline character prior to splitting lines**
+
+In order to clean the \n (newline) characters which are not valid, we first use the read() instead of readline() method as the readline() method will split the lines by the \n character automatically.
+
+```python
+with open("Sample SAP Format.txt", encoding="utf-8") as f:        
+    content_raw = f.read()
+```
+
+Next, we use the Regex pattern `([1|-])[\n](.)|(.)[\n]([^|-])` to find and the invalid \n characters. The pattern basically detects newline that do not start with the characters 1 , | or - and do not end with the characters | or -.
+
+For the invalid newline characters found, we replace them with a space using the `.sub()` method.
+
+```python
+new_line_pattern = re.compile("([^1|-])[\n](.)|(.)[\n([^|-])")
+content_cleaned_newline = new_line_pattern.sub(r"\1 \2",content_raw)
+content_split_line = content_cleaned_newline.split("\n")
+```
+Output after cleaning and splitting lines:
+
+![List of Data After the Line Split](data_after_split.png)
+
+**Data Cleaning Steps for Individual Line**
+Based on the above, we can see that the data we are interested in is the column header (4th line) and the rest of the data content (6th to 2nd last lines).
+
+We will first split the column by the pipe “|” delimiter and getting the columns width to create the Regex matching string pattern.
+
+```python
+header_string = content_split_line[3]
+column_header = [token.strip() for token in header_string.split("|")][1:-1]
+list_column_width = ["(.{" + str(len(column)) + "})" for column in header_string.split("|")][1:-1]
+column_string_pattern = "[|]" + "[|]".join(list_column_width) + "[|]"
+```
+The column_string_pattern to match that is generated for the sample data will be as follows:
+
+```python
+[|](.{10})[|](.{4})[|](.{3})[|](.{10})[|](.{20})[|]
+```
+This column pattern matching pattern is dynamically generated and will be unique for each of the data extract file even for the same tables as the width is adjusted during data extract according to the content.
+
+We will then use the matching pattern to extract the rest of the data (6th to 2nd last line) with re.match().groups() instead of using the str.split() method.
+
+```python
+column_pattern = re.compile(column_string_pattern)
+cleaned_content = [[token.strip() for token in column_pattern.match(row).groups()] for row in content_split_line[5:-2]]
+```
+The output after content splitting:
+
+![Data in Nested List format after splitting of content of each individual line](output_after_splitting.png)
+
+Here we can see that the extra delimiters e.g. ‘Item A|B|C’ does not affect the content splitting .
+
+Finally, we combine the cleaned header columns and data into a pandas data frame.
+
+```python
+df_clean = pd.DataFrame(cleaned_content, columns=column_header)
+```
+Final pandas Data Frame output:
+
+![Final cleaned data output in pandas Data Frame](final_output.png)
+
+## Useful Learning Resource for Python and Regex
+When I was starting out, I found the book Automate the Boring Stuff with Python by Al Sweigart one of the best resources to learning about Python and Regex with many practical examples.
+
+There is a free access option to the book on his website: https://automatetheboringstuff.com/ and this is the link to the specific chapter on Regex which formed the foundation on some of the implementation: https://automatetheboringstuff.com/2e/chapter7/
+
+
