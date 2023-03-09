@@ -4,14 +4,14 @@
     "href": "blog.html",
     "title": "Zaishan’s Blog",
     "section": "",
-    "text": "Post With Code\n\n\n\nnews\n\n\ncode\n\n\nanalysis\n\n\n\n\n\n\n\nHarlow Malloc\n\n\nFeb 27, 2023\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWelcome To My Blog\n\n\n\nnews\n\n\n\n\n\n\n\nTristan O’Malley\n\n\nFeb 24, 2023\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nData cleaning on SAP data extracts in .txt format with Regex and Python\n\n\n\nnews\n\n\ncode\n\n\nanalysis\n\n\n\n\n\n\n\nZaishan Weng\n\n\nJun 25, 2022\n\n\n\n\n\n\n\n\nNo matching items"
+    "text": "Data cleaning on SAP data extracts in .txt format with Regex and Python\n\n\n\n\n\n\n\nData Engineering\n\n\nSAP\n\n\nPython\n\n\nRegex\n\n\n\n\n\n\n\n\n\n\n\nJun 25, 2022\n\n\nZaishan Weng\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "index.html",
     "href": "index.html",
     "title": "Zaishan Weng",
     "section": "",
-    "text": "I’m a a techno-functional consultant and solutions architect with over 14 years of experience leading strategic digital transformation, data analytics and data science initiatives in the retail, government, health & security and restaurant industries. A dynamic & passionate professional who specializes in driving innovation, delivering large and complex projects, and advising senior executives on leveraging technology to drive business outcomes. A data scientist/engineer with proven track record in deploying impactful and productive AI products.\nI am passionate about the impact and difference technology has made and strive to explore ways of making existing work simpler and easier so that we can have the time to focus on bigger visions."
+    "text": "I am techno-functional consultant and solutions architect with over 14 years of experience leading strategic digital transformation, data analytics and data science initiatives in the retail, government, health & security and restaurant industries. A dynamic & passionate professional who specializes in driving innovation, delivering large and complex projects, and advising senior executives on leveraging technology to drive business outcomes. A data scientist/engineer with proven track record in deploying impactful and productive AI products.\nI am passionate about the impact and difference technology has made and strive to explore ways of making existing work simpler and easier so that we can have the time to focus on bigger visions."
   },
   {
     "objectID": "posts/post-with-code/index.html",
@@ -54,5 +54,19 @@
     "title": "Data cleaning on SAP data extracts in .txt format with Regex and Python",
     "section": "Common SAP tables in Procure to Pay process",
     "text": "Common SAP tables in Procure to Pay process\nFirst, lets go through what are common data tables extracted from SAP as part of the Procure to Pay process.\nAccounting Related Tables\n\nBKPF: Accounting Document Header\nBSAK: Accounting: Secondary Index for Vendors\nBSEG: Accounting Document Segment\n\nPurchase Order related Tables\n\nEKKO: Purchasing Document Header\nEKPO: Purchasing Document Item\nEKBE: History per Purchasing Document\nEKKN: Account Assignment in Purchasing Document\n\nMaterial Tables\n\nMAKT: Material Descriptions\n\nThere are various websites which provide additional information about the SAP tables.\n\nhttps://www.se80.co.uk/training-education/sap-tables/\nhttps://www.tcodesearch.com/sap-tables/detail?id=BSEG (Might need to enter through changing the id in URL without requiring premium membership)\n\n\n\n\nExample of Data Dictionary for BSEG Table Source: https://www.se80.co.uk/"
+  },
+  {
+    "objectID": "posts/2022-06-25-Data-cleaning-on-SAP-data-extracts-in-txt-format-with-Regex-and-Python/index.html#format-of-sap-data-extract-in-.txt-file",
+    "href": "posts/2022-06-25-Data-cleaning-on-SAP-data-extracts-in-txt-format-with-Regex-and-Python/index.html#format-of-sap-data-extract-in-.txt-file",
+    "title": "Data cleaning on SAP data extracts in .txt format with Regex and Python",
+    "section": "Format of SAP data extract in .txt file",
+    "text": "Format of SAP data extract in .txt file\nFor our project, the output SAP data extracts is in a .txt format and with the typical structure as shown below:\n\nThe column header details starts at line 4\nThe width of each column is consistent between the column headers and the data for each file extracted\nActual data content starts at line 5 till the end\n\n\n\n\nSample SAP TXT Data Extract Structure with Mock Data\n\n\nThe sample SAP data in txt format and Jupyter Notebook can be found on GitHub: https://github.com/ZS-Weng/Data_Engineering/tree/main/Data_Cleaning\nThe two major data discrepancies encountered are:\n\nNewline character inserted in some of the fields\nPipe (|) delimiters found within the actual data"
+  },
+  {
+    "objectID": "posts/2022-06-25-Data-cleaning-on-SAP-data-extracts-in-txt-format-with-Regex-and-Python/index.html#full-code-and-output",
+    "href": "posts/2022-06-25-Data-cleaning-on-SAP-data-extracts-in-txt-format-with-Regex-and-Python/index.html#full-code-and-output",
+    "title": "Data cleaning on SAP data extracts in .txt format with Regex and Python",
+    "section": "Full Code and Output",
+    "text": "Full Code and Output\nThe full working code for the data cleaning is as shown below:\nimport pandas as pd\nimport re\n\n# Read File\nwith open(\"Sample SAP Format.txt\", encoding=\"utf-8\") as f:\n    content_raw = f.read()\n\n# Clean extra newline characters\nnew_line_pattern = re.compile(\"([^1|-])[\\n](.)|(.)[\\n]([^|-])\")\ncontent_cleaned_newline = new_line_pattern.sub(r\"\\1 \\2\", content_raw)\ncontent_split_line = content_cleaned_newline.split(\"\\n\")\n\n# Clean the rest of content\n\n# Extract Header and Row Pattern\nheader_string = content_split_line[3]\ncolumn_header = [token.strip() for token in header_string.split(\"|\")][1:-1]\nlist_column_width = [\n    \"(.{\" + str(len(column)) + \"})\" for column in header_string.split(\"|\")\n][1:-1]\ncolumn_string_pattern = \"[|]\" + \"[|]\".join(list_column_width) + \"[|]\"\n#Extract Data Body\ncolumn_pattern = re.compile(column_string_pattern)\ncleaned_content = [\n    [token.strip() for token in column_pattern.match(row).groups()]\n    for row in content_split_line[5:-2]\n]\ndf_clean = pd.DataFrame(cleaned_content, columns=column_header)"
   }
 ]

@@ -1,7 +1,7 @@
 ---
 title: "Data cleaning on SAP data extracts in .txt format with Regex and Python"
 date: "2022-06-25"
-categories: [news, code, analysis]
+categories: [Data Engineering, SAP, Python, Regex]
 image: "sap_data_format.png"
 ---
 
@@ -37,3 +37,57 @@ There are various websites which provide additional information about the SAP ta
 * https://www.tcodesearch.com/sap-tables/detail?id=BSEG (Might need to enter through changing the id in URL without requiring premium membership)
 
 ![Example of Data Dictionary for BSEG Table Source: https://www.se80.co.uk/](bseg_table.png)
+
+
+## Format of SAP data extract in .txt file
+For our project, the output SAP data extracts is in a .txt format and with the typical structure as shown below:
+
+* The column header details starts at line 4
+* The width of each column is consistent between the column headers and the data for each file extracted
+* Actual data content starts at line 5 till the end
+
+![Sample SAP TXT Data Extract Structure with Mock Data](sap_data_format.png)
+
+
+The sample SAP data in txt format and Jupyter Notebook can be found on GitHub: https://github.com/ZS-Weng/Data_Engineering/tree/main/Data_Cleaning
+
+The two major data discrepancies encountered are:
+
+* Newline character inserted in some of the fields
+* Pipe (|) delimiters found within the actual data
+
+## Full Code and Output
+
+The full working code for the data cleaning is as shown below:
+
+```python
+import pandas as pd
+import re
+
+# Read File
+with open("Sample SAP Format.txt", encoding="utf-8") as f:
+    content_raw = f.read()
+
+# Clean extra newline characters
+new_line_pattern = re.compile("([^1|-])[\n](.)|(.)[\n]([^|-])")
+content_cleaned_newline = new_line_pattern.sub(r"\1 \2", content_raw)
+content_split_line = content_cleaned_newline.split("\n")
+
+# Clean the rest of content
+
+# Extract Header and Row Pattern
+header_string = content_split_line[3]
+column_header = [token.strip() for token in header_string.split("|")][1:-1]
+list_column_width = [
+    "(.{" + str(len(column)) + "})" for column in header_string.split("|")
+][1:-1]
+column_string_pattern = "[|]" + "[|]".join(list_column_width) + "[|]"
+#Extract Data Body
+column_pattern = re.compile(column_string_pattern)
+cleaned_content = [
+    [token.strip() for token in column_pattern.match(row).groups()]
+    for row in content_split_line[5:-2]
+]
+df_clean = pd.DataFrame(cleaned_content, columns=column_header)
+
+```
