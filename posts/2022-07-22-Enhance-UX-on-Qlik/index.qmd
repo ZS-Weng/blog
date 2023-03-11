@@ -1,0 +1,8 @@
+---
+title: "Some ideas on enhancing User Experience on Qlik Sense"
+date: "2022-07-22"
+categories: [Design Thinking, Requirements Gathering, Data Analytics, Stakeholder Engagement]
+image: "qliksense_landing.png"
+---
+
+## Introduction
