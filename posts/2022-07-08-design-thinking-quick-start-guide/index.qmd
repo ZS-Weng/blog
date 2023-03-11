@@ -1,8 +1,43 @@
 ---
 title: "Quick Start Guide on incorporating design thinking artifacts for requirements gathering during Project Initiation Phase for Agile Data Analytics Projects"
 date: "2022-07-08"
-categories: [Design Thinking, Requirements Gathering, Data Analytics, Stakeholder Engagement]
+categories: [Design Thinking, Requirements Gathering, Data Analytics, Stakeholder Engagement, Business Intelligence]
 image: "hopes_n_fears.png"
 ---
 
 ## Introduction
+From my recent involvement in data analytics project engagements as the Data Science and Analytics Lead at IBM, it was observed that proper requirements gathering in the project initiation phase can make a big difference to the eventual success of the project.
+
+One of the common challenges faced during this phase revolves around translating high level management visions at 50,000ft (e.g. Embark on Digital Transformation, Employ AI) into definitive and objective project requirements for implementation. From my experience, the use of appropriate design thinking artifacts can help to guide the process more effectively.
+
+In this article, I would like to share a high level overview on the the design thinking artifacts which worked well on our projects and an example of how they are typically woven together during the project initiation phase. Most of these artifacts shared are aligned to IBM Design Thinking Methodology and additional details are available on the IBM Design Thinking website. https://www.ibm.com/design/thinking/ (signing up for a free IBM account might be required to access the materials)
+
+## Breaking down the Initial Requirements Gathering Process
+
+Typically the initial requirements gathering process can be broken down three main steps starting with crystallizing the overall business case of the project to the generation of project requirements. We will go through more details in each of the main steps:
+
+* Step 1- Defining goals and objectives of the project
+* Step 2- Understanding users, their current work process and envisioned to-be state
+* Step 3- Initial formulation of analytics solution requirements
+
+### Step 1: Defining Goals and Objectives of the Project
+
+The first step usually involves connecting with the project sponsor and key stakeholders who will be responsible for the outcome of the project. It is critical for the stakeholders and project team to come together and define the overall direction of the project.
+
+**Typical Stakeholders from Client:**
+Project Sponsor, Product Owner, Project Manager, SMEs, Users
+
+**Key Objectives:**
+
+* Establish overall business case for the project including potential benefits and how success of the project will be measured
+* Identify and understand key stakeholders on the project
+* Identify risks and potential road blocks
+
+**Key Design Thinking Artifacts:**
+
+* Hopes and Fears
+* Opportunity Canvas
+* Stakeholder Map
+* Stakeholder Matrix
+* Assumptions & Questions
+
