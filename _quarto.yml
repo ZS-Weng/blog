@@ -4,7 +4,7 @@ project:
 
 website:
   title: "Zaishan Weng"
-  description: "This is Zaishan's personal Blog."
+  description: "This is Zaishan's personal website."
   navbar:
     search: true
     collapse: true
@@ -15,17 +15,20 @@ website:
         href: blog.qmd
       - text: "Videos & Articles"
         href: index.qmd
+      
+
+  page-footer:
+    left: 
+      - "© Copyright 2023 Zaishan Weng"
+    right:
       - icon: github
         href: https://github.com/ZS-Weng
       - icon: linkedin
         href: https://www.linkedin.com/in/zaishan-weng/
-
-  page-footer:
-    left: "© Copyright 2023 Zaishan Weng"
 format:
   html:
     theme: 
-      light: [cosmo, theme.scss]
+      light: [cosmo]
     css: styles.css
 
 
