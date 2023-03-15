@@ -22,6 +22,69 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1.6em;
   vertical-align: middle;
 }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 
@@ -105,6 +168,10 @@ ul.task-list li input[type="checkbox"] {
    
   <ul>
   <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
+  <li><a href="#menu-page-for-holistic-view-of-overall-health-of-business" id="toc-menu-page-for-holistic-view-of-overall-health-of-business" class="nav-link" data-scroll-target="#menu-page-for-holistic-view-of-overall-health-of-business">Menu Page for holistic view of overall health of business</a></li>
+  <li><a href="#navigation-bars-between-apps-and-within-each-app" id="toc-navigation-bars-between-apps-and-within-each-app" class="nav-link" data-scroll-target="#navigation-bars-between-apps-and-within-each-app">Navigation Bars between apps and within each app</a></li>
+  <li><a href="#online-help-and-information" id="toc-online-help-and-information" class="nav-link" data-scroll-target="#online-help-and-information">Online Help and Information</a></li>
+  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion</a></li>
   </ul>
 </nav>
     </div>
@@ -115,10 +182,10 @@ ul.task-list li input[type="checkbox"] {
 <div class="quarto-title">
 <h1 class="title">Some ideas on enhancing User Experience on Qlik Sense</h1>
   <div class="quarto-categories">
-    <div class="quarto-category">Design Thinking</div>
-    <div class="quarto-category">Requirements Gathering</div>
-    <div class="quarto-category">Data Analytics</div>
-    <div class="quarto-category">Stakeholder Engagement</div>
+    <div class="quarto-category">Qlik</div>
+    <div class="quarto-category">User Experience</div>
+    <div class="quarto-category">Business Intelligence</div>
+    <div class="quarto-category">User Interface</div>
   </div>
   </div>
 
@@ -156,8 +223,142 @@ ul.task-list li input[type="checkbox"] {
 <ul>
 <li>Menu Page for holistic view of overall health of business</li>
 </ul>
-<p>Navigation Bars for navigating between apps and within each app</p>
-<p>Online Help and Information</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="qliksense_landing.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Example of Menu Page with KPIs on Qlik Sense</figcaption><p></p>
+</figure>
+</div>
+<ul>
+<li>Navigation Bars for navigating between apps and within each app</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="top_side_bar_qlik.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Navigation between App and Within App</figcaption><p></p>
+</figure>
+</div>
+<ul>
+<li>Online Help and Information</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="help_page.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Help Page Built In Online with the App</figcaption><p></p>
+</figure>
+</div>
+<p>The Qlik Sense demo app can be found in the following Github link:</p>
+<p><a href="https://github.com/ZS-Weng/QlikSense/blob/main/QlikSense%20Navigation.qvf" class="uri">https://github.com/ZS-Weng/QlikSense/blob/main/QlikSense%20Navigation.qvf</a></p>
+</section>
+<section id="menu-page-for-holistic-view-of-overall-health-of-business" class="level2">
+<h2 class="anchored" data-anchor-id="menu-page-for-holistic-view-of-overall-health-of-business">Menu Page for holistic view of overall health of business</h2>
+<p>In a data analytics / business intelligence product, it usually can consist of several apps or reports based on different aspects of the business. Inspired by Fitbit’s health analysis charts, the menu page for a Qlik Sense dashboard is customized with icons and the most important KPI. Based on the thresholds set, users can have an holistic understanding on the overall health summary from various aspects of the business.</p>
+<p>The picture below illustrates how the color of the KPI and icon will change based on the changing value. The threshold set is 33 and 66.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="icon_color_change.gif" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Menu Page showing how the color of the KPI and Icons will change based on the KPI value and threshold</figcaption><p></p>
+</figure>
+</div>
+<p><strong>Qlik Sense Codes:</strong> The thresholding can easily be setup in Qlik Sense with if statements.</p>
+<ul>
+<li>Code for controlling the colors on the KPI and Icons in Qlik Sense:</li>
+</ul>
+<div class="sourceCode" id="cb1"><pre class="sourceCode default code-with-copy"><code class="sourceCode default"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>=if(v_KPI3 &lt;= 33, ‘#e8291c’,</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>if( v_KPI3 &gt; 33 and v_KPI3 &lt;= 66 , ‘#abaa20’, </span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>if( v_KPI3 &gt; 66, ‘#25af2f’)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>Code for controlling the Icon Image in Qlik Sense:</li>
+</ul>
+<div class="sourceCode" id="cb2"><pre class="sourceCode default code-with-copy"><code class="sourceCode default"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>=if(v_KPI3 &lt;= 33, ‘Warning triangle’,</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>if( v_KPI3 &gt; 33 and v_KPI3 &lt;= 66 , ‘View’, </span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>if( v_KPI3 &gt; 66, ‘Tick’)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>Other resources for creating the icons</strong></p>
+<ul>
+<li>Free icons can be downloaded from: <a href="https://icons8.com/" class="uri">https://icons8.com/</a></li>
+<li>The websites that provides reference on beautiful gradient color combinations: <a href="https://uigradients.com/" class="uri">https://uigradients.com/</a> , <a href="https://digitalsynopsis.com/design/beautiful-color-ui-gradients-backgrounds/" class="uri">https://digitalsynopsis.com/design/beautiful-color-ui-gradients-backgrounds/</a></li>
+<li>Online tools that can invert a black and white icon: <a href="https://www.google.com/search?q=image+invert" class="uri">https://www.google.com/search?q=image+invert</a></li>
+<li>Python Code that can invert a black and white icon:</li>
+</ul>
+<div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> PIL <span class="im">import</span> Image, ImageOps</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> matplotlib.pyplot <span class="im">import</span> imshow</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pathlib <span class="im">import</span> Path</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="co">"""</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="co">Setup Base and Process Folder</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="co">"""</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Enter base folder path</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>base_folder <span class="op">=</span> Path(<span class="st">"./icons"</span>)</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>image_paths <span class="op">=</span> Path.glob(base_folder, <span class="st">"*.png"</span>)</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>processed_folder <span class="op">=</span> <span class="st">"./icons/processed/"</span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>os.makedirs(processed_folder, exist_ok<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> image_invert(image_path):</span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""</span></span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a><span class="co">    Perform image inversion of the colots and set transparent map</span></span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a><span class="co">    for black pixels</span></span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a><span class="co">    """</span></span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>    image <span class="op">=</span> Image.<span class="bu">open</span>(image_path)</span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> image.mode <span class="op">==</span> <span class="st">"RGBA"</span>:</span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>        r, g, b, a <span class="op">=</span> image.split()</span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>        rgb_image <span class="op">=</span> Image.merge(<span class="st">"RGB"</span>, (r, g, b))</span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>        inverted_image <span class="op">=</span> ImageOps.invert(rgb_image)</span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>        r2, g2, b2 <span class="op">=</span> inverted_image.split()</span>
+<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a>        final_transparent_image <span class="op">=</span> Image.merge(<span class="st">"RGBA"</span>, (r2, g2, b2, a))</span>
+<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> final_transparent_image</span>
+<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a>        inverted_image <span class="op">=</span> ImageOps.invert(image)</span>
+<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> inverted_image</span>
+<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-35"><a href="#cb3-35" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> image_path <span class="kw">in</span> image_paths:</span>
+<span id="cb3-36"><a href="#cb3-36" aria-hidden="true" tabindex="-1"></a>    inverted_image <span class="op">=</span> image_invert(image_path)</span>
+<span id="cb3-37"><a href="#cb3-37" aria-hidden="true" tabindex="-1"></a>    newpath <span class="op">=</span> Path.joinpath(base_folder, <span class="st">"processed"</span>, image_path.stem <span class="op">+</span> <span class="st">"_inverted.png"</span>)</span>
+<span id="cb3-38"><a href="#cb3-38" aria-hidden="true" tabindex="-1"></a>    inverted_image.save(newpath)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="navigation-bars-between-apps-and-within-each-app" class="level2">
+<h2 class="anchored" data-anchor-id="navigation-bars-between-apps-and-within-each-app">Navigation Bars between apps and within each app</h2>
+<p>To make the navigation across apps and within an app more intuitive, buttons can be used to create the respective navigations. In our projects, we aim to create an experience similar to navigating websites with the side bars providing navigation between apps and top bars within each app. The top bars for our case are standardized to enable users to drill down from Summary &gt; Analysis &gt; Details.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="navi_btw_apps.gif" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Example of Navigation between the Apps</figcaption><p></p>
+</figure>
+</div>
+<p>Sample Code in Qlik Sense on Variable Setup:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode default code-with-copy"><code class="sourceCode default"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>Set v_TopBarSelectedColor = ‘#8351a8’;</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>Set v_TopBarUnSelectedColor = ‘#4d7b93’;</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>Set v_SideBarSelectedColor = ‘#8351a8’;</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>Set v_SideBarUnSelectedColor = ‘#4d7b93’;</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>Set v_SideBar1Text = ‘App 1’;</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>Set v_SideBar2Text = ‘App 2’;</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>Set v_SideBar3Text = ‘App 3’;</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>Set v_SideBar4Text = ‘Help Page’;</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>Set v_SideBar1Link = ‘a0d70b49–7a21–44d0-b9a9-daaa0701c175’;</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>Set v_SideBar2Link = ‘e03b4a67–89c1–425b-852c-44d112e48d7c’;</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>Set v_SideBar3Link = ‘adc68de9–5a42–40ef-bdcf-dffa2981d83c’;</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>Set v_SideBar4Link = ‘f3e454e2-ea27–46ef-bc5a-d1ddd280aaf9’;</span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>Set v_helppageLink = ‘f3e454e2-ea27–46ef-bc5a-d1ddd280aaf9’;</span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>Set v_menupagelink = ‘be0a8400–5df7–4783–8339–1e44e66b04e5’;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="online-help-and-information" class="level2">
+<h2 class="anchored" data-anchor-id="online-help-and-information">Online Help and Information</h2>
+<p>In many projects, often training materials are shared in PowerPoint decks or word documents. These documents might not be easily accessible to every user and it may become challenging at times for users to find the right reference guide when they need help while navigating an analytics app. In our projects, we recommend for the help pages to be built in within as an accompanying sheet or app so that it will be online together with the analytics product.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="navi_help_page.gif" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Navigation to Help Page and use of Containers as Step by Step Guide</figcaption><p></p>
+</figure>
+</div>
+</section>
+<section id="conclusion" class="level2">
+<h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
+<p>In this article, I have aimed to share how user experience can be enhanced on Qlik Sense applications with out of the box capabilities.</p>
+<p>Any further enhancements will likely require tools beyond the application builder like Mashups or D3.js custom visualizations.</p>
+<p>Thanks for reading and hope the information was useful in some way!</p>
 
 
 </section>
