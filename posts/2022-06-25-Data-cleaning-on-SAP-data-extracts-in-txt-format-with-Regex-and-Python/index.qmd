@@ -33,8 +33,8 @@ First, lets go through what are common data tables extracted from SAP as part of
 
 There are various websites which provide additional information about the SAP tables.
 
-* https://www.se80.co.uk/training-education/sap-tables/
-* https://www.tcodesearch.com/sap-tables/detail?id=BSEG (Might need to enter through changing the id in URL without requiring premium membership)
+* <https://www.se80.co.uk/training-education/sap-tables/>
+* <https://www.tcodesearch.com/sap-tables/detail?id=BSEG> (Might need to enter through changing the id in URL without requiring premium membership)
 
 ![Example of Data Dictionary for BSEG Table Source: https://www.se80.co.uk/](bseg_table.png)
 
@@ -49,7 +49,7 @@ For our project, the output SAP data extracts is in a .txt format and with the t
 ![Sample SAP TXT Data Extract Structure with Mock Data](sap_data_format.png)
 
 
-The sample SAP data in txt format and Jupyter Notebook can be found on GitHub: https://github.com/ZS-Weng/Data_Engineering/tree/main/Data_Cleaning
+The sample SAP data in txt format and Jupyter Notebook can be found on GitHub: <https://github.com/ZS-Weng/Data_Engineering/tree/main/Data_Cleaning>
 
 The two major data discrepancies encountered are:
 
@@ -162,6 +162,6 @@ Final pandas Data Frame output:
 ## Useful Learning Resource for Python and Regex
 When I was starting out, I found the book Automate the Boring Stuff with Python by Al Sweigart one of the best resources to learning about Python and Regex with many practical examples.
 
-There is a free access option to the book on his website: https://automatetheboringstuff.com/ and this is the link to the specific chapter on Regex which formed the foundation on some of the implementation: https://automatetheboringstuff.com/2e/chapter7/
+There is a free access option to the book on his website: <https://automatetheboringstuff.com/> and this is the link to the specific chapter on Regex which formed the foundation on some of the implementation: <https://automatetheboringstuff.com/2e/chapter7/>
 
-
+Thanks for reading and hope the information was useful in some way!
