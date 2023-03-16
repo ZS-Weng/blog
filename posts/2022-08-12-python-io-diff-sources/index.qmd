@@ -123,3 +123,79 @@ For input data sources in .txt format, we can use the python open function direc
 I wrote a seperate article for the cleaning of SAP .txt input file format. The article can be found [here](../../posts/2022-06-25-Data-cleaning-on-SAP-data-extracts-in-txt-format-with-Regex-and-Python/index.qmd)
 
 The .read() method can be used to read in the entire data source. There are usually some processing involved e.g. all types of new line characters are represented with \n.
+
+```python
+# Converts any type of new line to \n
+with open("data/Sample SAP Format.txt", encoding="utf-8") as f:
+    content_raw = f.read()
+```
+
+![Data with only new line character](data_w_newline.png)
+
+There are times where the type of new line characters are important. In this case, we set the parameter newline= “” and we can see below that the original Carriage Return Line Feed (\r\n) in the content.
+
+```python
+# Alternative way to read the file with CRLF (Carriage Return Line Feed intact)
+with open("data/Sample SAP Format.txt", encoding="utf-8", newline="") as f:
+    content_raw_2 = f.read()
+```
+
+![Data Maintaining original carriage return linefeed](data_w_original_crlf.png)
+
+Another method common used is .readlines() which will break up each individual lines at the line breaks and provide the data in a list. An example is shown below. From the individual lines, the data can be further split based on established delimiters or other business rules.
+
+```python
+with open("data/Sample SAP Format.txt", encoding="utf-8") as f:
+    content_split_lines = f.readlines()
+```
+
+![Output list per line](output_lines.png)
+
+## 5. Writing and reading Parquet Files
+
+Parquet is a type of file format for storing and organizing large amounts of data in a efficient and organized manner. The files are in the .parquet extension.
+
+It is a columnar storage format, meaning that data is stored by columns instead of rows. This allows for faster data retrieval, especially for queries that only need to access a small subset of columns. The format is optimized for use with big data technologies like Apache Hadoop and Apache Spark and is widely used in data warehousing and big data analytics applications.
+
+For setting up analytics data lakes parquet has the advantages of being smaller in size as it is compressed and being able to retain the data schema types compared to storing the data in csv. However, as the format is in a binary format, it will not be human readable.
+
+**Writing of Data Frame into Parquet Files**
+
+To write a data frame into parquet files, we first need to install the pyarrow libarary.
+
+`pip install pyarrow`
+
+After installation we can use pandas to_parquet method to store the data from a data frame into parquet format. Please see the example below on the code comparison between writing to a csv and parquet file and notice how much faster the writing data in parquet format is as compared to csv. Also, we can see the difference in file size of the parquet file vs csv.
+
+```python
+#Writing to CSV
+df_retail_original.to_csv("./data/Online_Retail.csv", index=False)
+#Writing to Parquet
+df_retail_original.to_parquet("./data/Online_Retail.parquet")
+```
+
+![Time taken to write data to parquet vs to csv](parquet_vs_csv_write.png)
+
+![Difference in size between CSV and parquet](parquet_vs_csv_size.png)
+
+**Reading of Data Frame from parquet files**
+
+We can use pandas read_parquet method with pyarrow engine to read data from existing parquet file. Using the same method, we read the parquet and csv files previously written.
+
+```python
+#Reading from CSV
+df_from_csv = pd.read_csv("./data/Online_Retail.csv")
+#Reading from Parquet
+df_from_parquet = pd.read_parquet("./data/Online_Retail.parquet", engine="pyarrow")
+```
+
+![Time taken to load data from parquet vs csv files](parquet_vs_csv_read.png)
+
+Thanks for reading and hope this was useful in some way!
+
+## References
+
+* <https://www.kaggle.com/code/paultimothymooney/how-to-resolve-a-unicodedecodeerror-for-a-csv-file/notebook>
+* <https://www.the-analytics.club/pandas-excel-multiple-sheets>
+
+

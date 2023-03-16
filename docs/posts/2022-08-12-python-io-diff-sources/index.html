@@ -172,6 +172,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <li><a href="#resolve-unicodedecodeerror-during-csv-file-read" id="toc-resolve-unicodedecodeerror-during-csv-file-read" class="nav-link" data-scroll-target="#resolve-unicodedecodeerror-during-csv-file-read">2. Resolve UnicodeDecodeError during CSV file read</a></li>
   <li><a href="#extracting-data-from-multiple-sheets-in-excel" id="toc-extracting-data-from-multiple-sheets-in-excel" class="nav-link" data-scroll-target="#extracting-data-from-multiple-sheets-in-excel">3. Extracting data from multiple sheets in excel</a></li>
   <li><a href="#reading-.txt-source-files" id="toc-reading-.txt-source-files" class="nav-link" data-scroll-target="#reading-.txt-source-files">4. Reading .txt source files</a></li>
+  <li><a href="#writing-and-reading-parquet-files" id="toc-writing-and-reading-parquet-files" class="nav-link" data-scroll-target="#writing-and-reading-parquet-files">5. Writing and reading Parquet Files</a></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
   </ul>
 </nav>
     </div>
@@ -330,6 +332,80 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>For input data sources in .txt format, we can use the python open function directly to read the files. There will usually be text processing required depending on the delimiters used in the files.</p>
 <p>I wrote a seperate article for the cleaning of SAP .txt input file format. The article can be found <a href="../../posts/2022-06-25-Data-cleaning-on-SAP-data-extracts-in-txt-format-with-Regex-and-Python/index.html">here</a></p>
 <p>The .read() method can be used to read in the entire data source. There are usually some processing involved e.g.&nbsp;all types of new line characters are represented with .</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Converts any type of new line to \n</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">"data/Sample SAP Format.txt"</span>, encoding<span class="op">=</span><span class="st">"utf-8"</span>) <span class="im">as</span> f:</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    content_raw <span class="op">=</span> f.read()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="data_w_newline.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Data with only new line character</figcaption><p></p>
+</figure>
+</div>
+<p>There are times where the type of new line characters are important. In this case, we set the parameter newline= “” and we can see below that the original Carriage Return Line Feed () in the content.</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Alternative way to read the file with CRLF (Carriage Return Line Feed intact)</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">"data/Sample SAP Format.txt"</span>, encoding<span class="op">=</span><span class="st">"utf-8"</span>, newline<span class="op">=</span><span class="st">""</span>) <span class="im">as</span> f:</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    content_raw_2 <span class="op">=</span> f.read()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="data_w_original_crlf.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Data Maintaining original carriage return linefeed</figcaption><p></p>
+</figure>
+</div>
+<p>Another method common used is .readlines() which will break up each individual lines at the line breaks and provide the data in a list. An example is shown below. From the individual lines, the data can be further split based on established delimiters or other business rules.</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">"data/Sample SAP Format.txt"</span>, encoding<span class="op">=</span><span class="st">"utf-8"</span>) <span class="im">as</span> f:</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>    content_split_lines <span class="op">=</span> f.readlines()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="output_lines.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Output list per line</figcaption><p></p>
+</figure>
+</div>
+</section>
+<section id="writing-and-reading-parquet-files" class="level2">
+<h2 class="anchored" data-anchor-id="writing-and-reading-parquet-files">5. Writing and reading Parquet Files</h2>
+<p>Parquet is a type of file format for storing and organizing large amounts of data in a efficient and organized manner. The files are in the .parquet extension.</p>
+<p>It is a columnar storage format, meaning that data is stored by columns instead of rows. This allows for faster data retrieval, especially for queries that only need to access a small subset of columns. The format is optimized for use with big data technologies like Apache Hadoop and Apache Spark and is widely used in data warehousing and big data analytics applications.</p>
+<p>For setting up analytics data lakes parquet has the advantages of being smaller in size as it is compressed and being able to retain the data schema types compared to storing the data in csv. However, as the format is in a binary format, it will not be human readable.</p>
+<p><strong>Writing of Data Frame into Parquet Files</strong></p>
+<p>To write a data frame into parquet files, we first need to install the pyarrow libarary.</p>
+<p><code>pip install pyarrow</code></p>
+<p>After installation we can use pandas to_parquet method to store the data from a data frame into parquet format. Please see the example below on the code comparison between writing to a csv and parquet file and notice how much faster the writing data in parquet format is as compared to csv. Also, we can see the difference in file size of the parquet file vs csv.</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Writing to CSV</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>df_retail_original.to_csv(<span class="st">"./data/Online_Retail.csv"</span>, index<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="co">#Writing to Parquet</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>df_retail_original.to_parquet(<span class="st">"./data/Online_Retail.parquet"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="parquet_vs_csv_write.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Time taken to write data to parquet vs to csv</figcaption><p></p>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="parquet_vs_csv_size.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Difference in size between CSV and parquet</figcaption><p></p>
+</figure>
+</div>
+<p><strong>Reading of Data Frame from parquet files</strong></p>
+<p>We can use pandas read_parquet method with pyarrow engine to read data from existing parquet file. Using the same method, we read the parquet and csv files previously written.</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Reading from CSV</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>df_from_csv <span class="op">=</span> pd.read_csv(<span class="st">"./data/Online_Retail.csv"</span>)</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="co">#Reading from Parquet</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>df_from_parquet <span class="op">=</span> pd.read_parquet(<span class="st">"./data/Online_Retail.parquet"</span>, engine<span class="op">=</span><span class="st">"pyarrow"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="parquet_vs_csv_read.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Time taken to load data from parquet vs csv files</figcaption><p></p>
+</figure>
+</div>
+<p>Thanks for reading and hope this was useful in some way!</p>
+</section>
+<section id="references" class="level2">
+<h2 class="anchored" data-anchor-id="references">References</h2>
+<ul>
+<li><a href="https://www.kaggle.com/code/paultimothymooney/how-to-resolve-a-unicodedecodeerror-for-a-csv-file/notebook" class="uri">https://www.kaggle.com/code/paultimothymooney/how-to-resolve-a-unicodedecodeerror-for-a-csv-file/notebook</a></li>
+<li><a href="https://www.the-analytics.club/pandas-excel-multiple-sheets" class="uri">https://www.the-analytics.club/pandas-excel-multiple-sheets</a></li>
+</ul>
 
 
 </section>
