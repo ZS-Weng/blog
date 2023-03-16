@@ -5,3 +5,121 @@ categories: [Python, Data Cleaning, Excel, CSV, Data Engineering]
 image: "front_image.png"
 ---
 
+![Image generated from Hugging Face Stable Diffusion with the prompt “multitude of sources coming together in a mural”](front_image.png)
+
+## Introduction
+
+In the process of ingesting and cleaning raw data in various formats using python, there were some tricks found to be useful based on the issues which were encountered. Types of source files covered in the article so far are as follows:
+
+* xlsb (excel binary format)
+* csv files where encoding are not UTF-8
+* excel files with multiple tabs
+* raw data files in .txt format
+* parquet files
+
+The corresponding notebook and sample data can be found at <https://github.com/ZS-Weng/Data_Engineering/tree/main/Data_Cleaning>
+
+## 1. Reading in excel files in .xlsb format
+There are various formats of excel files e.g. .xls, .xlsx, .xlsb, .xlsm etc. Based on the out of the box functionality from Pandas, the formats .xlsx and .xls are supported and the .xlsb (binary) format is not supported out of the box.
+
+The most efficient solution I found is to install the pyxlsb extension. More details can be found at the PyPI project website: <https://pypi.org/project/pyxlsb/>
+
+The code to execute including installation of the library will be as follows:
+
+```python
+pip install pyxlsb
+df = pd.read_excel(file, engine=”pyxlsb”)
+```
+
+## 2. Resolve UnicodeDecodeError during CSV file read
+Most of the files are encoded in “UTF-8” which is the default encoding. However, there are times when when the encoding in not “UTF-8” and there will be an error message similar to this:
+
+UnicodeDecodeError: ‘utf-8’ codec can’t decode byte 0xff in position 0: invalid start byte
+
+The most effective method I have encountered is to first read the file as binary using ‘rb’ mode to determine the encoding, then apply the encoding which was detected.
+
+```python
+import chardet
+with open(file, 'rb') as f:
+    encoding = chardet.detect(f.read())
+print(encoding)
+```
+The result will be something like this:
+
+![Detecting encoding in a file](detect_encoding.png)
+
+Based on the encoding identified, we can use the encoding in pd.read_csv()
+
+```python
+df = pd.read_csv(file, encoding=encoding['encoding'])
+```
+
+The result will look something like this:
+
+![Reading the csv file based on updated encoding](read_csv_w_encoding.png)
+
+## 3. Extracting data from multiple sheets in excel
+
+There are times where the data in excel might come from multiple sheets and we need to read in the data from all the sheets. The most straightforward way which I have found is using pd.read_excel with the parameter sheet_name=None. This will read all of the sheets in excel into a dictionary with the sheet name as the key and the data in DataFrames tagged to each sheet name.
+
+Here we use an example where a sample SAP data dictionary with the relevant data schema. The details for each table are shared in each sheet while each sheet in excel represents the respective tables.
+
+![Sample SAP Data Dictionary shared via Excel](sap_data_dict.png)
+
+We can read in the data in all the sheets with the parameter sheet_name set to None. Here instead of a single data frame, we will have a dictionary with each sheet name as key and the data frame in the sheet as the corresponding value of the dictionary.
+
+```python
+# Reading in the data
+sample_SAP_data_dict = "./data/SAP Data Dictionary Selected Tables.xlsx"
+data_sheet_dict = pd.read_excel(sample_SAP_data_dict, sheet_name=None)
+# Display the names of each sheet in excel
+list_sheets = list(data_sheet_dict.keys())
+print(f"There are {len(list_sheets)} sheets in the excel file")
+print(f"The sheets are {list_sheets}")
+```
+As we print out the keys, we can see the sheet names being listed. In our example, this corresponds with some of the SAP table names.
+
+![Description of excel file](excel_file_desc.png)
+
+Below is an example when the key “BSEG” is applied for the dictionary, we can get the corresponding data frame which was read from the sheet containing the schema of the table.
+
+![Sample Data Frame for BSEG table](sample_df.png)
+
+Subsequent analysis can be run at scale using the normal python dictionary and pandas functions and methods.
+
+One of the analysis performed for our sample Data Dictionary is to find out which tables houses the similar data fields. We will first use a pivot_table method to create a new table where the column fields are shown as columns for each table. From there we join the tables together using pd.concat.
+
+```python
+def extract_columns_info(df, sheet_name, list_column_field):
+    df_temp = df.copy()
+    df_temp["SAP_Table"] = sheet_name
+    df_temp["Present"] = 1
+    columns_select = ["SAP_Table"] + list_column_field + ["Present"]
+    
+    return df_temp[columns_select].pivot_table(
+        columns=list_column_field, values="Present", index=["SAP_Table"]
+    )
+```
+
+```python
+list_column_field = ["Field"]
+list_df = []
+for sheet_name, df in data_sheet_dict.items():
+    df_processed = extract_columns_info(df, sheet_name, list_column_field)
+    list_df.append(df_processed)
+
+df_consolidated = pd.concat(list_df)
+df_consolidated.fillna("", inplace=True)
+```
+
+In the final result, we can we can see the common fields across various SAP tables. Below is a sample of the output.
+
+![Sample output of final table displaying common fields across different tables](final_table.png)
+
+## 4. Reading .txt source files
+
+For input data sources in .txt format, we can use the python open function directly to read the files. There will usually be text processing required depending on the delimiters used in the files.
+
+I wrote a seperate article for the cleaning of SAP .txt input file format. The article can be found [here](../../posts/2022-06-25-Data-cleaning-on-SAP-data-extracts-in-txt-format-with-Regex-and-Python/index.qmd)
+
+The .read() method can be used to read in the entire data source. There are usually some processing involved e.g. all types of new line characters are represented with \n.

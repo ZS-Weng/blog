@@ -11,7 +11,7 @@
     "href": "blog.html",
     "title": "Zaishan’s Blog",
     "section": "",
-    "text": "Order By\n       Default\n         \n          Title\n        \n         \n          Date - Oldest\n        \n         \n          Date - Newest\n        \n         \n          Author\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n  \n\n\n\n\nSome ideas on enhancing User Experience on Qlik Sense\n\n\n\n\n\n\n\nQlik\n\n\nUser Experience\n\n\nBusiness Intelligence\n\n\nUser Interface\n\n\n\n\n\n\n\n\n\n\n\nJul 22, 2022\n\n\nZaishan Weng\n\n\n\n\n\n\n  \n\n\n\n\nQuick Start Guide on incorporating design thinking artifacts for requirements gathering during Project Initiation Phase for Agile Data Analytics Projects\n\n\n\n\n\n\n\nDesign Thinking\n\n\nRequirements Gathering\n\n\nData Analytics\n\n\nStakeholder Engagement\n\n\nBusiness Intelligence\n\n\n\n\n\n\n\n\n\n\n\nJul 8, 2022\n\n\nZaishan Weng\n\n\n\n\n\n\n  \n\n\n\n\nData cleaning on SAP data extracts in .txt format with Regex and Python\n\n\n\n\n\n\n\nData Engineering\n\n\nSAP\n\n\nPython\n\n\nRegex\n\n\n\n\n\n\n\n\n\n\n\nJun 25, 2022\n\n\nZaishan Weng\n\n\n\n\n\n\nNo matching items"
+    "text": "Order By\n       Default\n         \n          Title\n        \n         \n          Date - Oldest\n        \n         \n          Date - Newest\n        \n         \n          Author\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n  \n\n\n\n\nHandle various input data source formats (csv, xlsx, xlsb, txt, parquet) with Python and Pandas\n\n\n\n\n\n\n\nPython\n\n\nData Cleaning\n\n\nExcel\n\n\nCSV\n\n\nData Engineering\n\n\n\n\n\n\n\n\n\n\n\nAug 12, 2022\n\n\nZaishan Weng\n\n\n\n\n\n\n  \n\n\n\n\nSome ideas on enhancing User Experience on Qlik Sense\n\n\n\n\n\n\n\nQlik\n\n\nUser Experience\n\n\nBusiness Intelligence\n\n\nUser Interface\n\n\n\n\n\n\n\n\n\n\n\nJul 22, 2022\n\n\nZaishan Weng\n\n\n\n\n\n\n  \n\n\n\n\nQuick Start Guide on incorporating design thinking artifacts for requirements gathering during Project Initiation Phase for Agile Data Analytics Projects\n\n\n\n\n\n\n\nDesign Thinking\n\n\nRequirements Gathering\n\n\nData Analytics\n\n\nStakeholder Engagement\n\n\nBusiness Intelligence\n\n\n\n\n\n\n\n\n\n\n\nJul 8, 2022\n\n\nZaishan Weng\n\n\n\n\n\n\n  \n\n\n\n\nData cleaning on SAP data extracts in .txt format with Regex and Python\n\n\n\n\n\n\n\nData Engineering\n\n\nSAP\n\n\nPython\n\n\nRegex\n\n\n\n\n\n\n\n\n\n\n\nJun 25, 2022\n\n\nZaishan Weng\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "posts/2022-06-25-Data-cleaning-on-SAP-data-extracts-in-txt-format-with-Regex-and-Python/index.html",
@@ -110,5 +110,47 @@
     "title": "Some ideas on enhancing User Experience on Qlik Sense",
     "section": "Conclusion",
     "text": "Conclusion\nIn this article, I have aimed to share how user experience can be enhanced on Qlik Sense applications with out of the box capabilities.\nAny further enhancements will likely require tools beyond the application builder like Mashups or D3.js custom visualizations.\nThanks for reading and hope the information was useful in some way!"
+  },
+  {
+    "objectID": "posts/2022-08-12-python-io-diff-sources/index.html",
+    "href": "posts/2022-08-12-python-io-diff-sources/index.html",
+    "title": "Handle various input data source formats (csv, xlsx, xlsb, txt, parquet) with Python and Pandas",
+    "section": "",
+    "text": "Image generated from Hugging Face Stable Diffusion with the prompt “multitude of sources coming together in a mural”"
+  },
+  {
+    "objectID": "posts/2022-08-12-python-io-diff-sources/index.html#introduction",
+    "href": "posts/2022-08-12-python-io-diff-sources/index.html#introduction",
+    "title": "Handle various input data source formats (csv, xlsx, xlsb, txt, parquet) with Python and Pandas",
+    "section": "Introduction",
+    "text": "Introduction\nIn the process of ingesting and cleaning raw data in various formats using python, there were some tricks found to be useful based on the issues which were encountered. Types of source files covered in the article so far are as follows:\n\nxlsb (excel binary format)\ncsv files where encoding are not UTF-8\nexcel files with multiple tabs\nraw data files in .txt format\nparquet files\n\nThe corresponding notebook and sample data can be found at https://github.com/ZS-Weng/Data_Engineering/tree/main/Data_Cleaning"
+  },
+  {
+    "objectID": "posts/2022-08-12-python-io-diff-sources/index.html#reading-in-excel-files-in-.xlsb-format",
+    "href": "posts/2022-08-12-python-io-diff-sources/index.html#reading-in-excel-files-in-.xlsb-format",
+    "title": "Handle various input data source formats (csv, xlsx, xlsb, txt, parquet) with Python and Pandas",
+    "section": "1. Reading in excel files in .xlsb format",
+    "text": "1. Reading in excel files in .xlsb format\nThere are various formats of excel files e.g. .xls, .xlsx, .xlsb, .xlsm etc. Based on the out of the box functionality from Pandas, the formats .xlsx and .xls are supported and the .xlsb (binary) format is not supported out of the box.\nThe most efficient solution I found is to install the pyxlsb extension. More details can be found at the PyPI project website: https://pypi.org/project/pyxlsb/\nThe code to execute including installation of the library will be as follows:\npip install pyxlsb\ndf = pd.read_excel(file, engine=”pyxlsb”)"
+  },
+  {
+    "objectID": "posts/2022-08-12-python-io-diff-sources/index.html#resolve-unicodedecodeerror-during-csv-file-read",
+    "href": "posts/2022-08-12-python-io-diff-sources/index.html#resolve-unicodedecodeerror-during-csv-file-read",
+    "title": "Handle various input data source formats (csv, xlsx, xlsb, txt, parquet) with Python and Pandas",
+    "section": "2. Resolve UnicodeDecodeError during CSV file read",
+    "text": "2. Resolve UnicodeDecodeError during CSV file read\nMost of the files are encoded in “UTF-8” which is the default encoding. However, there are times when when the encoding in not “UTF-8” and there will be an error message similar to this:\nUnicodeDecodeError: ‘utf-8’ codec can’t decode byte 0xff in position 0: invalid start byte\nThe most effective method I have encountered is to first read the file as binary using ‘rb’ mode to determine the encoding, then apply the encoding which was detected.\nimport chardet\nwith open(file, 'rb') as f:\n    encoding = chardet.detect(f.read())\nprint(encoding)\nThe result will be something like this:\n\n\n\nDetecting encoding in a file\n\n\nBased on the encoding identified, we can use the encoding in pd.read_csv()\ndf = pd.read_csv(file, encoding=encoding['encoding'])\nThe result will look something like this:\n\n\n\nReading the csv file based on updated encoding"
+  },
+  {
+    "objectID": "posts/2022-08-12-python-io-diff-sources/index.html#extracting-data-from-multiple-sheets-in-excel",
+    "href": "posts/2022-08-12-python-io-diff-sources/index.html#extracting-data-from-multiple-sheets-in-excel",
+    "title": "Handle various input data source formats (csv, xlsx, xlsb, txt, parquet) with Python and Pandas",
+    "section": "3. Extracting data from multiple sheets in excel",
+    "text": "3. Extracting data from multiple sheets in excel\nThere are times where the data in excel might come from multiple sheets and we need to read in the data from all the sheets. The most straightforward way which I have found is using pd.read_excel with the parameter sheet_name=None. This will read all of the sheets in excel into a dictionary with the sheet name as the key and the data in DataFrames tagged to each sheet name.\nHere we use an example where a sample SAP data dictionary with the relevant data schema. The details for each table are shared in each sheet while each sheet in excel represents the respective tables.\n\n\n\nSample SAP Data Dictionary shared via Excel\n\n\nWe can read in the data in all the sheets with the parameter sheet_name set to None. Here instead of a single data frame, we will have a dictionary with each sheet name as key and the data frame in the sheet as the corresponding value of the dictionary.\n# Reading in the data\nsample_SAP_data_dict = \"./data/SAP Data Dictionary Selected Tables.xlsx\"\ndata_sheet_dict = pd.read_excel(sample_SAP_data_dict, sheet_name=None)\n# Display the names of each sheet in excel\nlist_sheets = list(data_sheet_dict.keys())\nprint(f\"There are {len(list_sheets)} sheets in the excel file\")\nprint(f\"The sheets are {list_sheets}\")\nAs we print out the keys, we can see the sheet names being listed. In our example, this corresponds with some of the SAP table names.\n\n\n\nDescription of excel file\n\n\nBelow is an example when the key “BSEG” is applied for the dictionary, we can get the corresponding data frame which was read from the sheet containing the schema of the table.\n\n\n\nSample Data Frame for BSEG table\n\n\nSubsequent analysis can be run at scale using the normal python dictionary and pandas functions and methods.\nOne of the analysis performed for our sample Data Dictionary is to find out which tables houses the similar data fields. We will first use a pivot_table method to create a new table where the column fields are shown as columns for each table. From there we join the tables together using pd.concat.\ndef extract_columns_info(df, sheet_name, list_column_field):\n    df_temp = df.copy()\n    df_temp[\"SAP_Table\"] = sheet_name\n    df_temp[\"Present\"] = 1\n    columns_select = [\"SAP_Table\"] + list_column_field + [\"Present\"]\n    \n    return df_temp[columns_select].pivot_table(\n        columns=list_column_field, values=\"Present\", index=[\"SAP_Table\"]\n    )\nlist_column_field = [\"Field\"]\nlist_df = []\nfor sheet_name, df in data_sheet_dict.items():\n    df_processed = extract_columns_info(df, sheet_name, list_column_field)\n    list_df.append(df_processed)\n\ndf_consolidated = pd.concat(list_df)\ndf_consolidated.fillna(\"\", inplace=True)\nIn the final result, we can we can see the common fields across various SAP tables. Below is a sample of the output.\n\n\n\nSample output of final table displaying common fields across different tables"
+  },
+  {
+    "objectID": "posts/2022-08-12-python-io-diff-sources/index.html#reading-.txt-source-files",
+    "href": "posts/2022-08-12-python-io-diff-sources/index.html#reading-.txt-source-files",
+    "title": "Handle various input data source formats (csv, xlsx, xlsb, txt, parquet) with Python and Pandas",
+    "section": "4. Reading .txt source files",
+    "text": "4. Reading .txt source files\nFor input data sources in .txt format, we can use the python open function directly to read the files. There will usually be text processing required depending on the delimiters used in the files.\nI wrote a seperate article for the cleaning of SAP .txt input file format. The article can be found here\nThe .read() method can be used to read in the entire data source. There are usually some processing involved e.g. all types of new line characters are represented with ."
   }
 ]
