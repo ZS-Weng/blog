@@ -1,0 +1,17 @@
+---
+title: "Impressive yet easy to implement Document Understanding system with OCR-free Donut Transformers Model in Python"
+date: "2022-10-06"
+categories: [DocVQA, Data Science, AI, Machine Learning, Transformer, Document Understanding]
+image: "donut_image.png"
+---
+
+## Introduction
+
+Recently, with the release of the stable version of transformers v4.22 in September 2022, there were some new interesting models which were released. The Donut Transformers model, an [OCR-Free Visual Document Understanding (VDU)](https://arxiv.org/abs/2111.15664), was particularly interesting as I was looking for a image to text data extraction model to deploy in one of the current projects. More details about the model can be found here: OCR-free Document Understanding Transformer by Geewook Kim, Teakgyu Hong, Moonbin Yim, Jeongyeon Nam, Jinyoung Park, Jinyeong Yim, Wonseok Hwang, Sangdoo Yun, Dongyoon Han, Seunghyun Park.
+
+Overall, I found the version fine-tuned on DocVQA (visual question answering on documents) to be the most versatile and easy to implement and use.
+
+* Text extracted is highly accurate based on the pretrained model and it can even recognize hand written digits
+* The same data can be extracted from images of different file formats and structure as long as the identifying segment e.g. total, balance etc. is present
+* Data to be extracted from images can be customized based on the questions being fed to the model
+* It is a very magical and amazing experience to interact with scanned copies of receipts, invoices with questions =)
