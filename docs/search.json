@@ -11,7 +11,7 @@
     "href": "blog.html",
     "title": "Zaishan’s Blog",
     "section": "",
-    "text": "Order By\n       Default\n         \n          Title\n        \n         \n          Date - Oldest\n        \n         \n          Date - Newest\n        \n         \n          Author\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n  \n\n\n\n\nHandle various input data source formats (csv, xlsx, xlsb, txt, parquet) with Python and Pandas\n\n\n\n\n\n\n\nPython\n\n\nData Cleaning\n\n\nExcel\n\n\nCSV\n\n\nData Engineering\n\n\n\n\n\n\n\n\n\n\n\nAug 12, 2022\n\n\nZaishan Weng\n\n\n\n\n\n\n  \n\n\n\n\nSome ideas on enhancing User Experience on Qlik Sense\n\n\n\n\n\n\n\nQlik\n\n\nUser Experience\n\n\nBusiness Intelligence\n\n\nUser Interface\n\n\n\n\n\n\n\n\n\n\n\nJul 22, 2022\n\n\nZaishan Weng\n\n\n\n\n\n\n  \n\n\n\n\nQuick Start Guide on incorporating design thinking artifacts for requirements gathering during Project Initiation Phase for Agile Data Analytics Projects\n\n\n\n\n\n\n\nDesign Thinking\n\n\nRequirements Gathering\n\n\nData Analytics\n\n\nStakeholder Engagement\n\n\nBusiness Intelligence\n\n\n\n\n\n\n\n\n\n\n\nJul 8, 2022\n\n\nZaishan Weng\n\n\n\n\n\n\n  \n\n\n\n\nData cleaning on SAP data extracts in .txt format with Regex and Python\n\n\n\n\n\n\n\nData Engineering\n\n\nSAP\n\n\nPython\n\n\nRegex\n\n\n\n\n\n\n\n\n\n\n\nJun 25, 2022\n\n\nZaishan Weng\n\n\n\n\n\n\nNo matching items"
+    "text": "Order By\n       Default\n         \n          Title\n        \n         \n          Date - Oldest\n        \n         \n          Date - Newest\n        \n         \n          Author\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n  \n\n\n\n\nImpressive yet easy to implement Document Understanding system with OCR-free Donut Transformers Model in Python\n\n\n\n\n\n\n\nDocVQA\n\n\nData Science\n\n\nAI\n\n\nMachine Learning\n\n\nTransformer\n\n\nDocument Understanding\n\n\n\n\n\n\n\n\n\n\n\nOct 6, 2022\n\n\nZaishan Weng\n\n\n\n\n\n\n  \n\n\n\n\nHandle various input data source formats (csv, xlsx, xlsb, txt, parquet) with Python and Pandas\n\n\n\n\n\n\n\nPython\n\n\nData Cleaning\n\n\nExcel\n\n\nCSV\n\n\nData Engineering\n\n\n\n\n\n\n\n\n\n\n\nAug 12, 2022\n\n\nZaishan Weng\n\n\n\n\n\n\n  \n\n\n\n\nSome ideas on enhancing User Experience on Qlik Sense\n\n\n\n\n\n\n\nQlik\n\n\nUser Experience\n\n\nBusiness Intelligence\n\n\nUser Interface\n\n\n\n\n\n\n\n\n\n\n\nJul 22, 2022\n\n\nZaishan Weng\n\n\n\n\n\n\n  \n\n\n\n\nQuick Start Guide on incorporating design thinking artifacts for requirements gathering during Project Initiation Phase for Agile Data Analytics Projects\n\n\n\n\n\n\n\nDesign Thinking\n\n\nRequirements Gathering\n\n\nData Analytics\n\n\nStakeholder Engagement\n\n\nBusiness Intelligence\n\n\n\n\n\n\n\n\n\n\n\nJul 8, 2022\n\n\nZaishan Weng\n\n\n\n\n\n\n  \n\n\n\n\nData cleaning on SAP data extracts in .txt format with Regex and Python\n\n\n\n\n\n\n\nData Engineering\n\n\nSAP\n\n\nPython\n\n\nRegex\n\n\n\n\n\n\n\n\n\n\n\nJun 25, 2022\n\n\nZaishan Weng\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "posts/2022-06-25-Data-cleaning-on-SAP-data-extracts-in-txt-format-with-Regex-and-Python/index.html",
@@ -166,5 +166,54 @@
     "title": "Handle various input data source formats (csv, xlsx, xlsb, txt, parquet) with Python and Pandas",
     "section": "References",
     "text": "References\n\nhttps://www.kaggle.com/code/paultimothymooney/how-to-resolve-a-unicodedecodeerror-for-a-csv-file/notebook\nhttps://www.the-analytics.club/pandas-excel-multiple-sheets"
+  },
+  {
+    "objectID": "posts/2022-10-06-Donut-Doc-Understanding/index.html",
+    "href": "posts/2022-10-06-Donut-Doc-Understanding/index.html",
+    "title": "Impressive yet easy to implement Document Understanding system with OCR-free Donut Transformers Model in Python",
+    "section": "",
+    "text": "Image Generated from Stable Diffusion with the prompt “A colorful donut speaking to a document”"
+  },
+  {
+    "objectID": "posts/2022-10-06-Donut-Doc-Understanding/index.html#introduction",
+    "href": "posts/2022-10-06-Donut-Doc-Understanding/index.html#introduction",
+    "title": "Impressive yet easy to implement Document Understanding system with OCR-free Donut Transformers Model in Python",
+    "section": "Introduction",
+    "text": "Introduction\nRecently, with the release of the stable version of transformers v4.22 in September 2022, there were some new interesting models which were released. The Donut Transformers model, an OCR-Free Visual Document Understanding (VDU), was particularly interesting as I was looking for a image to text data extraction model to deploy in one of the current projects. More details about the model can be found here: OCR-free Document Understanding Transformer by Geewook Kim, Teakgyu Hong, Moonbin Yim, Jeongyeon Nam, Jinyoung Park, Jinyeong Yim, Wonseok Hwang, Sangdoo Yun, Dongyoon Han, Seunghyun Park.\nOverall, I found the version fine-tuned on DocVQA (visual question answering on documents) to be the most versatile and easy to implement and use.\n\nText extracted is highly accurate based on the pretrained model and it can even recognize hand written digits\nThe same data can be extracted from images of different file formats and structure as long as the identifying segment e.g. total, balance etc. is present\nData to be extracted from images can be customized based on the questions being fed to the model\nIt is a very magical and amazing experience to interact with scanned copies of receipts, invoices with questions =)"
+  },
+  {
+    "objectID": "posts/2022-10-06-Donut-Doc-Understanding/index.html#optimizing-on-a-typical-document-understanding-pipeline",
+    "href": "posts/2022-10-06-Donut-Doc-Understanding/index.html#optimizing-on-a-typical-document-understanding-pipeline",
+    "title": "Impressive yet easy to implement Document Understanding system with OCR-free Donut Transformers Model in Python",
+    "section": "OPTIMIZING ON A TYPICAL DOCUMENT UNDERSTANDING PIPELINE",
+    "text": "OPTIMIZING ON A TYPICAL DOCUMENT UNDERSTANDING PIPELINE\n\n\n\nA typical Document Understanding Process as illustrated by UiPath (https://www.uipath.com/blog/product-and-updates/introducing-document-understanding-process-documents-intelligently)\n\n\nThe typical document understanding work flow will be very similar as the process flow illustrated above where the first step would using OCR (Optical Character Recognition) library or software to extract the raw text from the document. Common popular libraries for implementing OCR include pytesseract and tesserocr. Based on the raw text extracted, additional Machine Learning Language Modeling or Regex Text Extraction will need to be employed to retrieve useful information from the raw text.\nHowever, with the Donut DocVQA model, this end to end process can be greatly simplified and optimized."
+  },
+  {
+    "objectID": "posts/2022-10-06-Donut-Doc-Understanding/index.html#installation",
+    "href": "posts/2022-10-06-Donut-Doc-Understanding/index.html#installation",
+    "title": "Impressive yet easy to implement Document Understanding system with OCR-free Donut Transformers Model in Python",
+    "section": "INSTALLATION",
+    "text": "INSTALLATION\nThere are two main libraries required to implement the Donut VQA model:\n\nPyTorch (https://pytorch.org/TensorRT/tutorials/installation.html)\nTransformers and Sentence Piece\n\npip install transformers[sentencepiece]"
+  },
+  {
+    "objectID": "posts/2022-10-06-Donut-Doc-Understanding/index.html#sample-notebook",
+    "href": "posts/2022-10-06-Donut-Doc-Understanding/index.html#sample-notebook",
+    "title": "Impressive yet easy to implement Document Understanding system with OCR-free Donut Transformers Model in Python",
+    "section": "SAMPLE NOTEBOOK",
+    "text": "SAMPLE NOTEBOOK\nThe Donut related documentation on Hugging Face (https://huggingface.co/docs/transformers/main/en/model_doc/donut) and the tutorial by Niels Rogge (https://github.com/NielsRogge/Transformers-Tutorials/tree/master/Donut/DocVQA) provided the complete starter code for using the transformers model.\nReferencing from the materials, I adapted the code to apply the transformer model to work with multiple images within a specified folder. A sample of my code can be found at:\nhttps://github.com/ZS-Weng/Machine_Learning/DonutDocVQA\nThe core of the code function is as below:\n\nfrom transformers import DonutProcessor, VisionEncoderDecoderModel\n\nprocessor = DonutProcessor.from_pretrained(\"naver-clova-ix/donut-base-finetuned-docvqa\")\nmodel = VisionEncoderDecoderModel.from_pretrained(\"naver-clova-ix/donut-base-finetuned-docvqa\")\n\ndef get_answer(folder_path, filename, question, model, processor):\n\n    image = Image.open(folder_path/filename).convert('RGB')\n\n    pixel_values = processor(image, return_tensors=\"pt\").pixel_values\n    \n    prompt = f\"<s_docvqa><s_question>{question}</s_question><s_answer>\"\n    decoder_input_ids = processor.tokenizer(prompt, add_special_tokens=False, return_tensors=\"pt\")[\"input_ids\"]\n\n    device = \"cuda\" if torch.cuda.is_available() else \"cpu\"\n    model.to(device)\n\n    outputs = model.generate(pixel_values.to(device),\n                               decoder_input_ids=decoder_input_ids.to(device),\n                               max_length=model.decoder.config.max_position_embeddings,\n                               early_stopping=True,\n                               pad_token_id=processor.tokenizer.pad_token_id,\n                               eos_token_id=processor.tokenizer.eos_token_id,\n                               use_cache=True,\n                               num_beams=1,\n                               bad_words_ids=[[processor.tokenizer.unk_token_id]],\n                               return_dict_in_generate=True,\n                               output_scores=True)\n    \n    seq = processor.batch_decode(outputs.sequences)[0]\n    seq = seq.replace(processor.tokenizer.eos_token, \"\").replace(processor.tokenizer.pad_token, \"\")\n    seq = re.sub(r\"<.*?>\", \"\", seq, count=1).strip()  # remove first task start token\n    \n    return processor.token2json(seq)"
+  },
+  {
+    "objectID": "posts/2022-10-06-Donut-Doc-Understanding/index.html#results",
+    "href": "posts/2022-10-06-Donut-Doc-Understanding/index.html#results",
+    "title": "Impressive yet easy to implement Document Understanding system with OCR-free Donut Transformers Model in Python",
+    "section": "RESULTS",
+    "text": "RESULTS\n\n1. Testing on a general receipt\nDonutDocVQA was able to pick up both the title and the total amount on a general receipt.\n\n\n\nDonutDocVQA information extraction on a generic receipt\n\n\n\n\n2. Testing on a receipt with hand written details\nDonutDocVQA was able to perform well to detect even information based on hand written digits.\n\n\n\nDonutDocVQA information extraction on a receipt with hand written information\n\n\n\n\n3. Testing on a F1 Poster\nEven though the digits were not that clear on a red background and the price of the categories “Pit Combination” is not right beside the category text, DonutDocVQA was able to pick up the correct prices.\n\n\n\nDonutDocVQA information extraction on Singapore F1 2022 poster\n\n\n\n\n4. Extracting Similar Information from Multiple Documents\nFor multiple documents with different formats as show below where there is a mix of different receipts, invoices, etc. a loop can be setup to extract similar information and consolidated into a tabular data structure.\n\n\n\nInput documents fed into DocVQA\n\n\n\n\n\nOutput results from the documents above"
+  },
+  {
+    "objectID": "posts/2022-10-06-Donut-Doc-Understanding/index.html#conclusion",
+    "href": "posts/2022-10-06-Donut-Doc-Understanding/index.html#conclusion",
+    "title": "Impressive yet easy to implement Document Understanding system with OCR-free Donut Transformers Model in Python",
+    "section": "CONCLUSION",
+    "text": "CONCLUSION\nThe Donut Transformers model is a versatile and impressive tool for document understanding which can be used out of the box leveraging on the pre-trained weights. I feel that this could be a game changer which can potentially save a significant amount of time and resources for a variety of document understanding tasks expediting the end to end development process. Lastly, the intuitive way of using questions to query images would enhance user experience and drive more collaborations and interesting ideas in applying technology in novel ways.\nThanks for reading and hope the information was useful in some way!"
   }
 ]

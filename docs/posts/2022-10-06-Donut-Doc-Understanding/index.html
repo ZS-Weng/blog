@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.2.335">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Zaishan Weng">
+<meta name="dcterms.date" content="2022-10-06">
+
+<title>Zaishan Weng - Impressive yet easy to implement Document Understanding system with OCR-free Donut Transformers Model in Python</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Zaishan Weng</span>
+    </a>
+  </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html">
+ <span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../blog.html">
+ <span class="menu-text">Blog</span></a>
+  </li>  
+</ul>
+              <div id="quarto-search" class="" title="Search"></div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
+  <li><a href="#optimizing-on-a-typical-document-understanding-pipeline" id="toc-optimizing-on-a-typical-document-understanding-pipeline" class="nav-link" data-scroll-target="#optimizing-on-a-typical-document-understanding-pipeline">OPTIMIZING ON A TYPICAL DOCUMENT UNDERSTANDING PIPELINE</a></li>
+  <li><a href="#installation" id="toc-installation" class="nav-link" data-scroll-target="#installation">INSTALLATION</a></li>
+  <li><a href="#sample-notebook" id="toc-sample-notebook" class="nav-link" data-scroll-target="#sample-notebook">SAMPLE NOTEBOOK</a></li>
+  <li><a href="#results" id="toc-results" class="nav-link" data-scroll-target="#results">RESULTS</a>
+  <ul class="collapse">
+  <li><a href="#testing-on-a-general-receipt" id="toc-testing-on-a-general-receipt" class="nav-link" data-scroll-target="#testing-on-a-general-receipt">1. Testing on a general receipt</a></li>
+  <li><a href="#testing-on-a-receipt-with-hand-written-details" id="toc-testing-on-a-receipt-with-hand-written-details" class="nav-link" data-scroll-target="#testing-on-a-receipt-with-hand-written-details">2. Testing on a receipt with hand written details</a></li>
+  <li><a href="#testing-on-a-f1-poster" id="toc-testing-on-a-f1-poster" class="nav-link" data-scroll-target="#testing-on-a-f1-poster">3. Testing on a F1 Poster</a></li>
+  <li><a href="#extracting-similar-information-from-multiple-documents" id="toc-extracting-similar-information-from-multiple-documents" class="nav-link" data-scroll-target="#extracting-similar-information-from-multiple-documents">4. Extracting Similar Information from Multiple Documents</a></li>
+  </ul></li>
+  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">CONCLUSION</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Impressive yet easy to implement Document Understanding system with OCR-free Donut Transformers Model in Python</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">DocVQA</div>
+    <div class="quarto-category">Data Science</div>
+    <div class="quarto-category">AI</div>
+    <div class="quarto-category">Machine Learning</div>
+    <div class="quarto-category">Transformer</div>
+    <div class="quarto-category">Document Understanding</div>
+  </div>
+  </div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Zaishan Weng </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">October 6, 2022</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+</header>
+
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="donut_image.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Image Generated from Stable Diffusion with the prompt “A colorful donut speaking to a document”</figcaption><p></p>
+</figure>
+</div>
+<section id="introduction" class="level2">
+<h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
+<p>Recently, with the release of the stable version of transformers v4.22 in September 2022, there were some new interesting models which were released. The Donut Transformers model, an <a href="https://arxiv.org/abs/2111.15664">OCR-Free Visual Document Understanding (VDU)</a>, was particularly interesting as I was looking for a image to text data extraction model to deploy in one of the current projects. More details about the model can be found here: OCR-free Document Understanding Transformer by Geewook Kim, Teakgyu Hong, Moonbin Yim, Jeongyeon Nam, Jinyoung Park, Jinyeong Yim, Wonseok Hwang, Sangdoo Yun, Dongyoon Han, Seunghyun Park.</p>
+<p>Overall, I found the version fine-tuned on DocVQA (visual question answering on documents) to be the most versatile and easy to implement and use.</p>
+<ul>
+<li>Text extracted is highly accurate based on the pretrained model and it can even recognize hand written digits</li>
+<li>The same data can be extracted from images of different file formats and structure as long as the identifying segment e.g.&nbsp;total, balance etc. is present</li>
+<li>Data to be extracted from images can be customized based on the questions being fed to the model</li>
+<li>It is a very magical and amazing experience to interact with scanned copies of receipts, invoices with questions =)</li>
+</ul>
+</section>
+<section id="optimizing-on-a-typical-document-understanding-pipeline" class="level2">
+<h2 class="anchored" data-anchor-id="optimizing-on-a-typical-document-understanding-pipeline">OPTIMIZING ON A TYPICAL DOCUMENT UNDERSTANDING PIPELINE</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="doc_understanding_process.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">A typical Document Understanding Process as illustrated by UiPath (https://www.uipath.com/blog/product-and-updates/introducing-document-understanding-process-documents-intelligently)</figcaption><p></p>
+</figure>
+</div>
+<p>The typical document understanding work flow will be very similar as the process flow illustrated above where the first step would using OCR (Optical Character Recognition) library or software to extract the raw text from the document. Common popular libraries for implementing OCR include pytesseract and tesserocr. Based on the raw text extracted, additional Machine Learning Language Modeling or Regex Text Extraction will need to be employed to retrieve useful information from the raw text.</p>
+<p>However, with the Donut DocVQA model, this end to end process can be greatly simplified and optimized.</p>
+</section>
+<section id="installation" class="level2">
+<h2 class="anchored" data-anchor-id="installation">INSTALLATION</h2>
+<p>There are two main libraries required to implement the Donut VQA model:</p>
+<ul>
+<li>PyTorch (https://pytorch.org/TensorRT/tutorials/installation.html)</li>
+<li>Transformers and Sentence Piece</li>
+</ul>
+<p><code>pip install transformers[sentencepiece]</code></p>
+</section>
+<section id="sample-notebook" class="level2">
+<h2 class="anchored" data-anchor-id="sample-notebook">SAMPLE NOTEBOOK</h2>
+<p>The Donut related documentation on Hugging Face (<a href="https://huggingface.co/docs/transformers/main/en/model_doc/donut" class="uri">https://huggingface.co/docs/transformers/main/en/model_doc/donut</a>) and the tutorial by Niels Rogge (<a href="https://github.com/NielsRogge/Transformers-Tutorials/tree/master/Donut/DocVQA" class="uri">https://github.com/NielsRogge/Transformers-Tutorials/tree/master/Donut/DocVQA</a>) provided the complete starter code for using the transformers model.</p>
+<p>Referencing from the materials, I adapted the code to apply the transformer model to work with multiple images within a specified folder. A sample of my code can be found at:</p>
+<p><a href="https://github.com/ZS-Weng/Machine_Learning/DonutDocVQA" class="uri">https://github.com/ZS-Weng/Machine_Learning/DonutDocVQA</a></p>
+<p>The core of the code function is as below:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> transformers <span class="im">import</span> DonutProcessor, VisionEncoderDecoderModel</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>processor <span class="op">=</span> DonutProcessor.from_pretrained(<span class="st">"naver-clova-ix/donut-base-finetuned-docvqa"</span>)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> VisionEncoderDecoderModel.from_pretrained(<span class="st">"naver-clova-ix/donut-base-finetuned-docvqa"</span>)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> get_answer(folder_path, filename, question, model, processor):</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    image <span class="op">=</span> Image.<span class="bu">open</span>(folder_path<span class="op">/</span>filename).convert(<span class="st">'RGB'</span>)</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>    pixel_values <span class="op">=</span> processor(image, return_tensors<span class="op">=</span><span class="st">"pt"</span>).pixel_values</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>    prompt <span class="op">=</span> <span class="ss">f"&lt;s_docvqa&gt;&lt;s_question&gt;</span><span class="sc">{</span>question<span class="sc">}</span><span class="ss">&lt;/s_question&gt;&lt;s_answer&gt;"</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>    decoder_input_ids <span class="op">=</span> processor.tokenizer(prompt, add_special_tokens<span class="op">=</span><span class="va">False</span>, return_tensors<span class="op">=</span><span class="st">"pt"</span>)[<span class="st">"input_ids"</span>]</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>    device <span class="op">=</span> <span class="st">"cuda"</span> <span class="cf">if</span> torch.cuda.is_available() <span class="cf">else</span> <span class="st">"cpu"</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>    model.to(device)</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>    outputs <span class="op">=</span> model.generate(pixel_values.to(device),</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>                               decoder_input_ids<span class="op">=</span>decoder_input_ids.to(device),</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>                               max_length<span class="op">=</span>model.decoder.config.max_position_embeddings,</span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>                               early_stopping<span class="op">=</span><span class="va">True</span>,</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>                               pad_token_id<span class="op">=</span>processor.tokenizer.pad_token_id,</span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>                               eos_token_id<span class="op">=</span>processor.tokenizer.eos_token_id,</span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>                               use_cache<span class="op">=</span><span class="va">True</span>,</span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>                               num_beams<span class="op">=</span><span class="dv">1</span>,</span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>                               bad_words_ids<span class="op">=</span>[[processor.tokenizer.unk_token_id]],</span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>                               return_dict_in_generate<span class="op">=</span><span class="va">True</span>,</span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>                               output_scores<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>    seq <span class="op">=</span> processor.batch_decode(outputs.sequences)[<span class="dv">0</span>]</span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>    seq <span class="op">=</span> seq.replace(processor.tokenizer.eos_token, <span class="st">""</span>).replace(processor.tokenizer.pad_token, <span class="st">""</span>)</span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>    seq <span class="op">=</span> re.sub(<span class="vs">r"&lt;.*?&gt;"</span>, <span class="st">""</span>, seq, count<span class="op">=</span><span class="dv">1</span>).strip()  <span class="co"># remove first task start token</span></span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> processor.token2json(seq)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="results" class="level2">
+<h2 class="anchored" data-anchor-id="results">RESULTS</h2>
+<section id="testing-on-a-general-receipt" class="level3">
+<h3 class="anchored" data-anchor-id="testing-on-a-general-receipt">1. Testing on a general receipt</h3>
+<p>DonutDocVQA was able to pick up both the title and the total amount on a general receipt.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="generic_receipt.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">DonutDocVQA information extraction on a generic receipt</figcaption><p></p>
+</figure>
+</div>
+</section>
+<section id="testing-on-a-receipt-with-hand-written-details" class="level3">
+<h3 class="anchored" data-anchor-id="testing-on-a-receipt-with-hand-written-details">2. Testing on a receipt with hand written details</h3>
+<p>DonutDocVQA was able to perform well to detect even information based on hand written digits.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="handwritten_receipt.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">DonutDocVQA information extraction on a receipt with hand written information</figcaption><p></p>
+</figure>
+</div>
+</section>
+<section id="testing-on-a-f1-poster" class="level3">
+<h3 class="anchored" data-anchor-id="testing-on-a-f1-poster">3. Testing on a F1 Poster</h3>
+<p>Even though the digits were not that clear on a red background and the price of the categories “Pit Combination” is not right beside the category text, DonutDocVQA was able to pick up the correct prices.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="f1_poster.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">DonutDocVQA information extraction on Singapore F1 2022 poster</figcaption><p></p>
+</figure>
+</div>
+</section>
+<section id="extracting-similar-information-from-multiple-documents" class="level3">
+<h3 class="anchored" data-anchor-id="extracting-similar-information-from-multiple-documents">4. Extracting Similar Information from Multiple Documents</h3>
+<p>For multiple documents with different formats as show below where there is a mix of different receipts, invoices, etc. a loop can be setup to extract similar information and consolidated into a tabular data structure.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="multiple_receipts.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Input documents fed into DocVQA</figcaption><p></p>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="results.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Output results from the documents above</figcaption><p></p>
+</figure>
+</div>
+</section>
+</section>
+<section id="conclusion" class="level2">
+<h2 class="anchored" data-anchor-id="conclusion">CONCLUSION</h2>
+<p>The Donut Transformers model is a versatile and impressive tool for document understanding which can be used out of the box leveraging on the pre-trained weights. I feel that this could be a game changer which can potentially save a significant amount of time and resources for a variety of document understanding tasks expediting the end to end development process. Lastly, the intuitive way of using questions to query images would enhance user experience and drive more collaborations and interesting ideas in applying technology in novel ways.</p>
+<p>Thanks for reading and hope the information was useful in some way!</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item">
+ © Copyright 2023 Zaishan Weng
+  </li>  
+</ul>
+    </div>   
+    <div class="nav-footer-right">
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/ZS-Weng">
+      <i class="bi bi-github" role="img">
+</i> 
+    </a>
+  </li>  
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://www.linkedin.com/in/zaishan-weng/">
+      <i class="bi bi-linkedin" role="img">
+</i> 
+    </a>
+  </li>  
+</ul>
+    </div>
+  </div>
+</footer>
+
+
+
+</body></html>
