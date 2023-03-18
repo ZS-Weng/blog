@@ -1,6 +1,7 @@
 ---
 title: "Impressive yet easy to implement Document Understanding system with OCR-free Donut Transformers Model in Python"
 date: "2022-10-06"
+date-modified: "2022-10-06"
 categories: [DocVQA, Data Science, AI, Machine Learning, Transformer, Document Understanding]
 image: "donut_image.png"
 ---

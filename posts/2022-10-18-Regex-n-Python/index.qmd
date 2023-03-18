@@ -1,8 +1,10 @@
 ---
 title: "Applications of Regex and Python in data transformation for masking of sensitive information and extraction of date details from free text"
 date: "2022-10-18"
+date-modified: "2022-10-18"
 categories: [Regex, Data Engineering, Data Masking]
 image: "regex_python_icon.png"
+draft: True
 ---
 
 ![Image generated from Stability AI Stable Diffusion with prompt “colourful artistic patterns made up of text”](regex_python_icon.png)
@@ -15,7 +17,5 @@ There are many useful applications of Regex. In this article, I would like to co
 * Extraction of relevant date details from a text field
 
 The full set of codes in a Jupyter Notebook format can be found in the following link <https://github.com/ZS-Weng/Data_Engineering/tree/main/Regex>
-
-
 
 The full code for the various functions can also be found at the end of the article.

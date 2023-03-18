@@ -1,6 +1,7 @@
 ---
 title: "Handle various input data source formats (csv, xlsx, xlsb, txt, parquet) with Python and Pandas"
 date: "2022-08-12"
+date-modified: "2022-08-12"
 categories: [Python, Data Cleaning, Excel, CSV, Data Engineering]
 image: "front_image.png"
 ---

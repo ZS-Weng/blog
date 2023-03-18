@@ -1,6 +1,7 @@
 ---
 title: "Quick Start Guide on incorporating design thinking artifacts for requirements gathering during Project Initiation Phase for Agile Data Analytics Projects"
 date: "2022-07-08"
+date-modified: "2022-07-08"
 categories: [Design Thinking, Requirements Gathering, Data Analytics, Stakeholder Engagement, Business Intelligence]
 image: "hopes_n_fears.png"
 ---

@@ -1,6 +1,7 @@
 ---
 title: "Some ideas on enhancing User Experience on Qlik Sense"
 date: "2022-07-22"
+date-modified: "2022-07-22"
 categories: [Qlik, User Experience, Business Intelligence, User Interface]
 image: "qliksense_landing.png"
 ---
