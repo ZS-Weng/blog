@@ -1,0 +1,11 @@
+---
+title: "Applications of Regex and Python in data transformation for masking of sensitive information and extraction of date details from free text"
+date: "2022-10-18"
+date-modified: "2022-10-18"
+categories: [Regex, Data Engineering, Data Masking]
+image: "regex_python_icon.png"
+draft: True
+---
+
+## Introduction
+
