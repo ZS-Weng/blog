@@ -3,7 +3,7 @@ title: "Hierarchical Clustering can be more suitable compared to KMeans when gro
 date: "2023-02-03"
 date-modified: "2023-02-03"
 categories: [Clustering, Machine Learning, Anomaly Detection, Data Science]
-image: "regex_python_icon.png"
+image: "dalle_clusters.png"
 draft: False
 ---
 
