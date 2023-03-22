@@ -1,0 +1,8 @@
+---
+title: "Hierarchical Clustering can be more suitable compared to KMeans when grouping customers based on purchase behaviors and detecting outliers"
+date: "2023-02-03"
+date-modified: "2023-02-03"
+categories: [Clustering, Machine Learning, Anomaly Detection, Data Science]
+image: "recommender_system_cover.png"
+draft: True
+---
