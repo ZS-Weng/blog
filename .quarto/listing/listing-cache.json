@@ -4,6 +4,9 @@
       "posts/**/*.qmd",
       "posts/**/*.html",
       "posts"
+    ],
+    "data-ai-blog.qmd": [
+      "posts"
     ]
   }
 }

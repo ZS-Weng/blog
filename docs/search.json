@@ -313,5 +313,75 @@
     "title": "Hierarchical Clustering can be more suitable compared to KMeans when grouping customers based on purchase behaviors and detecting outliers",
     "section": "Conclusion",
     "text": "Conclusion\nFrom my experience, clustering can be a very useful in many situations especially as an unsupervised learning ML method when there is a lack of data labels for supervised learning. For transactional data, one of the first steps which can be taken to apply clustering is to group customers by their purchasing behavior on product categories.\nHierarchical Clustering can be a useful and flexible method to cluster the customers to find both outliers and generate groups of customers for follow up actions. There can also be standardization based on the percentage of merge to form the clusters.\nThe cluster id assigned from clustering algorithms will change between each runs and does not provide useful information. Data Post Processing through aggregation of relevant metrics and description can be useful to add more useful information to describe the clusters.\nThank you for reading and hope the information was useful in some way!"
+  },
+  {
+    "objectID": "data-ai-blog.html",
+    "href": "data-ai-blog.html",
+    "title": "Data & AI Blog",
+    "section": "",
+    "text": "Order By\n       Default\n         \n          Title\n        \n         \n          Date - Oldest\n        \n         \n          Date - Newest\n        \n         \n          Author\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n  \n\n\n\n\nQuick start guide to build a Collaborative Filtering Recommendation System with implicit library in 4 steps\n\n\n\n\n\n\n\nRecommender System\n\n\nRecsys\n\n\nCollaborative Filtering\n\n\nData Science\n\n\n\n\n\n\n\n\n\n\n\nFeb 9, 2023\n\n\nZaishan Weng\n\n\n\n\n\n\n  \n\n\n\n\nHierarchical Clustering can be more suitable compared to KMeans when grouping customers based on purchase behaviors and detecting outliers\n\n\n\n\n\n\n\nClustering\n\n\nMachine Learning\n\n\nAnomaly Detection\n\n\nData Science\n\n\n\n\n\n\n\n\n\n\n\nFeb 3, 2023\n\n\nZaishan Weng\n\n\n\n\n\n\n  \n\n\n\n\nApplications of Regex and Python in data transformation for masking of sensitive information and extraction of date details from free text\n\n\n\n\n\n\n\nRegex\n\n\nData Engineering\n\n\nData Masking\n\n\n\n\n\n\n\n\n\n\n\nOct 18, 2022\n\n\nZaishan Weng\n\n\n\n\n\n\n  \n\n\n\n\nImpressive yet easy to implement Document Understanding system with OCR-free Donut Transformers Model in Python\n\n\n\n\n\n\n\nDocVQA\n\n\nData Science\n\n\nAI\n\n\nMachine Learning\n\n\nTransformer\n\n\nDocument Understanding\n\n\n\n\n\n\n\n\n\n\n\nOct 6, 2022\n\n\nZaishan Weng\n\n\n\n\n\n\n  \n\n\n\n\nHandle various input data source formats (csv, xlsx, xlsb, txt, parquet) with Python and Pandas\n\n\n\n\n\n\n\nPython\n\n\nData Cleaning\n\n\nExcel\n\n\nCSV\n\n\nData Engineering\n\n\n\n\n\n\n\n\n\n\n\nAug 12, 2022\n\n\nZaishan Weng\n\n\n\n\n\n\n  \n\n\n\n\nSome ideas on enhancing User Experience on Qlik Sense\n\n\n\n\n\n\n\nQlik\n\n\nUser Experience\n\n\nBusiness Intelligence\n\n\nUser Interface\n\n\n\n\n\n\n\n\n\n\n\nJul 22, 2022\n\n\nZaishan Weng\n\n\n\n\n\n\n  \n\n\n\n\nQuick Start Guide on incorporating design thinking artifacts for requirements gathering during Project Initiation Phase for Agile Data Analytics Projects\n\n\n\n\n\n\n\nDesign Thinking\n\n\nRequirements Gathering\n\n\nData Analytics\n\n\nStakeholder Engagement\n\n\nBusiness Intelligence\n\n\n\n\n\n\n\n\n\n\n\nJul 8, 2022\n\n\nZaishan Weng\n\n\n\n\n\n\n  \n\n\n\n\nData cleaning on SAP data extracts in .txt format with Regex and Python\n\n\n\n\n\n\n\nData Engineering\n\n\nSAP\n\n\nPython\n\n\nRegex\n\n\n\n\n\n\n\n\n\n\n\nJun 25, 2022\n\n\nZaishan Weng\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "posts/2023-02-09-CF-Recommendation/index.html",
+    "href": "posts/2023-02-09-CF-Recommendation/index.html",
+    "title": "Quick start guide to build a Collaborative Filtering Recommendation System with implicit library in 4 steps",
+    "section": "",
+    "text": "Image generated from Stability AI Stable Diffusion with prompt “Recommender System”"
+  },
+  {
+    "objectID": "posts/2023-02-09-CF-Recommendation/index.html#introduction",
+    "href": "posts/2023-02-09-CF-Recommendation/index.html#introduction",
+    "title": "Quick start guide to build a Collaborative Filtering Recommendation System with implicit library in 4 steps",
+    "section": "Introduction",
+    "text": "Introduction\nWhile there are various guides, articles and lessons available on building a recommendation system, the implicit library package is discussed less often. In the course of my work, I have found the Implicit library package easy to install, straight forward to use and has fast processing. In this article, I would like to walk through the basic steps to implement a recommendation system with the Implicit package library."
+  },
+  {
+    "objectID": "posts/2023-02-09-CF-Recommendation/index.html#set-up",
+    "href": "posts/2023-02-09-CF-Recommendation/index.html#set-up",
+    "title": "Quick start guide to build a Collaborative Filtering Recommendation System with implicit library in 4 steps",
+    "section": "Set up",
+    "text": "Set up\nThe implicit library can be installed with the following code. More details can also be found from the PyPI page: https://pypi.org/project/implicit/\npip install implicit\nDataset can be found from the following link: https://archive.ics.uci.edu/ml/datasets/online+retail\nNotebook and data can also be found at the following github link:\nhttps://github.com/ZS-Weng/Machine_Learning/tree/main/RecommenderSystem"
+  },
+  {
+    "objectID": "posts/2023-02-09-CF-Recommendation/index.html#step-1-data-preprocessing",
+    "href": "posts/2023-02-09-CF-Recommendation/index.html#step-1-data-preprocessing",
+    "title": "Quick start guide to build a Collaborative Filtering Recommendation System with implicit library in 4 steps",
+    "section": "Step 1: Data Preprocessing",
+    "text": "Step 1: Data Preprocessing\nThe key data preprocessing step which was found to be useful in building recommender systems is to filter out the outliers e.g. customers who only bought one item, items which are only bought by one customer as it will skew the model and subsequent result.\nFor our example, we will first identify transactions belonging customers who bought less than the threshold number of items.\ndf_items_per_cust = (\n    df_raw.groupby([\"CustomerID\"]).agg({\"StockCode\": \"nunique\"}).reset_index()\n)\ndf_items_per_cust.columns = [\"CustomerID\", \"Count_item_cust\"]\n# Setting of Threshold\nitem_in_cust_threshold = 6\n# Filtering Results\nmask = df_items_per_cust[\"Count_item_cust\"] >= item_in_cust_threshold\nvalid_cust = set(df_items_per_cust.loc[mask, \"CustomerID\"].tolist())\ndf_filter_cust = df_raw[df_raw[\"CustomerID\"].isin(valid_cust)].copy()\ninvoiceno_filter_cust = set(df_filter_cust[\"InvoiceNo\"].tolist())\nNext , we will first identify transactions containing items which are bought by more than the threshold number of customers. Thereafter, transactions which meet both conditions will be used as the filtered dataset to perform subsequent operations.\ndf_custs_per_item = (\n    df_raw.groupby([\"StockCode\"]).agg({\"CustomerID\": \"nunique\"}).reset_index()\n)\ndf_custs_per_item.columns = [\"StockCode\", \"Count_cust_item\"]\ndf_custs_per_item[\"Count_cust_item\"].value_counts()\n# Set threshold\ncust_in_item_threshold = 6\n#Filter Results\nmask = df_custs_per_item[\"Count_cust_item\"] >= cust_in_item_threshold\nvalid_stockcode = set(df_custs_per_item.loc[mask, \"StockCode\"].tolist())\ndf_filter_item = df_raw[df_raw[\"StockCode\"].isin(valid_stockcode)].copy()\ninvoiceno_filter_item = set(df_filter_item[\"InvoiceNo\"].tolist())\ninvoiceno_intersect = set.intersection(invoiceno_filter_item, invoiceno_filter_cust)\ndf_filter_cust_item = df_raw[df_raw[\"InvoiceNo\"].isin(invoiceno_intersect)].copy()"
+  },
+  {
+    "objectID": "posts/2023-02-09-CF-Recommendation/index.html#step-2-data-preparation-to-sparse-matrix-format",
+    "href": "posts/2023-02-09-CF-Recommendation/index.html#step-2-data-preparation-to-sparse-matrix-format",
+    "title": "Quick start guide to build a Collaborative Filtering Recommendation System with implicit library in 4 steps",
+    "section": "Step 2: Data Preparation to Sparse Matrix Format",
+    "text": "Step 2: Data Preparation to Sparse Matrix Format\nThe implicit library requires data to be in a scipy sparse matrix format. The processed data from step 1 is used as the starting point. We first convert the customer and item IDs into a into a unique id format. Next we group the data by each customer — item pair with a corresponding metrics to be used. In our example, the metrics used is the total quantity purchased. In the final step, we convert the data frame into a scipy csr matrix with the customer, item dimensions and selected met\n#Generating Customer and Item IDs\nunique_customers = df_filter_cust_item[\"CustomerID\"].unique()\ncust_ids = dict(\n    zip(unique_customers, np.arange(unique_customers.shape[0], dtype=np.int32))\n)\n\nunique_items = df_filter_cust_item[\"StockCode\"].unique()\nitem_ids = dict(zip(unique_items, np.arange(unique_items.shape[0], dtype=np.int32)))\n\ndf_filter_cust_item[\"cust_id\"] = df_filter_cust_item[\"CustomerID\"].apply(\n    lambda i: cust_ids[i]\n)\ndf_filter_cust_item[\"item_id\"] = df_filter_cust_item[\"StockCode\"].apply(\n    lambda i: item_ids[i]\n)\n#Use Groupby to get customer in rows, item_id in columns and quantity as the value\ndf_cust_item_qty = (\n    df_filter_cust_item.groupby([\"cust_id\", \"item_id\"])\n    .agg({\"Quantity\": \"sum\"})\n    .reset_index()\n)\n# Create Sparse Matrix\nsparse_customer_item = sparse.csr_matrix(\n    (\n        df_cust_item_qty[\"Quantity\"].astype(float),\n        (df_cust_item_qty[\"cust_id\"], df_cust_item_qty[\"item_id\"]),\n    )\n)"
+  },
+  {
+    "objectID": "posts/2023-02-09-CF-Recommendation/index.html#step-3-train-model",
+    "href": "posts/2023-02-09-CF-Recommendation/index.html#step-3-train-model",
+    "title": "Quick start guide to build a Collaborative Filtering Recommendation System with implicit library in 4 steps",
+    "section": "Step 3: Train Model",
+    "text": "Step 3: Train Model\nThere are various algorithms which can be used in the implicit library. For our example we use the Alternating Least Square method and fit the model to the scipy csr matrix created in step 2.\nimport implicit\nmodel = implicit.als.AlternatingLeastSquares(num_threads=1)\nmodel.fit(sparse_customer_item)"
+  },
+  {
+    "objectID": "posts/2023-02-09-CF-Recommendation/index.html#step-4-generate-results",
+    "href": "posts/2023-02-09-CF-Recommendation/index.html#step-4-generate-results",
+    "title": "Quick start guide to build a Collaborative Filtering Recommendation System with implicit library in 4 steps",
+    "section": "Step 4: Generate Results",
+    "text": "Step 4: Generate Results\nFor a collaborative filtering recommender system, there are two types of results which can be generated from the model:\n\nFinding Similar Items\nRecommending Items for a User\n\nFinding Similar Items\nGiven a particular item, a list of closest items can be generated and the number can be adjusted with the N parameter. In the code below, we pass the entire list of unique items as an array for the similar items to be generated.\nref_item_id = df_filter_cust_item[\"item_id\"].unique()\nitem_arr, score_arr = model.similar_items(ref_item_id, N=10)\nFrom the array of items and scores, we convert them into Data Frames and unpivot the values using pd.melt method.\ndf_item_temp = pd.DataFrame(item_arr)\ndf_item_temp[\"Ref Item ID\"] = ref_item_id\ndf_item_rank = pd.melt(\n    df_item_temp,\n    id_vars=[\"Ref Item ID\"],\n    var_name=[\"Item Rank\"],\n    value_name=\"Related Item ID\",\n)\ndf_score_temp = pd.DataFrame(score_arr)\ndf_score_temp[\"Ref Item ID\"] = ref_item_id\ndf_score_rank = pd.melt(\n    df_score_temp, id_vars=[\"Ref Item ID\"], var_name=[\"Item Rank\"], value_name=\"Score\"\n)\ndf_item_score = df_item_rank.merge(\n    df_score_rank, how=\"inner\", on=[\"Ref Item ID\", \"Item Rank\"]\n)\nThe resulting details will be a list of N items for every reference item that was passed in. The item in rank 0 will always be the reference item itself by default.\n\n\n\nFirst 20 records of the Item Similarity Result\n\n\nRecommending Items for a User\nGiven a user and the user preferences based on items purchased, the model can generate a list of recommending items bought by customers with similar preferences. Below is the code used to generate the items and convert them into a data frame.\nids, scores = model.recommend(\n    cust_id, sparse_customer_item[cust_id], N=20, filter_already_liked_items=False\n)\nlist_stockcode = df_item_desc[df_item_desc[\"item_id\"].isin(ids)][\"StockCode\"].tolist()\nlist_desc = df_item_desc[df_item_desc[\"item_id\"].isin(ids)][\"Description\"].tolist()\ndf_recommendations = pd.DataFrame(\n    {\n        \"Stockcode\": list_stockcode,\n        \"Description\": list_desc,\n        \"score\": scores,\n        \"already_liked\": np.in1d(ids, sparse_customer_item[cust_id].indices),\n    }\n)\n\n\n\nItem Recommendations for a given user"
+  },
+  {
+    "objectID": "posts/2023-02-09-CF-Recommendation/index.html#conclusion",
+    "href": "posts/2023-02-09-CF-Recommendation/index.html#conclusion",
+    "title": "Quick start guide to build a Collaborative Filtering Recommendation System with implicit library in 4 steps",
+    "section": "Conclusion",
+    "text": "Conclusion\nThis article aims to provide a quick start guide covering the essential steps in building an initial recommender system with collaborative filtering. The implicit library package is what I personally found to be easy to install, user friendly and has robust performance.\nThank you for reading and hope this was useful in some way !"
+  },
+  {
+    "objectID": "posts/2023-02-09-CF-Recommendation/index.html#references",
+    "href": "posts/2023-02-09-CF-Recommendation/index.html#references",
+    "title": "Quick start guide to build a Collaborative Filtering Recommendation System with implicit library in 4 steps",
+    "section": "References",
+    "text": "References\n\nhttps://medium.com/@actsusanli/building-a-recommender-system-with-implicit-feedback-datasets-using-alternating-least-squares-64d4f5ba3c57\nhttps://github.com/benfred/implicit/"
   }
 ]

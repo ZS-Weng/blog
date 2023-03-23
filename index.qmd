@@ -22,6 +22,6 @@ I am passionate about the impact and difference technology has made and strive t
 
 ## Data related Blog
 
-Check out my blog post on some of the Data Engineering, Data Science and Data Visualization learnings from implementing them in various projects [here](blog.qmd)
+Check out my blog post on some of the Data Engineering, Data Science and Data Visualization learnings from implementing them in various projects [here](data-ai-blog.qmd)
 
 :::
