@@ -13,6 +13,8 @@ website:
         href: index.qmd
       - text: "Blog"
         href: data-ai-blog.qmd
+      - icon: linkedin
+        href: https://www.linkedin.com/in/zaishan-weng/
       
 
   page-footer:
