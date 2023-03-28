@@ -16,9 +16,7 @@ about:
 
 <h2> About Myself</h2>
 
-I am techno-functional consultant and solutions architect with over 14 years of experience leading strategic digital transformation, data analytics and data science initiatives in the retail, government, health & security and restaurant industries. I am a dynamic & passionate professional who specializes in driving innovation, delivering large and complex projects, and advising senior executives on leveraging technology to drive business outcomes. I am a data scientist/engineer with proven track record in deploying impactful and productive AI products.
-
-I am passionate about the impact and difference technology has made and strive to explore ways of making existing work simpler and easier so that we can have the time to focus on bigger visions.
+As a techno-functional consultant and solutions architect with over 14 years of experience, I have a proven track record of leading strategic digital transformation, data analytics, and data science initiatives across a range of industries, including retail, government, health & security, and quick service restaurants. My expertise in delivering large and complex projects has helped me become a trusted advisor to senior executives, guiding them on how to leverage technology to drive business outcomes. With my expertise in data science and data engineering, I have successfully developed impactful and productive AI products, showcasing my ability to drive results through innovative solutions. I am passionate about the impact that technology can make and strive to make a difference in everything I do.
 
 ## Data related Blog
 
