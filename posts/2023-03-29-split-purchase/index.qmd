@@ -1,0 +1,9 @@
+---
+title: "Quick start guide to build a Collaborative Filtering Recommendation System with implicit library in 4 steps"
+date: "2023-02-09"
+date-modified: "2023-02-09"
+categories: [Recommender System, Recsys, Collaborative Filtering, Data Science]
+image: "recommender_system_cover.png"
+draft: False
+---
+
