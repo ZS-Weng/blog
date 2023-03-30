@@ -25,11 +25,18 @@ website:
         href: https://github.com/ZS-Weng
       - icon: linkedin
         href: https://www.linkedin.com/in/zaishan-weng/
+  
+  google-analytics: 
+    tracking-id: "G-8TTMHMV8LK"
+    storage: none
+  
 format:
   html:
     theme: 
       light: [cosmo]
     css: styles.css
+
+  
 
 
 
