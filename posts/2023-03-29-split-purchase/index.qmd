@@ -1,9 +1,14 @@
 ---
-title: "Quick start guide to build a Collaborative Filtering Recommendation System with implicit library in 4 steps"
+title: "Procure-to-Pay Process Analytics - Split Purchase Order red flag detection using Python"
 date: "2023-02-09"
 date-modified: "2023-02-09"
-categories: [Recommender System, Recsys, Collaborative Filtering, Data Science]
-image: "recommender_system_cover.png"
+categories: [Finance Analytics, Python, ]
+image: "procure_to_pay.jfif"
 draft: True
 ---
 
+## Introduction
+
+![Image Generated with the prompt: procure to pay process represented with gold coins](procure_to_pay.jfif)
+
+## 
