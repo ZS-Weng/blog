@@ -11,4 +11,12 @@ draft: True
 
 ![Image Generated with the prompt: procure to pay process represented with gold coins](procure_to_pay.jfif)
 
-## 
+## Background
+
+## Logic to identify Splitting of PO
+
+
+## Additional Logic
+
+
+## Conclusion
