@@ -2,7 +2,9 @@
 title: "Data & AI Blog"
 listing:
   contents: posts
-  sort: "date desc"
+  sort: 
+    - "priority asc"
+    - "date-modified desc"
   type: default # grid or `default` or `table`; each type has its own set of yaml options to include
   categories: true
   sort-ui: true
@@ -10,4 +12,3 @@ listing:
 page-layout: full
 title-block-banner: false
 ---
-

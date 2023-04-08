@@ -7,11 +7,18 @@ image: "procure_to_pay.jfif"
 draft: True
 ---
 
-## Introduction
+## Background
 
 ![Image Generated with the prompt: procure to pay process represented with gold coins](procure_to_pay.jfif)
 
-## Background
+TBR Describe Procure to Pay Process
+
+The procure to pay process is a commonly used term to describe the fulfillment of goods and/or services to a given requirement. It usually starts with 
+
+TBR Describe Split Purcase Order 
+
+## Introduction
+
 
 ## Logic to identify Splitting of PO
 

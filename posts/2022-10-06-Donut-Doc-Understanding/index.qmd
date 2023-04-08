@@ -4,6 +4,7 @@ date: "2022-10-06"
 date-modified: "2022-10-06"
 categories: [DocVQA, Data Science, AI, Machine Learning, Transformer, Document Understanding]
 image: "donut_image.png"
+priority: 1
 ---
 
 ![Image Generated from Stable Diffusion with the prompt “A colorful donut speaking to a document”](donut_image.png)
