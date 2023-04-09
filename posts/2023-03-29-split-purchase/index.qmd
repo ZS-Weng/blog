@@ -19,6 +19,8 @@ TBR Describe Split Purcase Order
 
 ## Introduction
 
+Related dataset and notebook can be found in the following github link<https://github.com/ZS-Weng/Data_Engineering/tree/main/Splitting_of_Purchase>
+
 
 ## Logic to identify Splitting of PO
 
