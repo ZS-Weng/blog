@@ -19,6 +19,8 @@ TBR Describe Split Purcase Order
 
 ## Introduction
 
+In this article, I would like to explore some useful functions in python which could help in identifying the splitting of purchase issue. 
+
 Related dataset and notebook can be found in the following github link<https://github.com/ZS-Weng/Data_Engineering/tree/main/Splitting_of_Purchase>
 
 
