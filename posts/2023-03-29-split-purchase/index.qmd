@@ -36,3 +36,5 @@ Related dataset and notebook can be found in the following github link<https://g
 
 
 ## Conclusion
+
+Thanks for reading and hope this was useful in some way!
