@@ -11,9 +11,9 @@ draft: True
 
 ![Image Generated with the prompt: procure to pay process represented with gold coins](procure_to_pay.jfif)
 
-TBR Describe Procure to Pay Process
+### Brief Overview of Procure to Pay Process
 
-The procure to pay process is a commonly used term to describe the fulfillment of goods and/or services to a given requirement. It usually starts with 
+The procure to pay process is a commonly used term to describe the fulfillment of goods and/or services to a given requirement. It usually starts with having a purchase requsition or purchase request. This will be followed with a purchase order (PO) to be sent to the respective vendors for fulfilling the order. When the vendor/supplier provides the goods and/or service they would bill with an invoice and the purchasing organization will verify the receipt of the goods or services. At this stage there is usually a three way matching process to ensure the purchase order, goods receipt and invoice are aligned. The final step will be the actual payment of the goods and services. 
 
 TBR Describe Split Purcase Order 
 
