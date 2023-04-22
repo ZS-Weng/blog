@@ -16,8 +16,12 @@ draft: True
 The procure to pay process is a commonly used term to describe the fulfillment of goods and/or services to a given requirement. It usually starts with having a purchase requsition or purchase request. This will be followed with a purchase order (PO) to be sent to the respective vendors for fulfilling the order. When the vendor/supplier provides the goods and/or service they would bill with an invoice and the purchasing organization will verify the receipt of the goods or services. At this stage there is usually a three way matching process to ensure the purchase order, goods receipt and invoice are aligned. The final step will be the actual payment of the goods and services. 
 
 ### Issues with Split Purchase Order
-TBR Describe Split Purcase Order
 
+Splitting of purchase orders can be considered non-compliant when it is done with the intention of circumventing the organization's internal controls or policies, or to avoid the approval process required for purchases over a certain threshold.
+
+For example, if an organization has a policy that requires purchases over a certain amount to be approved by a specific person or department, splitting a large purchase order into multiple smaller ones to avoid the approval process can be considered non-compliant. Similarly, if splitting a purchase order results in higher costs or unnecessary duplication of effort, it can be seen as a violation of procurement regulations or internal controls.
+
+Additionally, splitting a purchase order can be non-compliant if it results in a vendor being paid more frequently than agreed upon, as this can cause payment processing delays, or if it results in the purchase of items or services that do not meet the organization's quality or safety standards.
 
 
 ## Introduction
