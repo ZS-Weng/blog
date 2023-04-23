@@ -7,7 +7,7 @@ image: "procure_to_pay.jfif"
 draft: True
 ---
 
-## Background
+## Introduction
 
 ![Image Generated with the prompt: procure to pay process represented with gold coins](procure_to_pay.jfif)
 
@@ -21,12 +21,7 @@ Splitting of purchase orders can be considered non-compliant when it is done wit
 
 For example, if an organization has a policy that requires purchases over a certain amount to be approved by a specific person or department, splitting a large purchase order into multiple smaller ones to avoid the approval process can be considered non-compliant. Similarly, if splitting a purchase order results in higher costs or unnecessary duplication of effort, it can be seen as a violation of procurement regulations or internal controls.
 
-Additionally, splitting a purchase order can be non-compliant if it results in a vendor being paid more frequently than agreed upon, as this can cause payment processing delays, or if it results in the purchase of items or services that do not meet the organization's quality or safety standards.
-
-
-## Introduction
-
-In this article, I would like to explore some useful functions in python which could help in identifying the splitting of purchase issue. 
+In this article, I would like to explore some useful functions in python which could help in identifying splitting of purchase orders.
 
 Related dataset and notebook can be found in the following github link<https://github.com/ZS-Weng/Data_Engineering/tree/main/Splitting_of_Purchase>
 
@@ -43,6 +38,9 @@ Related dataset and notebook can be found in the following github link<https://g
 
 ## Additional Logic
 
+## References
+
+- 
 
 ## Conclusion
 
