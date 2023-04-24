@@ -28,6 +28,10 @@ Related dataset and notebook can be found in the following github link<https://g
 
 ## Logic to identify Splitting of PO
 
+In this article, I will use a simplified dataset with 8 rows of transactions, each representing a different Purchase Order. These purchase orders belong to two departments acorss four venodrs. 
+
+![Sample Dataset](split_purchase_sample_data.png)
+
 
 ```python
 
