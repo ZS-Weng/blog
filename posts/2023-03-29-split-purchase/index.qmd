@@ -23,7 +23,7 @@ For example, if an organization has a policy that requires purchases over a cert
 
 In this article, I would like to explore some useful functions in python which could help in identifying splitting of purchase orders.
 
-Related dataset and notebook can be found in the following github link<https://github.com/ZS-Weng/Data_Engineering/tree/main/Splitting_of_Purchase>
+Related dataset and notebook can be found in the following github link  <https://github.com/ZS-Weng/Data_Engineering/tree/main/Splitting_of_Purchase>
 
 
 ## Logic to identify Splitting of PO
@@ -33,7 +33,26 @@ In this article, I will use a simplified dataset with 8 rows of transactions, ea
 ![Sample Dataset](split_purchase_sample_data.png)
 
 
+First, we would order the data by purchasing department, item and the purchase order date. From there we will identify the instances where the Purchasing Department is buying the same item across different purchase orders. 
+
 ```python
+item_field = "Item"
+
+df_dept_item_sorted = df_raw.sort_values(
+    ["Purchasing Department", item_field, "Purchase Order Date"]
+)
+
+df_dept_item_sorted["Prev PR Date"] = df_dept_item_sorted[
+    "Purchase Order Date"
+].shift()
+
+df_dept_item_sorted["PreGroup"] = (
+    df_dept_item_sorted[
+        ["Purchasing Department", item_field, "Purchase Order Date"]
+    ]
+    .groupby(["Purchasing Department", item_field])
+    .cumcount()
+)
 
 
 

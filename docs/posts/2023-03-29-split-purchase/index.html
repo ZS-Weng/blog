@@ -186,10 +186,14 @@ gtag('config', 'G-8TTMHMV8LK', { 'anonymize_ip': true});
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#background" id="toc-background" class="nav-link active" data-scroll-target="#background">Background</a></li>
-  <li><a href="#introduction" id="toc-introduction" class="nav-link" data-scroll-target="#introduction">Introduction</a></li>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a>
+  <ul class="collapse">
+  <li><a href="#brief-overview-of-procure-to-pay-process" id="toc-brief-overview-of-procure-to-pay-process" class="nav-link" data-scroll-target="#brief-overview-of-procure-to-pay-process">Brief Overview of Procure to Pay Process</a></li>
+  <li><a href="#issues-with-split-purchase-order" id="toc-issues-with-split-purchase-order" class="nav-link" data-scroll-target="#issues-with-split-purchase-order">Issues with Split Purchase Order</a></li>
+  </ul></li>
   <li><a href="#logic-to-identify-splitting-of-po" id="toc-logic-to-identify-splitting-of-po" class="nav-link" data-scroll-target="#logic-to-identify-splitting-of-po">Logic to identify Splitting of PO</a></li>
   <li><a href="#additional-logic" id="toc-additional-logic" class="nav-link" data-scroll-target="#additional-logic">Additional Logic</a></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
   <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion</a></li>
   </ul>
 </nav>
@@ -236,30 +240,46 @@ gtag('config', 'G-8TTMHMV8LK', { 'anonymize_ip': true});
 
 </header>
 
-<section id="background" class="level2">
-<h2 class="anchored" data-anchor-id="background">Background</h2>
+<section id="introduction" class="level2">
+<h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="procure_to_pay.jfif" class="img-fluid figure-img"></p>
 <p></p><figcaption class="figure-caption">Image Generated with the prompt: procure to pay process represented with gold coins</figcaption><p></p>
 </figure>
 </div>
-<p>TBR Describe Procure to Pay Process</p>
-<p>The procure to pay process is a commonly used term to describe the fulfillment of goods and/or services to a given requirement. It usually starts with</p>
-<p>TBR Describe Split Purcase Order</p>
+<section id="brief-overview-of-procure-to-pay-process" class="level3">
+<h3 class="anchored" data-anchor-id="brief-overview-of-procure-to-pay-process">Brief Overview of Procure to Pay Process</h3>
+<p>The procure to pay process is a commonly used term to describe the fulfillment of goods and/or services to a given requirement. It usually starts with having a purchase requsition or purchase request. This will be followed with a purchase order (PO) to be sent to the respective vendors for fulfilling the order. When the vendor/supplier provides the goods and/or service they would bill with an invoice and the purchasing organization will verify the receipt of the goods or services. At this stage there is usually a three way matching process to ensure the purchase order, goods receipt and invoice are aligned. The final step will be the actual payment of the goods and services.</p>
 </section>
-<section id="introduction" class="level2">
-<h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
-<p>In this article, I would like to explore some useful functions in python which could help in identifying the splitting of purchase issue.</p>
+<section id="issues-with-split-purchase-order" class="level3">
+<h3 class="anchored" data-anchor-id="issues-with-split-purchase-order">Issues with Split Purchase Order</h3>
+<p>Splitting of purchase orders can be considered non-compliant when it is done with the intention of circumventing the organization’s internal controls or policies, or to avoid the approval process required for purchases over a certain threshold.</p>
+<p>For example, if an organization has a policy that requires purchases over a certain amount to be approved by a specific person or department, splitting a large purchase order into multiple smaller ones to avoid the approval process can be considered non-compliant. Similarly, if splitting a purchase order results in higher costs or unnecessary duplication of effort, it can be seen as a violation of procurement regulations or internal controls.</p>
+<p>In this article, I would like to explore some useful functions in python which could help in identifying splitting of purchase orders.</p>
 <p>Related dataset and notebook can be found in the following github link<a href="https://github.com/ZS-Weng/Data_Engineering/tree/main/Splitting_of_Purchase" class="uri">https://github.com/ZS-Weng/Data_Engineering/tree/main/Splitting_of_Purchase</a></p>
+</section>
 </section>
 <section id="logic-to-identify-splitting-of-po" class="level2">
 <h2 class="anchored" data-anchor-id="logic-to-identify-splitting-of-po">Logic to identify Splitting of PO</h2>
+<p>In this article, I will use a simplified dataset with 8 rows of transactions, each representing a different Purchase Order. These purchase orders belong to two departments acorss four venodrs.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="split_purchase_sample_data.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Sample Dataset</figcaption><p></p>
+</figure>
+</div>
 <div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="additional-logic" class="level2">
 <h2 class="anchored" data-anchor-id="additional-logic">Additional Logic</h2>
+</section>
+<section id="references" class="level2">
+<h2 class="anchored" data-anchor-id="references">References</h2>
+<ul>
+<li></li>
+</ul>
 </section>
 <section id="conclusion" class="level2">
 <h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
