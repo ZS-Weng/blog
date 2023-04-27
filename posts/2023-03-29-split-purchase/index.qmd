@@ -33,7 +33,7 @@ In this article, I will use a simplified dataset with 8 rows of transactions, ea
 ![Sample Dataset](split_purchase_sample_data.png)
 
 
-First, we would order the data by purchasing department, item and the purchase order date. From there we will identify the instances where the Purchasing Department is buying the same item across different purchase orders. 
+First, we would order the data by purchasing department, item and the purchase order date. From there we will identify the instances where the Purchasing Department is buying the same item across different purchase orders. This is used to generate the initial pre-grouping for later processing. 
 
 ```python
 item_field = "Item"
@@ -54,7 +54,7 @@ df_dept_item_sorted["PreGroup"] = (
     .cumcount()
 )
 ```
-
+![Results with initial pregrouping](initial_group_based_on_dept_item.png)
 
 ## Additional Logic
 
