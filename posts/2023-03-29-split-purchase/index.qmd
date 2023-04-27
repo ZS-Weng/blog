@@ -53,9 +53,6 @@ df_dept_item_sorted["PreGroup"] = (
     .groupby(["Purchasing Department", item_field])
     .cumcount()
 )
-
-
-
 ```
 
 
