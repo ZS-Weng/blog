@@ -2,7 +2,7 @@
 title: "Procure-to-Pay Process Analytics - Split Purchase Order red flag detection using Python"
 date: "2023-02-09"
 date-modified: "2023-02-09"
-categories: [Finance Analytics, Python, ]
+categories: [Finance Analytics, Python, Procure_to_Pay, Splitting_of_Purchase]
 image: "procure_to_pay.jfif"
 draft: True
 ---
@@ -55,6 +55,10 @@ df_dept_item_sorted["PreGroup"] = (
 )
 ```
 ![Results with initial pregrouping](initial_group_based_on_dept_item.png)
+
+```python
+
+```
 
 ## Additional Logic
 
