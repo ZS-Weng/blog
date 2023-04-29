@@ -54,11 +54,56 @@ df_dept_item_sorted["PreGroup"] = (
     .cumcount()
 )
 ```
-![Results with initial pregrouping](initial_group_based_on_dept_item.png)
+
+Next, we use the initial pre-group to identify the start of each department and item buying category. In addition, we calculate the number of days between the current purchase and previous purchase and whether the duration is within a certain threshold for it to be considered non-compliant.
 
 ```python
+mask = df_dept_item_sorted["PreGroup"] == 0
+df_dept_item_sorted.loc[mask, "Prev PR Date"] = pd.NaT
 
+# Calculating number of days difference between adjacent records
+df_dept_item_sorted["Date_Diff"] = (
+    df_dept_item_sorted["Purchase Order Date"]
+    - df_dept_item_sorted["Prev PR Date"]
+).dt.days
+
+# Set Threshold
+n = 5
+df_dept_item_sorted["Flag Out of Range"] = (
+    1 - (df_dept_item_sorted["Date_Diff"] <= n)
+).astype(int)
+
+df_dept_item_sorted["Grouping"] = df_dept_item_sorted["Flag Out of Range"].cumsum()
 ```
+
+We get the initial grouping details:
+
+![Initial Grouping with selected columns](split_purchase_initial_grouping.png)
+
+After the initial grouping, we can group the data based on Grouping perform the counts of Purchase Orders and filter out the applicable groups.
+
+```python
+df_pr_count = (
+    df_dept_item_sorted[["Grouping", item_field, "Purchase Order"]]
+    .groupby(["Grouping", item_field])
+    .nunique()
+    .reset_index()
+)
+
+df_pr_count.columns = ["Grouping", item_field, "Count PR"]
+
+# Identifies the groups that are valid split purchase cases
+df_split_purchase_group = df_pr_count[df_pr_count["Count PR"] >= 2]
+
+# Joining of Split Purchase Groups to initial details
+df_split_purchase_details = df_split_purchase_group.merge(
+    df_dept_item_sorted, how="inner", on=["Grouping", item_field]
+)
+```
+
+We will get the following 
+
+
 
 ## Additional Logic
 
