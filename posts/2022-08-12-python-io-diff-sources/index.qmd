@@ -4,6 +4,7 @@ date: "2022-08-12"
 date-modified: "2022-08-12"
 categories: [Python, Data Cleaning, Excel, CSV, Data Engineering]
 image: "front_image.png"
+priority: 9
 ---
 
 ![Image generated from Hugging Face Stable Diffusion with the prompt “multitude of sources coming together in a mural”](front_image.png)
