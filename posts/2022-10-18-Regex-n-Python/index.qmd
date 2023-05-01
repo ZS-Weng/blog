@@ -5,6 +5,7 @@ date-modified: "2022-10-18"
 categories: [Regex, Data Engineering, Data Masking]
 image: "regex_python_icon.png"
 draft: False
+priority: 5
 ---
 
 ![Image generated from Stability AI Stable Diffusion with prompt “colourful artistic patterns made up of text”](regex_python_icon.png)

@@ -4,6 +4,7 @@ date: "2022-07-08"
 date-modified: "2022-07-08"
 categories: [Design Thinking, Requirements Gathering, Data Analytics, Stakeholder Engagement, Business Intelligence]
 image: "hopes_n_fears.png"
+priority: 5
 ---
 
 ## Introduction

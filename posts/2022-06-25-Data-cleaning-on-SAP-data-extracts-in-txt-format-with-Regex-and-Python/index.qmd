@@ -4,6 +4,7 @@ date: "2022-06-25"
 date-modified: "2022-06-25"
 categories: [Data Engineering, SAP, Python, Regex]
 image: "sap_data_format.png"
+priority: 5
 ---
 
 ## Introduction
