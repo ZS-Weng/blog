@@ -101,7 +101,31 @@ df_split_purchase_details = df_split_purchase_group.merge(
 )
 ```
 
-We will get the following 
+From the details we perform furhter processing to identify the details of the group and which Purchase Orders are in each of the group. 
+
+```python
+df_split_purchase_details["Date_Diff"] = np.where(
+    df_split_purchase_details["Flag Out of Range"] == 1,
+    pd.NaT,
+    df_split_purchase_details["Date_Diff"],
+)
+
+df_split_purchase_details.sort_values(
+    ["Grouping", "Purchase Order"], inplace=True
+)
+
+df_split_purchase_desc = (
+    df_split_purchase_details.groupby(["Grouping", item_field])
+    .agg({"Purchase Order": "|".join})
+    .reset_index()
+)
+
+df_split_purchase_desc.columns = ["Grouping", item_field, "PR with similar items"]
+
+df_split_purchase_comb = df_split_purchase_details.merge(
+    df_split_purchase_desc, how="inner", on=["Grouping", item_field]
+)
+```
 
 
 
