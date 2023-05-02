@@ -127,9 +127,11 @@ df_split_purchase_comb = df_split_purchase_details.merge(
 )
 ```
 
-
+![Grouping details for each of the Groups](split_purchase_grouping_po.png)
 
 ## Additional Logic
+
+
 
 ## References
 
