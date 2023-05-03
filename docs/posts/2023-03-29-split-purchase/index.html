@@ -361,6 +361,59 @@ gtag('config', 'G-8TTMHMV8LK', { 'anonymize_ip': true});
 </section>
 <section id="additional-logic" class="level2">
 <h2 class="anchored" data-anchor-id="additional-logic">Additional Logic</h2>
+<p>After the initial grouping for the splitting of purchase is identified, additional business logic can be applied to validate whether the splitting of purchase is at risk of being non-compliant. Some of the common business rules include:</p>
+<ul>
+<li>Does the split cause a different threshold value resulting in a different approval compared to if the amount is in a consolidated PO ?</li>
+<li>Are the POs going to the same vendor or different vendors ?</li>
+<li>Is there a more stringent days threshold to separate between high risk and lower risk split ?</li>
+</ul>
+<p>An example code below checks for the following:</p>
+<ul>
+<li>Was the threshold of 5,000 avoided due to the split ?</li>
+<li>Are the splits belonging to the same vendor ?</li>
+<li>Are the dates diff within two days ?</li>
+</ul>
+<div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>df_priority_score <span class="op">=</span> (</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    df_split_purchase_comb.groupby([<span class="st">"Grouping"</span>])</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    .agg(</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>        {</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>            <span class="st">"Total Value"</span>: [<span class="st">"min"</span>, <span class="st">"sum"</span>],</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>            <span class="st">"Date_Diff"</span>: <span class="st">"min"</span>,</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>            <span class="st">"Vendor"</span>: [<span class="st">"nunique"</span>, <span class="st">"count"</span>],</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>        }</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>    .reset_index()</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>df_priority_score.columns <span class="op">=</span> [</span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Grouping"</span>,</span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Min_Value"</span>,</span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Max_Value"</span>,</span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Min_Date_Diff"</span>,</span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Unique_Vendor"</span>,</span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Count_Vendor"</span>,</span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>]</span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>value_threshold <span class="op">=</span> <span class="dv">5_000</span></span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a>df_priority_score[<span class="st">"Flag_Threshold_Crossed"</span>] <span class="op">=</span> (</span>
+<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a>    (df_priority_score[<span class="st">"Min_Value"</span>] <span class="op">&lt;</span> value_threshold)</span>
+<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a>    <span class="op">&amp;</span> (df_priority_score[<span class="st">"Max_Value"</span>] <span class="op">&gt;=</span> value_threshold)</span>
+<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a>).astype(<span class="bu">int</span>)</span>
+<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a>df_priority_score[<span class="st">"Flag_Same_Vendor"</span>] <span class="op">=</span> (</span>
+<span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a>    (df_priority_score[<span class="st">"Unique_Vendor"</span>] <span class="op">&lt;</span> df_priority_score[<span class="st">"Count_Vendor"</span>])</span>
+<span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a>).astype(<span class="bu">int</span>)</span>
+<span id="cb5-31"><a href="#cb5-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-32"><a href="#cb5-32" aria-hidden="true" tabindex="-1"></a>days_threshold <span class="op">=</span> <span class="dv">2</span></span>
+<span id="cb5-33"><a href="#cb5-33" aria-hidden="true" tabindex="-1"></a>df_priority_score[<span class="st">"Flag_Min_Days"</span>] <span class="op">=</span> (</span>
+<span id="cb5-34"><a href="#cb5-34" aria-hidden="true" tabindex="-1"></a>    df_priority_score[<span class="st">"Min_Date_Diff"</span>] <span class="op">&lt;=</span> days_threshold</span>
+<span id="cb5-35"><a href="#cb5-35" aria-hidden="true" tabindex="-1"></a>).astype(<span class="bu">int</span>)</span>
+<span id="cb5-36"><a href="#cb5-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-37"><a href="#cb5-37" aria-hidden="true" tabindex="-1"></a>df_priority_score[<span class="st">"Score"</span>] <span class="op">=</span> (</span>
+<span id="cb5-38"><a href="#cb5-38" aria-hidden="true" tabindex="-1"></a>    df_priority_score[<span class="st">"Flag_Threshold_Crossed"</span>]</span>
+<span id="cb5-39"><a href="#cb5-39" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> df_priority_score[<span class="st">"Flag_Same_Vendor"</span>]</span>
+<span id="cb5-40"><a href="#cb5-40" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> df_priority_score[<span class="st">"Flag_Min_Days"</span>]</span>
+<span id="cb5-41"><a href="#cb5-41" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="references" class="level2">
 <h2 class="anchored" data-anchor-id="references">References</h2>

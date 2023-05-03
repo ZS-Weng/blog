@@ -131,6 +131,62 @@ df_split_purchase_comb = df_split_purchase_details.merge(
 
 ## Additional Logic
 
+After the initial grouping for the splitting of purchase is identified, additional business logic can be applied to validate whether the splitting of purchase is at risk of being non-compliant. Some of the common business rules include:
+
+- Does the split cause a different threshold value resulting in a different approval compared to if the amount is in a consolidated PO ?
+- Are the POs going to the same vendor or different vendors ?
+- Is there a more stringent days threshold to separate between high risk and lower risk split ?
+
+An example code below checks for the following:
+
+- Was the threshold of 5,000 avoided due to the split ?
+- Are the splits belonging to the same vendor ?
+- Are the dates diff within two days ?
+
+```python
+df_priority_score = (
+    df_split_purchase_comb.groupby(["Grouping"])
+    .agg(
+        {
+            "Total Value": ["min", "sum"],
+            "Date_Diff": "min",
+            "Vendor": ["nunique", "count"],
+        }
+    )
+    .reset_index()
+)
+
+df_priority_score.columns = [
+    "Grouping",
+    "Min_Value",
+    "Max_Value",
+    "Min_Date_Diff",
+    "Unique_Vendor",
+    "Count_Vendor",
+]
+
+value_threshold = 5_000
+df_priority_score["Flag_Threshold_Crossed"] = (
+    (df_priority_score["Min_Value"] < value_threshold)
+    & (df_priority_score["Max_Value"] >= value_threshold)
+).astype(int)
+
+df_priority_score["Flag_Same_Vendor"] = (
+    (df_priority_score["Unique_Vendor"] < df_priority_score["Count_Vendor"])
+).astype(int)
+
+days_threshold = 2
+df_priority_score["Flag_Min_Days"] = (
+    df_priority_score["Min_Date_Diff"] <= days_threshold
+).astype(int)
+
+df_priority_score["Score"] = (
+    df_priority_score["Flag_Threshold_Crossed"]
+    + df_priority_score["Flag_Same_Vendor"]
+    + df_priority_score["Flag_Min_Days"]
+)
+```
+
 
 
 ## References
