@@ -186,6 +186,8 @@ df_priority_score["Score"] = (
     + df_priority_score["Flag_Min_Days"]
 )
 ```
+![Grouping Score based on threshold](split_purchase_grouping_score.png)
+
 
 ## Conclusion
 

@@ -2,11 +2,11 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://zs-weng.github.io/blog/index.html</loc>
-    <lastmod>2023-05-04T14:38:28.186Z</lastmod>
+    <lastmod>2023-05-04T14:42:35.997Z</lastmod>
   </url>
   <url>
     <loc>https://zs-weng.github.io/blog/data-ai-blog.html</loc>
-    <lastmod>2023-05-04T14:39:10.375Z</lastmod>
+    <lastmod>2023-05-04T14:42:46.975Z</lastmod>
   </url>
   <url>
     <loc>https://zs-weng.github.io/blog/posts/2022-06-25-Data-cleaning-on-SAP-data-extracts-in-txt-format-with-Regex-and-Python/index.html</loc>
@@ -26,7 +26,7 @@
   </url>
   <url>
     <loc>https://zs-weng.github.io/blog/posts/2022-10-06-Donut-Doc-Understanding/index.html</loc>
-    <lastmod>2023-04-19T13:21:29.794Z</lastmod>
+    <lastmod>2023-05-04T14:42:41.789Z</lastmod>
   </url>
   <url>
     <loc>https://zs-weng.github.io/blog/posts/2022-10-18-Regex-n-Python/index.html</loc>
@@ -42,6 +42,6 @@
   </url>
   <url>
     <loc>https://zs-weng.github.io/blog/posts/2023-03-29-split-purchase/index.html</loc>
-    <lastmod>2023-05-04T14:38:25.995Z</lastmod>
+    <lastmod>2023-05-04T14:43:30.948Z</lastmod>
   </url>
 </urlset>
