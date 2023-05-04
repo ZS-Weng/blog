@@ -1,10 +1,10 @@
 ---
 title: "Procure-to-Pay Process Analytics - Split Purchase Order red flag detection using Python"
-date: "2023-02-09"
-date-modified: "2023-02-09"
+date: "2023-05-04"
+date-modified: "2023-05-04"
 categories: [Finance Analytics, Python, Procure_to_Pay, Splitting_of_Purchase]
 image: "procure_to_pay.jfif"
-draft: True
+draft: False
 ---
 
 ## Introduction
@@ -186,13 +186,16 @@ df_priority_score["Score"] = (
     + df_priority_score["Flag_Min_Days"]
 )
 ```
+![Grouping Score based on threshold](split_purchase_grouping_score.png)
 
-
-
-## References
-
-- 
 
 ## Conclusion
 
+In this article we have explored on how splitting of purchase orders might be non compliant and python functions that can help identify such non compliant split purchase orders.
+
 Thanks for reading and hope this was useful in some way!
+
+## References
+
+- <https://grm.institute/blog/case-study-title-split-purchase-order>
+- <https://sfcontroller.org/sites/default/files/Documents/Auditing/Split%20Purchasing%20Red%20Flags.pdf>
