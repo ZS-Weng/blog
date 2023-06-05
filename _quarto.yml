@@ -15,7 +15,7 @@ website:
       - text: "Blog"
         href: data-ai-blog.qmd
       - text: "Videos & Articles"
-        href: videos-articles.qmd
+        href: videos_articles/videos-articles.qmd
       - icon: linkedin
         href: https://www.linkedin.com/in/zaishan-weng/
       

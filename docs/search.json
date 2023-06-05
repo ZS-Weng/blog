@@ -411,5 +411,40 @@
     "title": "Procure-to-Pay Process Analytics - Split Purchase Order red flag detection using Python",
     "section": "References",
     "text": "References\n\nhttps://grm.institute/blog/case-study-title-split-purchase-order\nhttps://sfcontroller.org/sites/default/files/Documents/Auditing/Split%20Purchasing%20Red%20Flags.pdf"
+  },
+  {
+    "objectID": "videos-articles.html",
+    "href": "videos-articles.html",
+    "title": "Zaishan’s Videos and Articles",
+    "section": "",
+    "text": "Video 1 Title"
+  },
+  {
+    "objectID": "videos-articles.html#content-page",
+    "href": "videos-articles.html#content-page",
+    "title": "Zaishan’s Videos and Articles",
+    "section": "Content Page",
+    "text": "Content Page"
+  },
+  {
+    "objectID": "videos-articles.html#video-1-title",
+    "href": "videos-articles.html#video-1-title",
+    "title": "Zaishan’s Videos and Articles",
+    "section": "Video 1 Title",
+    "text": "Video 1 Title"
+  },
+  {
+    "objectID": "videos_articles/videos-articles.html#content-page",
+    "href": "videos_articles/videos-articles.html#content-page",
+    "title": "Zaishan’s Videos and Articles",
+    "section": "Content Page",
+    "text": "Content Page"
+  },
+  {
+    "objectID": "videos_articles/videos-articles.html#video-1-title",
+    "href": "videos_articles/videos-articles.html#video-1-title",
+    "title": "Zaishan’s Videos and Articles",
+    "section": "Video 1 Title",
+    "text": "Video 1 Title"
   }
 ]
