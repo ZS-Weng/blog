@@ -3,12 +3,17 @@ title: "Zaishan's Videos and Articles"
 format:
   html:
     toc: true
-    toc-depth: 2
+    toc-expand: 3
+    toc-depth: 3
+    number-sections: true
 ---
 
-## Introduction 
+# Introduction 
 
-## Content Page
+# Video
 
 ## Video 1 Title
+
 {{< video https://youtu.be/8SpwYsGcsmI >}}
+
+# Articles
