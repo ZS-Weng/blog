@@ -8,12 +8,18 @@ format:
     number-sections: true
 ---
 
+
 # Introduction 
 
 # Video
 
 ## Video 1 Title
 
+::: {layout="[20,50]"}
+
+![](AI_4_everyone_2021_03_25.PNG)
+
 {{< video https://youtu.be/8SpwYsGcsmI >}}
 
+:::
 # Articles
