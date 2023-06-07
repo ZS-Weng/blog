@@ -17,6 +17,16 @@ format:
 
 ::: {layout="[20,50]"}
 
+![](intro_2_AI_2021_11_18.png)
+
+{{< video https://youtu.be/TrTgvEZKdJE >}}
+
+:::
+
+## Video 1 Title
+
+::: {layout="[20,50]"}
+
 ![](AI_4_everyone_2021_03_25.PNG)
 
 {{< video https://youtu.be/8SpwYsGcsmI >}}
