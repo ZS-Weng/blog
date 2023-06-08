@@ -8,12 +8,13 @@ format:
     number-sections: true
 ---
 
+# Introduction
 
-# Introduction 
+
 
 # Video
 
-## Video 1 Title
+## Introduction to Artificial Intelligence webinar on 18 Nov 2021
 
 ::: {layout="[20,50]"}
 
@@ -23,7 +24,7 @@ format:
 
 :::
 
-## Video 1 Title
+## AI is for everyone webinar on 25 March 2021
 
 ::: {layout="[20,50]"}
 
@@ -32,4 +33,5 @@ format:
 {{< video https://youtu.be/8SpwYsGcsmI >}}
 
 :::
+
 # Articles
