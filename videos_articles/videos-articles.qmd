@@ -5,7 +5,7 @@ format:
     toc: true
     toc-expand: 3
     toc-depth: 3
-    number-sections: true
+    number-sections: false
 ---
 
 # Introduction
@@ -37,6 +37,8 @@ This page contains related webinar videos and articles from publications.
 # Articles (Work In Progress)
 
 ## Defence in the Cyber Domain
+
+[Article on Defense in the Cyber Domain](Defense_in_the_cyber_domain.pdf)
 
 ## Safety and the Individual Article
 
