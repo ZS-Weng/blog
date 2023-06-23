@@ -5,7 +5,7 @@ format:
     toc: true
     toc-expand: 3
     toc-depth: 3
-    number-sections: false
+    number-sections: true
 ---
 
 # Introduction
@@ -36,9 +36,17 @@ This page contains related webinar videos and articles from publications.
 
 # Articles (Work In Progress)
 
-## Defence in the Cyber Domain
+## Defence in the Cyber Domain Article in POINTER, The Journal of the Singapore Armed Forces
 
-[Article on Defense in the Cyber Domain](Defense_in_the_cyber_domain.pdf)
+Abstract:
+
+the proliferation of information and communications technology (ict) in our everyday lives is becoming
+increasingly apparent. as such, there are new challenges revolving around cyber security. this article discusses
+the framework in which the singapore armed forces (saf) should function and collaborate with others in order
+to better maintain our cyber network and infrastructure. it also highlights the various changes required for our
+operations to actively achieve a high level of cyber security.
+
+[Defence in the Cyber Domain Article in POINTER, The Journal of the Singapore Armed Forces VOL. 39 NO. 4 2013](Defense_in_the_cyber_domain.pdf)
 
 ## Safety and the Individual Article
 
