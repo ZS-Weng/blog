@@ -36,7 +36,7 @@ This page contains related webinar videos and articles from publications.
 
 # Articles (Work In Progress)
 
-## Defence in the Cyber Domain Article in POINTER, The Journal of the Singapore Armed Forces
+## 2013 Defence in the Cyber Domain Article in POINTER, The Journal of the Singapore Armed Forces
 
 Abstract:
 
@@ -48,6 +48,8 @@ operations to actively achieve a high level of cyber security.
 
 [Defence in the Cyber Domain Article in POINTER, The Journal of the Singapore Armed Forces VOL. 39 NO. 4 2013](Defense_in_the_cyber_domain.pdf)
 
-## Safety and the Individual Article
+## 2011 Safety and the Individual Article in FOCUS, Singapore Air Force Safety Magazine
+
+[Safety and the Individual Article in FOCUS Magazine issue 66, 2011](Safety_and_the_individual.pdf)
 
 
