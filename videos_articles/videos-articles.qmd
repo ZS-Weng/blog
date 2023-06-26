@@ -8,7 +8,7 @@ format:
     number-sections: true
 ---
 
-# Introduction
+# Introduction {.unnumbered}
 
 This page contains related webinar videos and articles from publications.
 
@@ -34,4 +34,26 @@ This page contains related webinar videos and articles from publications.
 
 :::
 
-# Articles (Work In Progress)
+# Articles
+
+## 2013 Defence in the Cyber Domain Article in POINTER, The Journal of the Singapore Armed Forces
+
+Abstract:
+
+the proliferation of information and communications technology (ict) in our everyday lives is becoming
+increasingly apparent. as such, there are new challenges revolving around cyber security. this article discusses
+the framework in which the singapore armed forces (saf) should function and collaborate with others in order
+to better maintain our cyber network and infrastructure. it also highlights the various changes required for our
+operations to actively achieve a high level of cyber security.
+
+[Defence in the Cyber Domain Article in POINTER, The Journal of the Singapore Armed Forces VOL. 39 NO. 4 2013](Defense_in_the_cyber_domain.pdf)
+
+## 2011 Safety and the Individual Article in FOCUS, Singapore Air Force Safety Magazine
+
+Abstract:
+
+The effectiveness of task accomplishment and safety system hinges on the individual. One needs to constantly put in effort to build competency in 'Doing things right' and align their mindset with the values of the organization to 'Do the right things'.
+
+[Safety and the Individual Article in FOCUS Magazine issue 66, 2011](Safety_and_the_individual.pdf)
+
+
