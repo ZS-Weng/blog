@@ -8,7 +8,7 @@ format:
     number-sections: true
 ---
 
-# Introduction
+# Introduction {.unnumbered}
 
 This page contains related webinar videos and articles from publications.
 
