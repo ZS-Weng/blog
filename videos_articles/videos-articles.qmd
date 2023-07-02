@@ -10,7 +10,7 @@ format:
 
 # Introduction {.unnumbered}
 
-This page contains some videos of webinars which I participated in and selected articles written in publications.
+This page contains some videos of webinars which I participated in and selected articles extracted from publications.
 
 # Video
 
