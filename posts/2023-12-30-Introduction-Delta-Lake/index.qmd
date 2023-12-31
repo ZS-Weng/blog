@@ -1,6 +1,6 @@
 ---
-title: "Title Here"
-date: "YYYY-MM-DD"
+title: "Introduction to Delta Lake with python"
+date: "2023-12-31"
 date-modified: "YYYY-MM-DD"
 categories: [DocVQA, Data Science, AI, Machine Learning, Transformer, Document Understanding]
 image: ".png"
