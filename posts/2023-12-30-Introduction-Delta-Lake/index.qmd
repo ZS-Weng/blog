@@ -2,8 +2,9 @@
 title: "Introduction to Delta Lake with python"
 date: "2023-12-31"
 date-modified: "YYYY-MM-DD"
-categories: [DocVQA, Data Science, AI, Machine Learning, Transformer, Document Understanding]
+categories: ["Data Engineering", "parquet", "Delta"]
 image: ".png"
 priority: 9
 draft: True
 ---
+
