@@ -8,3 +8,18 @@ priority: 9
 draft: True
 ---
 
+
+## Ideas Overview / Brainstorming
+
+- Issues with data loaded with csv vs parquet
+- Advantages of parquet
+- Advantages of Delta and lakehouse construct
+- Delta is closely coupled with spark and could not be used in normal python operations
+- Rust constuct will be an easy way to learn more about Delta before going into Spark operations
+- What is Delta and what are the additions to parquet
+- Insert link to website and free resource
+
+
+
+
+## Introduction
