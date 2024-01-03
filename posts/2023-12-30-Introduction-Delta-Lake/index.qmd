@@ -18,8 +18,8 @@ draft: True
 - Rust constuct will be an easy way to learn more about Delta before going into Spark operations
 - What is Delta and what are the additions to parquet
 - Insert link to website and free resource
-
-
+- Overall basic operations of delta
+- Follow guide and functions
 
 
 ## Introduction
