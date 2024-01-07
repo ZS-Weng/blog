@@ -13,6 +13,17 @@ draft: True
 
 - Notebook about learning PySpark
 - What are the challenges and which resource is good for learning
-
+- Udacity Spark Resource
+- Link to installing Spark as a single node in PC
+- Databricks community edition
+- Purpose of learning
 
 ## Introduction
+
+
+
+## Main reason for learning spark
+
+### Reason 1: Use it for parallel processing with distributed computing system 
+
+### Reason 2: Learn to handle deltalake which spark is a common interface
