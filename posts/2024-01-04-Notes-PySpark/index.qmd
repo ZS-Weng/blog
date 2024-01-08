@@ -22,8 +22,10 @@ draft: True
 
 
 
-## Main reason for learning spark
+## Personal reason for learning spark
 
 ### Reason 1: Use it for parallel processing with distributed computing system 
 
 ### Reason 2: Learn to handle deltalake which spark is a common interface
+
+## 
