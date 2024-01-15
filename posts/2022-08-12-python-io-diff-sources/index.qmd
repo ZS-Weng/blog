@@ -118,6 +118,8 @@ In the final result, we can we can see the common fields across various SAP tabl
 
 ![Sample output of final table displaying common fields across different tables](final_table.png)
 
+## 4. Writing out data in excel
+
 ## 4. Reading .txt source files
 
 For input data sources in .txt format, we can use the python open function directly to read the files. There will usually be text processing required depending on the delimiters used in the files.
