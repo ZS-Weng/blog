@@ -120,7 +120,12 @@ In the final result, we can we can see the common fields across various SAP tabl
 
 ## 4. Writing out data in excel
 
-## 4. Reading .txt source files
+```python
+
+
+```
+
+## 5. Reading .txt source files
 
 For input data sources in .txt format, we can use the python open function directly to read the files. There will usually be text processing required depending on the delimiters used in the files.
 
@@ -155,7 +160,7 @@ with open("data/Sample SAP Format.txt", encoding="utf-8") as f:
 
 ![Output list per line](output_lines.png)
 
-## 5. Writing and reading Parquet Files
+## 6. Writing and reading Parquet Files
 
 Parquet is a type of file format for storing and organizing large amounts of data in a efficient and organized manner. The files are in the .parquet extension.
 
