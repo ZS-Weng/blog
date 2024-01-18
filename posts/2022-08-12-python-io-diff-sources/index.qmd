@@ -121,8 +121,13 @@ In the final result, we can we can see the common fields across various SAP tabl
 ## 4. Writing out data in excel
 
 ```python
-
-
+file = './data/sample_excel_output.xlsx'
+with pd.ExcelWriter(file, engine='openpyxl', mode='a',if_sheet_exists='replace') as writer:
+    df.to_excel(writer, sheet_name='hidden', index=False)
+    
+    # Get a handle to the worksheet.
+    worksheet = writer.sheets['hidden']
+    worksheet.hide()
 ```
 
 ## 5. Reading .txt source files
