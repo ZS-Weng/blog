@@ -118,7 +118,7 @@ In the final result, we can we can see the common fields across various SAP tabl
 
 ![Sample output of final table displaying common fields across different tables](final_table.png)
 
-## 4. Writing out data in excel
+## 4. Writing out data in excel while maintaining formatting
 
 The easiest way which I found to maintain formatting in excel is to write out the data to a hidden sheet and use a formatted sheet to show the data through the use of formulas. In this case, the formatting will remain when the data is updated. 
 
