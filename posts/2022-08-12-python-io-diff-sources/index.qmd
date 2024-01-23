@@ -120,7 +120,11 @@ In the final result, we can we can see the common fields across various SAP tabl
 
 ## 4. Writing out data in excel while maintaining formatting
 
-The easiest way which I found to maintain formatting in excel is to write out the data to a hidden sheet and use a formatted sheet to show the data through the use of formulas. In this case, the formatting will remain when the data is updated. 
+The easiest way which I found to maintain formatting in excel is to write out the data to a hidden sheet and use a formatted sheet to show the data through the use of formulas. In this case, the formatting will remain when the data is updated.
+
+We can set a hidden sheet where the raw data will be written to:
+
+![Sample data written to the hidden sheet](data_on_hidden_sheet.png)
 
 ```python
 file = './data/sample_excel_output.xlsx'
