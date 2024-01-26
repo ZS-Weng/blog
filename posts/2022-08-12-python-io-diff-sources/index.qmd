@@ -128,11 +128,11 @@ We can set a hidden sheet where the raw data will be written to:
 
 There can be a formatted sheet which will reference data from the hidden sheet. This is a formula view of the sheet.
 
-![Excel sheet showing the formuala view](data_reference_to_raw.png.png)
+![Excel sheet showing the formula view](data_reference_to_raw.png)
 
-This is how the sheet looks like. 
+This is how the sheet looks like.
 
-
+![Excel sheet showing the data](data_on_hidden_sheet.png)
 
 ```python
 file = './data/sample_excel_output.xlsx'
