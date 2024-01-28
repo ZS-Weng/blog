@@ -166,6 +166,10 @@ gtag('config', 'G-8TTMHMV8LK', { 'anonymize_ip': true});
     <a class="nav-link" href="../../data-ai-blog.html">
  <span class="menu-text">Blog</span></a>
   </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../videos_articles/videos-articles.html">
+ <span class="menu-text">Videos &amp; Articles</span></a>
+  </li>  
   <li class="nav-item compact">
     <a class="nav-link" href="https://www.linkedin.com/in/zaishan-weng/"><i class="bi bi-linkedin" role="img">
 </i> 
@@ -190,8 +194,9 @@ gtag('config', 'G-8TTMHMV8LK', { 'anonymize_ip': true});
   <li><a href="#reading-in-excel-files-in-.xlsb-format" id="toc-reading-in-excel-files-in-.xlsb-format" class="nav-link" data-scroll-target="#reading-in-excel-files-in-.xlsb-format">1. Reading in excel files in .xlsb format</a></li>
   <li><a href="#resolve-unicodedecodeerror-during-csv-file-read" id="toc-resolve-unicodedecodeerror-during-csv-file-read" class="nav-link" data-scroll-target="#resolve-unicodedecodeerror-during-csv-file-read">2. Resolve UnicodeDecodeError during CSV file read</a></li>
   <li><a href="#extracting-data-from-multiple-sheets-in-excel" id="toc-extracting-data-from-multiple-sheets-in-excel" class="nav-link" data-scroll-target="#extracting-data-from-multiple-sheets-in-excel">3. Extracting data from multiple sheets in excel</a></li>
-  <li><a href="#reading-.txt-source-files" id="toc-reading-.txt-source-files" class="nav-link" data-scroll-target="#reading-.txt-source-files">4. Reading .txt source files</a></li>
-  <li><a href="#writing-and-reading-parquet-files" id="toc-writing-and-reading-parquet-files" class="nav-link" data-scroll-target="#writing-and-reading-parquet-files">5. Writing and reading Parquet Files</a></li>
+  <li><a href="#writing-out-data-in-excel-while-maintaining-formatting" id="toc-writing-out-data-in-excel-while-maintaining-formatting" class="nav-link" data-scroll-target="#writing-out-data-in-excel-while-maintaining-formatting">4. Writing out data in excel while maintaining formatting</a></li>
+  <li><a href="#reading-.txt-source-files" id="toc-reading-.txt-source-files" class="nav-link" data-scroll-target="#reading-.txt-source-files">5. Reading .txt source files</a></li>
+  <li><a href="#writing-and-reading-parquet-files" id="toc-writing-and-reading-parquet-files" class="nav-link" data-scroll-target="#writing-and-reading-parquet-files">6. Writing and reading Parquet Files</a></li>
   <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
   </ul>
 </nav>
@@ -352,14 +357,46 @@ gtag('config', 'G-8TTMHMV8LK', { 'anonymize_ip': true});
 </figure>
 </div>
 </section>
+<section id="writing-out-data-in-excel-while-maintaining-formatting" class="level2">
+<h2 class="anchored" data-anchor-id="writing-out-data-in-excel-while-maintaining-formatting">4. Writing out data in excel while maintaining formatting</h2>
+<p>The easiest way which I found to maintain formatting in excel is to write out the data to a hidden sheet and use a formatted sheet to show the data through the use of formulas. In this case, the formatting will remain when the data is updated.</p>
+<p>We can set a hidden sheet where the raw data will be written to:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="data_on_hidden_sheet.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Sample data written to the hidden sheet</figcaption><p></p>
+</figure>
+</div>
+<p>There can be a formatted sheet which will reference data from the hidden sheet. This is a formula view of the sheet.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="data_reference_to_raw.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Excel sheet showing the formula view</figcaption><p></p>
+</figure>
+</div>
+<p>This is how the sheet looks like. referencing the raw data from the hidden sheet.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="data_on_hidden_sheet.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Excel sheet showing the data</figcaption><p></p>
+</figure>
+</div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="bu">file</span> <span class="op">=</span> <span class="st">'./data/sample_excel_output.xlsx'</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> pd.ExcelWriter(<span class="bu">file</span>, engine<span class="op">=</span><span class="st">'openpyxl'</span>, mode<span class="op">=</span><span class="st">'a'</span>,if_sheet_exists<span class="op">=</span><span class="st">'replace'</span>) <span class="im">as</span> writer:</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    df.to_excel(writer, sheet_name<span class="op">=</span><span class="st">'hidden'</span>, index<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Get a handle to the worksheet.</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>    worksheet <span class="op">=</span> writer.sheets[<span class="st">'hidden'</span>]</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>    worksheet.hide()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
 <section id="reading-.txt-source-files" class="level2">
-<h2 class="anchored" data-anchor-id="reading-.txt-source-files">4. Reading .txt source files</h2>
+<h2 class="anchored" data-anchor-id="reading-.txt-source-files">5. Reading .txt source files</h2>
 <p>For input data sources in .txt format, we can use the python open function directly to read the files. There will usually be text processing required depending on the delimiters used in the files.</p>
 <p>I wrote a seperate article for the cleaning of SAP .txt input file format. The article can be found <a href="../../posts/2022-06-25-Data-cleaning-on-SAP-data-extracts-in-txt-format-with-Regex-and-Python/index.html">here</a></p>
 <p>The .read() method can be used to read in the entire data source. There are usually some processing involved e.g.&nbsp;all types of new line characters are represented with .</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Converts any type of new line to \n</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">"data/Sample SAP Format.txt"</span>, encoding<span class="op">=</span><span class="st">"utf-8"</span>) <span class="im">as</span> f:</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    content_raw <span class="op">=</span> f.read()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Converts any type of new line to \n</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">"data/Sample SAP Format.txt"</span>, encoding<span class="op">=</span><span class="st">"utf-8"</span>) <span class="im">as</span> f:</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    content_raw <span class="op">=</span> f.read()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="data_w_newline.png" class="img-fluid figure-img"></p>
@@ -367,9 +404,9 @@ gtag('config', 'G-8TTMHMV8LK', { 'anonymize_ip': true});
 </figure>
 </div>
 <p>There are times where the type of new line characters are important. In this case, we set the parameter newline= “” and we can see below that the original Carriage Return Line Feed () in the content.</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Alternative way to read the file with CRLF (Carriage Return Line Feed intact)</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">"data/Sample SAP Format.txt"</span>, encoding<span class="op">=</span><span class="st">"utf-8"</span>, newline<span class="op">=</span><span class="st">""</span>) <span class="im">as</span> f:</span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    content_raw_2 <span class="op">=</span> f.read()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Alternative way to read the file with CRLF (Carriage Return Line Feed intact)</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">"data/Sample SAP Format.txt"</span>, encoding<span class="op">=</span><span class="st">"utf-8"</span>, newline<span class="op">=</span><span class="st">""</span>) <span class="im">as</span> f:</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>    content_raw_2 <span class="op">=</span> f.read()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="data_w_original_crlf.png" class="img-fluid figure-img"></p>
@@ -377,8 +414,8 @@ gtag('config', 'G-8TTMHMV8LK', { 'anonymize_ip': true});
 </figure>
 </div>
 <p>Another method common used is .readlines() which will break up each individual lines at the line breaks and provide the data in a list. An example is shown below. From the individual lines, the data can be further split based on established delimiters or other business rules.</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">"data/Sample SAP Format.txt"</span>, encoding<span class="op">=</span><span class="st">"utf-8"</span>) <span class="im">as</span> f:</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>    content_split_lines <span class="op">=</span> f.readlines()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">"data/Sample SAP Format.txt"</span>, encoding<span class="op">=</span><span class="st">"utf-8"</span>) <span class="im">as</span> f:</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>    content_split_lines <span class="op">=</span> f.readlines()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="output_lines.png" class="img-fluid figure-img"></p>
@@ -387,7 +424,7 @@ gtag('config', 'G-8TTMHMV8LK', { 'anonymize_ip': true});
 </div>
 </section>
 <section id="writing-and-reading-parquet-files" class="level2">
-<h2 class="anchored" data-anchor-id="writing-and-reading-parquet-files">5. Writing and reading Parquet Files</h2>
+<h2 class="anchored" data-anchor-id="writing-and-reading-parquet-files">6. Writing and reading Parquet Files</h2>
 <p>Parquet is a type of file format for storing and organizing large amounts of data in a efficient and organized manner. The files are in the .parquet extension.</p>
 <p>It is a columnar storage format, meaning that data is stored by columns instead of rows. This allows for faster data retrieval, especially for queries that only need to access a small subset of columns. The format is optimized for use with big data technologies like Apache Hadoop and Apache Spark and is widely used in data warehousing and big data analytics applications.</p>
 <p>For setting up analytics data lakes parquet has the advantages of being smaller in size as it is compressed and being able to retain the data schema types compared to storing the data in csv. However, as the format is in a binary format, it will not be human readable.</p>
@@ -395,10 +432,10 @@ gtag('config', 'G-8TTMHMV8LK', { 'anonymize_ip': true});
 <p>To write a data frame into parquet files, we first need to install the pyarrow libarary.</p>
 <p><code>pip install pyarrow</code></p>
 <p>After installation we can use pandas to_parquet method to store the data from a data frame into parquet format. Please see the example below on the code comparison between writing to a csv and parquet file and notice how much faster the writing data in parquet format is as compared to csv. Also, we can see the difference in file size of the parquet file vs csv.</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Writing to CSV</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>df_retail_original.to_csv(<span class="st">"./data/Online_Retail.csv"</span>, index<span class="op">=</span><span class="va">False</span>)</span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="co">#Writing to Parquet</span></span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>df_retail_original.to_parquet(<span class="st">"./data/Online_Retail.parquet"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Writing to CSV</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>df_retail_original.to_csv(<span class="st">"./data/Online_Retail.csv"</span>, index<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="co">#Writing to Parquet</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>df_retail_original.to_parquet(<span class="st">"./data/Online_Retail.parquet"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="parquet_vs_csv_write.png" class="img-fluid figure-img"></p>
@@ -413,10 +450,10 @@ gtag('config', 'G-8TTMHMV8LK', { 'anonymize_ip': true});
 </div>
 <p><strong>Reading of Data Frame from parquet files</strong></p>
 <p>We can use pandas read_parquet method with pyarrow engine to read data from existing parquet file. Using the same method, we read the parquet and csv files previously written.</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Reading from CSV</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>df_from_csv <span class="op">=</span> pd.read_csv(<span class="st">"./data/Online_Retail.csv"</span>)</span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="co">#Reading from Parquet</span></span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>df_from_parquet <span class="op">=</span> pd.read_parquet(<span class="st">"./data/Online_Retail.parquet"</span>, engine<span class="op">=</span><span class="st">"pyarrow"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Reading from CSV</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>df_from_csv <span class="op">=</span> pd.read_csv(<span class="st">"./data/Online_Retail.csv"</span>)</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="co">#Reading from Parquet</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>df_from_parquet <span class="op">=</span> pd.read_parquet(<span class="st">"./data/Online_Retail.parquet"</span>, engine<span class="op">=</span><span class="st">"pyarrow"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="parquet_vs_csv_read.png" class="img-fluid figure-img"></p>

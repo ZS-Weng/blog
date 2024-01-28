@@ -73,5 +73,11 @@
   },
   "videos_articles/videos-articles.qmd": {
     "videos-articles.html": "72437080"
+  },
+  "posts/2023-12-30-Introduction-Delta-Lake/index.qmd": {
+    "index.html": "0641fd1c"
+  },
+  "posts/2024-01-04-Notes-PySpark/index.qmd": {
+    "index.html": "3949ccdd"
   }
 }

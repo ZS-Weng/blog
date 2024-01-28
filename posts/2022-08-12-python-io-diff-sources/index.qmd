@@ -118,7 +118,33 @@ In the final result, we can we can see the common fields across various SAP tabl
 
 ![Sample output of final table displaying common fields across different tables](final_table.png)
 
-## 4. Reading .txt source files
+## 4. Writing out data in excel while maintaining formatting
+
+The easiest way which I found to maintain formatting in excel is to write out the data to a hidden sheet and use a formatted sheet to show the data through the use of formulas. In this case, the formatting will remain when the data is updated.
+
+We can set a hidden sheet where the raw data will be written to:
+
+![Sample data written to the hidden sheet](data_on_hidden_sheet.png)
+
+There can be a formatted sheet which will reference data from the hidden sheet. This is a formula view of the sheet.
+
+![Excel sheet showing the formula view](data_reference_to_raw.png)
+
+This is how the sheet looks like. referencing the raw data from the hidden sheet.
+
+![Excel sheet showing the data](data_output.png)
+
+```python
+file = './data/sample_excel_output.xlsx'
+with pd.ExcelWriter(file, engine='openpyxl', mode='a',if_sheet_exists='replace') as writer:
+    df.to_excel(writer, sheet_name='hidden', index=False)
+    
+    # Get a handle to the worksheet.
+    worksheet = writer.sheets['hidden']
+    worksheet.hide()
+```
+
+## 5. Reading .txt source files
 
 For input data sources in .txt format, we can use the python open function directly to read the files. There will usually be text processing required depending on the delimiters used in the files.
 
@@ -153,7 +179,7 @@ with open("data/Sample SAP Format.txt", encoding="utf-8") as f:
 
 ![Output list per line](output_lines.png)
 
-## 5. Writing and reading Parquet Files
+## 6. Writing and reading Parquet Files
 
 Parquet is a type of file format for storing and organizing large amounts of data in a efficient and organized manner. The files are in the .parquet extension.
 
