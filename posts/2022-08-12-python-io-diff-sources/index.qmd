@@ -132,7 +132,7 @@ There can be a formatted sheet which will reference data from the hidden sheet. 
 
 This is how the sheet looks like. referencing the raw data from the hidden sheet.
 
-![Excel sheet showing the data](data_on_hidden_sheet.png)
+![Excel sheet showing the data](data_output.png)
 
 ```python
 file = './data/sample_excel_output.xlsx'

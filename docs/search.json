@@ -509,5 +509,12 @@
     "title": "Handle various input data source formats (csv, xlsx, xlsb, txt, parquet) with Python and Pandas",
     "section": "4. Writing out data in excel",
     "text": "4. Writing out data in excel\nThe easiest way which I found to maintain formatting in excel is to write out the data to a hidden sheet and use a formatted sheet to show the data through the use of formulas. In this case, the formatting will remain when the data is updated.\nfile = './data/sample_excel_output.xlsx'\nwith pd.ExcelWriter(file, engine='openpyxl', mode='a',if_sheet_exists='replace') as writer:\n    df.to_excel(writer, sheet_name='hidden', index=False)\n    \n    # Get a handle to the worksheet.\n    worksheet = writer.sheets['hidden']\n    worksheet.hide()"
+  },
+  {
+    "objectID": "posts/2022-08-12-python-io-diff-sources/index.html#writing-out-data-in-excel-while-maintaining-formatting",
+    "href": "posts/2022-08-12-python-io-diff-sources/index.html#writing-out-data-in-excel-while-maintaining-formatting",
+    "title": "Handle various input data source formats (csv, xlsx, xlsb, txt, parquet) with Python and Pandas",
+    "section": "4. Writing out data in excel while maintaining formatting",
+    "text": "4. Writing out data in excel while maintaining formatting\nThe easiest way which I found to maintain formatting in excel is to write out the data to a hidden sheet and use a formatted sheet to show the data through the use of formulas. In this case, the formatting will remain when the data is updated.\nWe can set a hidden sheet where the raw data will be written to:\n\n\n\nSample data written to the hidden sheet\n\n\nThere can be a formatted sheet which will reference data from the hidden sheet. This is a formula view of the sheet.\n\n\n\nExcel sheet showing the formula view\n\n\nThis is how the sheet looks like. referencing the raw data from the hidden sheet.\n\n\n\nExcel sheet showing the data\n\n\nfile = './data/sample_excel_output.xlsx'\nwith pd.ExcelWriter(file, engine='openpyxl', mode='a',if_sheet_exists='replace') as writer:\n    df.to_excel(writer, sheet_name='hidden', index=False)\n    \n    # Get a handle to the worksheet.\n    worksheet = writer.sheets['hidden']\n    worksheet.hide()"
   }
 ]
