@@ -134,6 +134,8 @@ This is how the sheet looks like. referencing the raw data from the hidden sheet
 
 ![Excel sheet showing the data after format is applied](data_output.png)
 
+Below is a sample code of writing the data to the sheet to be hidden and hiding it.
+
 ```python
 file = './data/sample_excel_output.xlsx'
 with pd.ExcelWriter(file, engine='openpyxl', mode='a',if_sheet_exists='replace') as writer:
