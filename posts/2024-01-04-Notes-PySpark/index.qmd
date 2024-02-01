@@ -28,4 +28,7 @@ draft: True
 
 ### Reason 2: Learn to handle deltalake which spark is a common interface
 
-## 
+## Best resources to learn PySpark
+
+##
+
