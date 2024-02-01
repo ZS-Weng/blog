@@ -377,10 +377,11 @@ gtag('config', 'G-8TTMHMV8LK', { 'anonymize_ip': true});
 <p>This is how the sheet looks like. referencing the raw data from the hidden sheet.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="data_on_hidden_sheet.png" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">Excel sheet showing the data</figcaption><p></p>
+<p><img src="data_output.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Excel sheet showing the data after format is applied</figcaption><p></p>
 </figure>
 </div>
+<p>Below is a sample code of writing the data to the sheet to be hidden and hiding it.</p>
 <div class="sourceCode" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="bu">file</span> <span class="op">=</span> <span class="st">'./data/sample_excel_output.xlsx'</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> pd.ExcelWriter(<span class="bu">file</span>, engine<span class="op">=</span><span class="st">'openpyxl'</span>, mode<span class="op">=</span><span class="st">'a'</span>,if_sheet_exists<span class="op">=</span><span class="st">'replace'</span>) <span class="im">as</span> writer:</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    df.to_excel(writer, sheet_name<span class="op">=</span><span class="st">'hidden'</span>, index<span class="op">=</span><span class="va">False</span>)</span>
