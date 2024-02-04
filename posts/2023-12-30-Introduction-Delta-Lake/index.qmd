@@ -24,3 +24,10 @@ draft: True
 
 
 ## Introduction
+
+
+## Latest Development in Delta
+
+
+## Ways to think about Delta
+
