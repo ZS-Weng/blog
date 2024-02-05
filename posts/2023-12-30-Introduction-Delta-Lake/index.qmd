@@ -29,5 +29,8 @@ draft: True
 ## Latest Development in Delta
 
 
-## Ways to think about Delta
+## Ways to think about Delta Lake
+
+
+## Resources
 
