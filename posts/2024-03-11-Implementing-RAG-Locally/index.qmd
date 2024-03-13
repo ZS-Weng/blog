@@ -1,8 +1,8 @@
 ---
 title: "Simplified Approach to Implementing RAG locally"
-date: "YYYY-MM-DD"
-date-modified: "YYYY-MM-DD"
-categories: [DocVQA, Data Science, AI, Machine Learning, Transformer, Document Understanding]
+date: "2024-03-13"
+date-modified: "2024-03-13"
+categories: [GenAI, RAG, AI, Machine Learning, Transformer]
 image: ".png"
 priority: 1
 draft: True
