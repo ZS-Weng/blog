@@ -3,7 +3,11 @@ title: "Simplified Approach to Implementing RAG locally"
 date: "2024-03-13"
 date-modified: "2024-03-13"
 categories: [GenAI, RAG, AI, Machine Learning, Transformer]
-image: ".png"
+image: "Document Extract Info.png"
 priority: 1
 draft: True
 ---
+
+## Introduction
+
+![Image Generated with the prompt: extracting meaningful details from documents]("Document Extract Info.png")
