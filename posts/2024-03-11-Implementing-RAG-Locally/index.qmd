@@ -11,3 +11,16 @@ draft: True
 ## Introduction
 
 ![Image Generated with the prompt: extracting meaningful details from documents]("Document Extract Info.png")
+
+## Indexing and search
+
+## Sentence Bert Transformers Model
+
+## ChromaDB
+
+## Implementing Language Models Locally
+
+## Further learning
+
+## Conclusion
+
