@@ -16,6 +16,14 @@ draft: True
 
 ## Sentence Bert Transformers Model
 
+### Pair Encoder to be used for search
+
+### Cross Encoder for more accurate score
+
+- Need to check on the limits of the score and what do they mean
+- Potentially this can also be used as a threshold filter to take out irrelevant results to prevetn hallucination
+- 
+
 ## ChromaDB
 
 ## Implementing Language Models Locally
