@@ -22,7 +22,7 @@ draft: True
 
 - Need to check on the limits of the score and what do they mean
 - Potentially this can also be used as a threshold filter to take out irrelevant results to prevetn hallucination
-- 
+- https://www.sbert.net/examples/applications/cross-encoder/README.html
 
 ## ChromaDB
 
