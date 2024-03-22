@@ -34,5 +34,7 @@ draft: True
 
 ## Further learning
 
+- Resource on prompt engineering: https://www.promptingguide.ai/
+
 ## Conclusion
 
