@@ -1,5 +1,5 @@
 ---
-title: "Simplified Approach to Implementing RAG locally"
+title: "Simplified Approach to Implementing RAG on a local machine"
 date: "2024-03-13"
 date-modified: "2024-03-13"
 categories: [GenAI, RAG, AI, Machine Learning, Transformer]
@@ -35,6 +35,10 @@ draft: True
 ## Further learning
 
 - Resource on prompt engineering: https://www.promptingguide.ai/
+
+## Additional Ideas
+
+- Compare how is RAG search different from the traditional indexing and search
 
 ## Conclusion
 
