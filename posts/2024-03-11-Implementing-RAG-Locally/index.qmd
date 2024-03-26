@@ -18,6 +18,8 @@ draft: True
 
 ## Indexing and search
 
+- Revise on Jacquard similarity
+
 ## Sentence Bert Transformers Model
 
 ### Pair Encoder to be used for search
