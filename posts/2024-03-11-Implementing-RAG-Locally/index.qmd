@@ -12,7 +12,7 @@ draft: True
 
 ![Image Generated with the prompt: extracting meaningful details from documents]("Document Extract Info.png")
 
-One of the interesting applications of Generative AI is searching for information within your own documents which is termed as Retrieval Augemented Generation or RAG in short. There are many different combinations and software to setup a RAG on a local system.  the ability to perform RAG entirely on a local system looks to be slightly more challenging. In this article, we would like to share on some of the more simple and straightforward 
+One of the interesting applications of Generative AI is searching for information within your own documents which is termed as Retrieval Augemented Generation or RAG in short. There are many different combinations and software to setup a RAG on a local system.  the ability to perform RAG entirely on a local system looks to be slightly more challenging. In this article, we would like to share on some of the more simple and straightforward ways RAG can be implemented on a local machine.
 
 - Used to be harder to do based on a local setup but it is becoming much easier due to various technological developments
 - Article is showing the best way I have found with minimum addittional installations
