@@ -16,7 +16,8 @@ One of the interesting applications of Generative AI is searching for informatio
 
 - Used to be harder to do based on a local setup but it is becoming much easier due to various technological developments
 - Article is showing the best way I have found with minimum addittional installations
-- 
+
+## Most straightforward - Install directly from NVIDIA
 
 ## Indexing and search
 
