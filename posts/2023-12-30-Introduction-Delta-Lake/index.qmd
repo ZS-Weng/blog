@@ -20,6 +20,19 @@ draft: True
 - Insert link to website and free resource
 - Overall basic operations of delta
 - Follow guide and functions
+- Link to the useful resource on Delta Lake learning
 
 
 ## Introduction
+
+
+## Latest Development in Delta
+
+
+## Ways to think about Delta Lake
+
+
+## Resources
+
+
+

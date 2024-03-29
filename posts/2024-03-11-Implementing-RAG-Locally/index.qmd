@@ -1,0 +1,48 @@
+---
+title: "Simplified Approach to Implementing RAG on a local machine"
+date: "2024-03-13"
+date-modified: "2024-03-13"
+categories: [GenAI, RAG, AI, Machine Learning, Transformer]
+image: "Document Extract Info.png"
+priority: 1
+draft: True
+---
+
+## Introduction
+
+![Image Generated with the prompt: extracting meaningful details from documents]("Document Extract Info.png")
+
+One of the interesting applications of Generative AI is searching for information within your own documents which is termed as Retrieval Augemented Generation or RAG in short. There are many different combinations and software to setup a RAG on a local system.  the ability to perform RAG entirely on a local system looks to be slightly more challenging. In this article, we would like to share on some of the more simple and straightforward ways RAG can be implemented on a local machine without the need to call an API over the internet.
+
+
+## Most straightforward - Install directly from NVIDIA
+
+## Indexing and search
+
+- Revise on Jacquard similarity
+
+## Sentence Bert Transformers Model
+
+### Pair Encoder to be used for search
+
+### Cross Encoder for more accurate score
+
+- Need to check on the limits of the score and what do they mean
+- Potentially this can also be used as a threshold filter to take out irrelevant results to prevetn hallucination
+- https://www.sbert.net/examples/applications/cross-encoder/README.html
+- Use the example sent out in the email
+
+## ChromaDB
+
+## Implementing Language Models Locally
+
+## Further learning
+
+- Resource on prompt engineering: https://www.promptingguide.ai/
+
+## Additional Ideas
+
+- Compare how is RAG search different from the traditional indexing and search
+
+## Conclusion
+
