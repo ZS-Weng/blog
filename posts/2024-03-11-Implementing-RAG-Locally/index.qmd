@@ -16,7 +16,7 @@ One of the interesting applications of Generative AI is searching for informatio
 
 ## Most straightforward - Install directly from NVIDIA
 
-The most straightforward
+The most straightforward way to use RAG on your documents is with the NVIDIA tool chat with rtx which can be downloaded from the NVIDIA website and installed directly. 
 
 - https://www.nvidia.com/en-us/ai-on-rtx/chat-with-rtx-generative-ai/
 
