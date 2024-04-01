@@ -2,7 +2,7 @@
 title: "Simplified Approach to Implementing RAG on a local machine"
 date: "2024-03-13"
 date-modified: "2024-03-13"
-categories: [GenAI, RAG, AI, Machine Learning, Transformer]
+categories: [GenAI, RAG, AI, Machine_Learning, Transformer]
 image: "Document Extract Info.png"
 priority: 1
 draft: True
@@ -14,11 +14,9 @@ draft: True
 
 One of the interesting applications of Generative AI is searching for information within your own documents which is termed as Retrieval Augemented Generation or RAG in short. There are many different combinations and software to setup a RAG on a local system.  the ability to perform RAG entirely on a local system looks to be slightly more challenging. In this article, we would like to share on some of the more simple and straightforward ways RAG can be implemented on a local machine without the need to call an API over the internet.
 
-## Most straightforward - Install directly from NVIDIA
+### Most straightforward - Install directly from NVIDIA
 
-The most straightforward way to use RAG on your documents is with the NVIDIA tool chat with rtx which can be downloaded from the NVIDIA website and installed directly. 
-
-- https://www.nvidia.com/en-us/ai-on-rtx/chat-with-rtx-generative-ai/
+The most straightforward way to experiment chatting with your documents is with the NVIDIA tool ChatRTX demo app which can be downloaded from the NVIDIA website and installed directly. More details about the tool can be found [here](https://www.nvidia.com/en-us/ai-on-rtx/chat-with-rtx-generative-ai/)
 
 ## Indexing and search
 
