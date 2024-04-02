@@ -18,6 +18,8 @@ One of the interesting applications of Generative AI is searching for informatio
 
 The most straightforward way to experiment chatting with your documents is with the NVIDIA tool ChatRTX demo app which can be downloaded from the NVIDIA website and installed directly. More details about the tool can be found [here](https://www.nvidia.com/en-us/ai-on-rtx/chat-with-rtx-generative-ai/)
 
+## High Level illustration of RAG
+
 ## Indexing and search
 
 - Revise on Jacquard similarity
