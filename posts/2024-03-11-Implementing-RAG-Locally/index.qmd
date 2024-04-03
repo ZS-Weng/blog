@@ -20,6 +20,10 @@ The most straightforward way to experiment chatting with your documents is with 
 
 ## High Level illustration of RAG
 
+- Key components to RAG
+- Fill in on details to the blog page
+- Generate an image on the RAG process in steps
+
 ## Indexing and search
 
 - Revise on Jacquard similarity
