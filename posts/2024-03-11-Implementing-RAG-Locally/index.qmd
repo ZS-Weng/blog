@@ -27,8 +27,13 @@ The most straightforward way to experiment chatting with your documents is with 
 ## Indexing and search
 
 - Revise on Jacquard similarity
+- Example on how Jacquard similiarity works
 
 ## Sentence Bert Transformers Model
+
+- Explain about embedding
+- Find out how is the BERT transformers model trained
+- 
 
 ### Pair Encoder to be used for search
 
