@@ -1,0 +1,25 @@
+---
+title: "Exploring Automatic Speech Recognition on Local Machine"
+date: "2024-04-06"
+date-modified: "2024-04-06"
+categories: [ASR, Automatic Speech Recognition, AI, Machine Learning, Transformer]
+image: ".png"
+priority: 9
+draft: True
+---
+
+## Introduction
+
+
+## Setup
+
+- ffmpeg installation and links
+- https://www.wikihow.com/Install-FFmpeg-on-Windows
+- https://ffmpeg.org/download.html
+- https://discuss.huggingface.co/t/audio-classification-pipeline-valueerror-ffmpeg-was-not-found-but-is-required-to-load-audio-files-from-filename/16137/8
+
+- Transformers
+- Comparison of the various Whisper Models
+- Link to the ranking board
+
+##
