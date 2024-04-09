@@ -1,5 +1,5 @@
 ---
-title: "Exploring Automatic Speech Recognition on Local Machine"
+title: "Exploring Automatic Speech Recognition with Whisper"
 date: "2024-04-06"
 date-modified: "2024-04-06"
 categories: [ASR, Automatic Speech Recognition, AI, Machine Learning, Transformer]
