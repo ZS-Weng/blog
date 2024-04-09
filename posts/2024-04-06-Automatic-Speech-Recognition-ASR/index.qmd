@@ -22,6 +22,3 @@ draft: True
 - Comparison of the various Whisper Models
 - Link to the ranking board
 
-## Alternative Setup Nvidia
-
-- hydra-core, pytorch_lightning, librosa 
