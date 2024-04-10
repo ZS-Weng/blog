@@ -22,3 +22,7 @@ draft: True
 - Comparison of the various Whisper Models
 - Link to the ranking board
 
+## Transcribe the audio
+
+
+## Conclusion
