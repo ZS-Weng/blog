@@ -4,7 +4,7 @@ date: "2024-04-06"
 date-modified: "2024-04-06"
 categories: [ASR, Automatic Speech Recognition, AI, Machine Learning, Transformer]
 image: "speech_transcribe.jpg"
-priority: 9
+priority: 3
 draft: True
 ---
 
@@ -14,22 +14,32 @@ draft: True
 
 In a recent engagement with a team that provides secretariat service, there is an opportunity to optimize the existing process of creating meeting minutes. In the current context there is a significant time spent in listening to recorded meeting captured on a voice recorder to ensure comprehensiveness of the points captured.
 
-At some of these offline meetings, confidential issues and sensitive data are often shared. While recording these discussions is necessary for reference, sharing such recordings over the cloud or with third-party transcription services poses security risks. Leakage of confidential information could have severe consequences.
+At some of these offline meetings, confidential issues and sensitive data are often shared. While recording these discussions is necessary for reference, sharing such recordings over the cloud or with third-party transcription services poses security risks. Leakage of confidential information could have severe consequences. As such, we decided to experiment with a local implementation rather than services available in the Cloud. 
+
+Based on our initial exploration of the pre-trained open source models available on Hugging Face Hub, we find that models from the Whisper family can be easily setup and has a high accuracy of transcription. We refer to the comparison of different Hugging Face models at their [leaderboard page](https://huggingface.co/spaces/hf-audio/open_asr_leaderboard)
 
 
+## Initial Setup of ffmpeg
 
-## Setup Whisper
+In order to use the Whisper family of transformer models, there is a need to install ffmpeg first. The steps to setup ffmpeg which I found most straightforward are as follows:
 
-- ffmpeg installation and links
-- https://www.wikihow.com/Install-FFmpeg-on-Windows
-- https://ffmpeg.org/download.html
-- https://discuss.huggingface.co/t/audio-classification-pipeline-valueerror-ffmpeg-was-not-found-but-is-required-to-load-audio-files-from-filename/16137/8
+1. Download installation package from the official site <https://ffmpeg.org/download.html>
+2. Follow the guide in this online article to setup ffmpeg <https://www.wikihow.com/Install-FFmpeg-on-Windows>
+3. Create a new environment for installation just to be safe
+4. Install the following packages:
+    - pip install ffmpeg <https://pypi.org/project/ffmpeg/>
+    - pip install python-ffmpeg <https://pypi.org/project/python-ffmpeg/>
 
-- Transformers
-- Comparison of the various Whisper Models
-- Link to the ranking board
+## Setting up Pytorch, HuggingFace and loading the pre-trained transformers model
+
+
 
 ## Transcribe the audio
 
 
-## Conclusion
+## Next Steps
+
+
+## References
+
+- Models evaluation: https://huggingface.co/learn/audio-course/en/chapter5/evaluation
