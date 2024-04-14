@@ -3,7 +3,7 @@ title: "Simplified Approach to Implementing RAG on a local machine"
 date: "2024-03-13"
 date-modified: "2024-03-13"
 categories: [GenAI, RAG, AI, Machine_Learning, Transformer]
-image: ""
+image: "Document_Extract_Info.png"
 priority: 1
 draft: True
 ---
@@ -40,7 +40,7 @@ The most straightforward way to experiment chatting with your documents is with 
 
 - Need to check on the limits of the score and what do they mean
 - Potentially this can also be used as a threshold filter to take out irrelevant results to prevetn hallucination
-- https://www.sbert.net/examples/applications/cross-encoder/README.html
+- <https://www.sbert.net/examples/applications/cross-encoder/README.html>
 - Use the example sent out in the email
 
 ## ChromaDB
@@ -49,7 +49,7 @@ The most straightforward way to experiment chatting with your documents is with 
 
 ## Further learning
 
-- Resource on prompt engineering: https://www.promptingguide.ai/
+- Resource on prompt engineering: <https://www.promptingguide.ai/>
 
 ## Additional Ideas
 
