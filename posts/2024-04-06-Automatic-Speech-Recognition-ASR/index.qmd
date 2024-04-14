@@ -19,27 +19,70 @@ At some of these offline meetings, confidential issues and sensitive data are of
 Based on our initial exploration of the pre-trained open source models available on Hugging Face Hub, we find that models from the Whisper family can be easily setup and has a high accuracy of transcription. We refer to the comparison of different Hugging Face models at their [leaderboard page](https://huggingface.co/spaces/hf-audio/open_asr_leaderboard)
 
 
-## Initial Setup of ffmpeg
+## Initial Setup
+
+### Installaion and setup of ffmpeg
 
 In order to use the Whisper family of transformer models, there is a need to install ffmpeg first. The steps to setup ffmpeg which I found most straightforward are as follows:
 
 1. Download installation package from the official site <https://ffmpeg.org/download.html>
 2. Follow the guide in this online article to setup ffmpeg <https://www.wikihow.com/Install-FFmpeg-on-Windows>
 3. Create a new environment for installation just to be safe
-4. Install the following packages:
-    - pip install ffmpeg <https://pypi.org/project/ffmpeg/>
-    - pip install python-ffmpeg <https://pypi.org/project/python-ffmpeg/>
 
-## Setting up Pytorch, HuggingFace and loading the pre-trained transformers model
+Generally, this should be sufficient. In case any additional python bindings might be required, I would typically check on libraries.io to find the packages based on a combination of most stars, highest source ranks and updated relatively recently if possible.
+
+### Setting up Pytorch, HuggingFace and loading the pre-trained transformers model
+
+4. Install the pre-requisite python libraries required
+
+    - Pytorch installation: <https://pytorch.org/>
+    - Transformers: <https://huggingface.co/docs/transformers/installation>
+
+## Transcribe the audio with Whisper Models
+
+First we import the necessary libraries.
+```{python}
+#Load Required Libraries
+import torch
+from transformers import AutoModelForSpeechSeq2Seq, AutoProcessor, pipeline
+```
+
+Second, we load the pre-trained model. For the purpose of testing, we load the smallest and fastest distil-whisper small model but the same codes can be used for other models under the Whisper family.
+```{python}
+#Load pre-trained model
+device = "cuda:0" if torch.cuda.is_available() else "cpu"
+torch_dtype = torch.float16 if torch.cuda.is_available() else torch.float32
+
+model_id = "distil-whisper/distil-small.en"
+
+model = AutoModelForSpeechSeq2Seq.from_pretrained(
+    model_id, torch_dtype=torch_dtype, use_safetensors=True
+)
+model.to(device)
+
+processor = AutoProcessor.from_pretrained(model_id)
+```
+
+Third, we load in our sample file and generate the output
+
+```{python}
+pipe = pipeline(
+    "automatic-speech-recognition",
+    model=model,
+    tokenizer=processor.tokenizer,
+    feature_extractor=processor.feature_extractor,
+    max_new_tokens=128,
+    torch_dtype=torch_dtype,
+    device=device,
+)
+
+sample_audio =  "Sample Board Recording.wav"
+pipe(sample_audio)
+```
+
+## Conclusion
 
 
-
-## Transcribe the audio
-
-
-## Next Steps
-
-
-## References
+## Useful Resources
 
 - Models evaluation: https://huggingface.co/learn/audio-course/en/chapter5/evaluation
