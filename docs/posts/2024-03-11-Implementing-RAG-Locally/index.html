@@ -7,9 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Zaishan Weng">
-<meta name="dcterms.date" content="2023-12-31">
+<meta name="dcterms.date" content="2024-03-13">
 
-<title>Zaishan Weng - Introduction to Delta Lake with python</title>
+<title>Zaishan Weng - Simplified Approach to Implementing RAG on a local machine</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -127,11 +127,22 @@ gtag('config', 'G-8TTMHMV8LK', { 'anonymize_ip': true});
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#ideas-overview-brainstorming" id="toc-ideas-overview-brainstorming" class="nav-link active" data-scroll-target="#ideas-overview-brainstorming">Ideas Overview / Brainstorming</a></li>
-  <li><a href="#introduction" id="toc-introduction" class="nav-link" data-scroll-target="#introduction">Introduction</a></li>
-  <li><a href="#latest-development-in-delta" id="toc-latest-development-in-delta" class="nav-link" data-scroll-target="#latest-development-in-delta">Latest Development in Delta</a></li>
-  <li><a href="#ways-to-think-about-delta-lake" id="toc-ways-to-think-about-delta-lake" class="nav-link" data-scroll-target="#ways-to-think-about-delta-lake">Ways to think about Delta Lake</a></li>
-  <li><a href="#resources" id="toc-resources" class="nav-link" data-scroll-target="#resources">Resources</a></li>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a>
+  <ul class="collapse">
+  <li><a href="#most-straightforward---install-directly-from-nvidia" id="toc-most-straightforward---install-directly-from-nvidia" class="nav-link" data-scroll-target="#most-straightforward---install-directly-from-nvidia">Most straightforward - Install directly from NVIDIA</a></li>
+  </ul></li>
+  <li><a href="#high-level-illustration-of-rag" id="toc-high-level-illustration-of-rag" class="nav-link" data-scroll-target="#high-level-illustration-of-rag">High Level illustration of RAG</a></li>
+  <li><a href="#indexing-and-search" id="toc-indexing-and-search" class="nav-link" data-scroll-target="#indexing-and-search">Indexing and search</a></li>
+  <li><a href="#sentence-bert-transformers-model" id="toc-sentence-bert-transformers-model" class="nav-link" data-scroll-target="#sentence-bert-transformers-model">Sentence Bert Transformers Model</a>
+  <ul class="collapse">
+  <li><a href="#pair-encoder-to-be-used-for-search" id="toc-pair-encoder-to-be-used-for-search" class="nav-link" data-scroll-target="#pair-encoder-to-be-used-for-search">Pair Encoder to be used for search</a></li>
+  <li><a href="#cross-encoder-for-more-accurate-score" id="toc-cross-encoder-for-more-accurate-score" class="nav-link" data-scroll-target="#cross-encoder-for-more-accurate-score">Cross Encoder for more accurate score</a></li>
+  </ul></li>
+  <li><a href="#chromadb" id="toc-chromadb" class="nav-link" data-scroll-target="#chromadb">ChromaDB</a></li>
+  <li><a href="#implementing-language-models-locally" id="toc-implementing-language-models-locally" class="nav-link" data-scroll-target="#implementing-language-models-locally">Implementing Language Models Locally</a></li>
+  <li><a href="#further-learning" id="toc-further-learning" class="nav-link" data-scroll-target="#further-learning">Further learning</a></li>
+  <li><a href="#additional-ideas" id="toc-additional-ideas" class="nav-link" data-scroll-target="#additional-ideas">Additional Ideas</a></li>
+  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion</a></li>
   </ul>
 </nav>
     </div>
@@ -140,11 +151,13 @@ gtag('config', 'G-8TTMHMV8LK', { 'anonymize_ip': true});
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Introduction to Delta Lake with python</h1>
+<h1 class="title">Simplified Approach to Implementing RAG on a local machine</h1>
   <div class="quarto-categories">
-    <div class="quarto-category">Data Engineering</div>
-    <div class="quarto-category">parquet</div>
-    <div class="quarto-category">Delta</div>
+    <div class="quarto-category">GenAI</div>
+    <div class="quarto-category">RAG</div>
+    <div class="quarto-category">AI</div>
+    <div class="quarto-category">Machine_Learning</div>
+    <div class="quarto-category">Transformer</div>
   </div>
   </div>
 
@@ -162,14 +175,14 @@ gtag('config', 'G-8TTMHMV8LK', { 'anonymize_ip': true});
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">December 31, 2023</p>
+      <p class="date">March 13, 2024</p>
     </div>
   </div>
   
     <div>
     <div class="quarto-title-meta-heading">Modified</div>
     <div class="quarto-title-meta-contents">
-      <p class="date-modified">Invalid Date</p>
+      <p class="date-modified">March 13, 2024</p>
     </div>
   </div>
     
@@ -178,32 +191,75 @@ gtag('config', 'G-8TTMHMV8LK', { 'anonymize_ip': true});
 
 </header>
 
-<section id="ideas-overview-brainstorming" class="level2">
-<h2 class="anchored" data-anchor-id="ideas-overview-brainstorming">Ideas Overview / Brainstorming</h2>
-<ul>
-<li>Issues with data loaded with csv vs parquet</li>
-<li>Advantages of parquet</li>
-<li>Advantages of Delta and lakehouse construct</li>
-<li>Delta is closely coupled with spark and could not be used in normal python operations</li>
-<li>Rust constuct will be an easy way to learn more about Delta before going into Spark operations</li>
-<li>What is Delta and what are the additions to parquet</li>
-<li>Insert link to website and free resource</li>
-<li>Overall basic operations of delta</li>
-<li>Follow guide and functions</li>
-<li>Link to the useful resource on Delta Lake learning</li>
-</ul>
-</section>
 <section id="introduction" class="level2">
 <h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="&quot;Document_Extract_Info.png&quot;" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Image Generated with the prompt: extracting meaningful details from documents</figcaption><p></p>
+</figure>
+</div>
+<p>One of the interesting applications of Generative AI is searching for information within your own documents which is termed as Retrieval Augemented Generation or RAG in short. There are many different combinations and software to setup a RAG on a local system. the ability to perform RAG entirely on a local system looks to be slightly more challenging. In this article, we would like to share on some of the more simple and straightforward ways RAG can be implemented on a local machine without the need to call an API over the internet.</p>
+<section id="most-straightforward---install-directly-from-nvidia" class="level3">
+<h3 class="anchored" data-anchor-id="most-straightforward---install-directly-from-nvidia">Most straightforward - Install directly from NVIDIA</h3>
+<p>The most straightforward way to experiment chatting with your documents is with the NVIDIA tool ChatRTX demo app which can be downloaded from the NVIDIA website and installed directly. More details about the tool can be found <a href="https://www.nvidia.com/en-us/ai-on-rtx/chat-with-rtx-generative-ai/">here</a></p>
 </section>
-<section id="latest-development-in-delta" class="level2">
-<h2 class="anchored" data-anchor-id="latest-development-in-delta">Latest Development in Delta</h2>
 </section>
-<section id="ways-to-think-about-delta-lake" class="level2">
-<h2 class="anchored" data-anchor-id="ways-to-think-about-delta-lake">Ways to think about Delta Lake</h2>
+<section id="high-level-illustration-of-rag" class="level2">
+<h2 class="anchored" data-anchor-id="high-level-illustration-of-rag">High Level illustration of RAG</h2>
+<ul>
+<li>Key components to RAG</li>
+<li>Fill in on details to the blog page</li>
+<li>Generate an image on the RAG process in steps</li>
+</ul>
 </section>
-<section id="resources" class="level2">
-<h2 class="anchored" data-anchor-id="resources">Resources</h2>
+<section id="indexing-and-search" class="level2">
+<h2 class="anchored" data-anchor-id="indexing-and-search">Indexing and search</h2>
+<ul>
+<li>Revise on Jacquard similarity</li>
+<li>Example on how Jacquard similiarity works</li>
+</ul>
+</section>
+<section id="sentence-bert-transformers-model" class="level2">
+<h2 class="anchored" data-anchor-id="sentence-bert-transformers-model">Sentence Bert Transformers Model</h2>
+<ul>
+<li>Explain about embedding</li>
+<li>Find out how is the BERT transformers model trained</li>
+<li></li>
+</ul>
+<section id="pair-encoder-to-be-used-for-search" class="level3">
+<h3 class="anchored" data-anchor-id="pair-encoder-to-be-used-for-search">Pair Encoder to be used for search</h3>
+</section>
+<section id="cross-encoder-for-more-accurate-score" class="level3">
+<h3 class="anchored" data-anchor-id="cross-encoder-for-more-accurate-score">Cross Encoder for more accurate score</h3>
+<ul>
+<li>Need to check on the limits of the score and what do they mean</li>
+<li>Potentially this can also be used as a threshold filter to take out irrelevant results to prevetn hallucination</li>
+<li>https://www.sbert.net/examples/applications/cross-encoder/README.html</li>
+<li>Use the example sent out in the email</li>
+</ul>
+</section>
+</section>
+<section id="chromadb" class="level2">
+<h2 class="anchored" data-anchor-id="chromadb">ChromaDB</h2>
+</section>
+<section id="implementing-language-models-locally" class="level2">
+<h2 class="anchored" data-anchor-id="implementing-language-models-locally">Implementing Language Models Locally</h2>
+</section>
+<section id="further-learning" class="level2">
+<h2 class="anchored" data-anchor-id="further-learning">Further learning</h2>
+<ul>
+<li>Resource on prompt engineering: https://www.promptingguide.ai/</li>
+</ul>
+</section>
+<section id="additional-ideas" class="level2">
+<h2 class="anchored" data-anchor-id="additional-ideas">Additional Ideas</h2>
+<ul>
+<li>Compare how is RAG search different from the traditional indexing and search</li>
+</ul>
+</section>
+<section id="conclusion" class="level2">
+<h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
 
 
 </section>
