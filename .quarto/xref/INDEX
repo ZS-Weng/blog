@@ -79,5 +79,11 @@
   },
   "posts/2024-01-04-Notes-PySpark/index.qmd": {
     "index.html": "3949ccdd"
+  },
+  "posts/2024-03-11-Implementing-RAG-Locally/index.qmd": {
+    "index.html": "abf4fd14"
+  },
+  "posts/2024-04-06-Automatic-Speech-Recognition-ASR/index.qmd": {
+    "index.html": "4f4bcc8f"
   }
 }
