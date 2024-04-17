@@ -22,7 +22,7 @@ website:
 
   page-footer:
     left: 
-      - "© Copyright 2023 Zaishan Weng"
+      - "© Copyright 2024 Zaishan Weng"
     right:
       - icon: github
         href: https://github.com/ZS-Weng
