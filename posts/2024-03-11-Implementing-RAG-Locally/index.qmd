@@ -21,6 +21,8 @@ The most straightforward way to experiment chatting with your documents is with 
 
 ## High Level illustration of RAG
 
+![Simplified Overview of a RAG system end to end](rag_simplified_overview.png)
+
 - Key components to RAG
 - Fill in on details to the blog page
 - Generate an image on the RAG process in steps
