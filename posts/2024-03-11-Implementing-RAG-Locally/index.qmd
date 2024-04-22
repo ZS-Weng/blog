@@ -28,7 +28,13 @@ There are many useful blogs and resources explaning about Retrieval Augmented Ge
 1. In the first step, relevant text is extracted and consolidated from the source documents.
 2. These documents are broken up into chunks, logical smaller pieces of information.
 3. Each of the text in the chunk is transformed into an embedding which is essentially representing the text in numbers and is usually in a matrix format. 
-4. We perform the same and prepare the query text.
+4. We get the query text.
+5. The query text is also transformed into an embedding and is compared against the collection of document embeddings to find the most relevant chunks of text.
+6. The query, together with the relevant chunks of text are fed into a Large Language Model as part of the context to output a coherent response.
+
+### Concept of Embedding
+
+
 
 ## Indexing and search
 
