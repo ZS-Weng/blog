@@ -17,7 +17,7 @@ One of the interesting applications of Generative AI is searching for informatio
 
 ### Most straightforward - Install directly from NVIDIA
 
-The most straightforward way to experiment chatting with your documents is with the NVIDIA tool ChatRTX demo app which can be downloaded from the NVIDIA website and installed directly. More details about the tool can be found [here](https://www.nvidia.com/en-us/ai-on-rtx/chat-with-rtx-generative-ai/)
+The most straightforward way to experiment chatting with your documents is with the NVIDIA tool ChatRTX demo app which can be downloaded from the NVIDIA website and installed directly. More details about the tool can be found at <https://www.nvidia.com/en-us/ai-on-rtx/chat-with-rtx-generative-ai/>
 
 ## High Level illustration of RAG
 
@@ -34,7 +34,7 @@ There are many useful blogs and resources explaning about Retrieval Augmented Ge
 
 ### Concept of Embedding and sentence embedding
 
-For the concept of embedding, I found that Jeremy Howard explains it best in his free course and the link to the lesson can be found here: <https://course.fast.ai/Lessons/lesson7.html>. In his lecture, he explains about embedding through the recommendation systems technique, collaborative filtering, which is about creating numeric representations of users and movies based on their interactions. In a much more complex manner, words and their positions can be transformed into a numeric representation. Often this is based on training of predition of a masked word. More details about sentence embedding can be found in <>
+For the concept of embedding, I found that Jeremy Howard explains it best in his free course and the link to the lesson can be found here: <https://course.fast.ai/Lessons/lesson7.html>. In his lecture, he explains about embedding through the recommendation systems technique, collaborative filtering, which is about creating numeric representations of users and movies based on their interactions. In a much more complex manner, words and their positions can be transformed into a numeric representation. Often this is based on training of predition of a masked word. More details about sentence embedding can be found in <https://docs.cohere.com/docs/text-embeddings>
 
 
 

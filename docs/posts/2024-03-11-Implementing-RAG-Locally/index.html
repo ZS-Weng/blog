@@ -131,9 +131,11 @@ gtag('config', 'G-8TTMHMV8LK', { 'anonymize_ip': true});
   <ul class="collapse">
   <li><a href="#most-straightforward---install-directly-from-nvidia" id="toc-most-straightforward---install-directly-from-nvidia" class="nav-link" data-scroll-target="#most-straightforward---install-directly-from-nvidia">Most straightforward - Install directly from NVIDIA</a></li>
   </ul></li>
-  <li><a href="#high-level-illustration-of-rag" id="toc-high-level-illustration-of-rag" class="nav-link" data-scroll-target="#high-level-illustration-of-rag">High Level illustration of RAG</a></li>
-  <li><a href="#indexing-and-search" id="toc-indexing-and-search" class="nav-link" data-scroll-target="#indexing-and-search">Indexing and search</a></li>
-  <li><a href="#sentence-bert-transformers-model" id="toc-sentence-bert-transformers-model" class="nav-link" data-scroll-target="#sentence-bert-transformers-model">Sentence Bert Transformers Model</a>
+  <li><a href="#high-level-illustration-of-rag" id="toc-high-level-illustration-of-rag" class="nav-link" data-scroll-target="#high-level-illustration-of-rag">High Level illustration of RAG</a>
+  <ul class="collapse">
+  <li><a href="#concept-of-embedding-and-sentence-embedding" id="toc-concept-of-embedding-and-sentence-embedding" class="nav-link" data-scroll-target="#concept-of-embedding-and-sentence-embedding">Concept of Embedding and sentence embedding</a></li>
+  </ul></li>
+  <li><a href="#indexing-and-search" id="toc-indexing-and-search" class="nav-link" data-scroll-target="#indexing-and-search">Indexing and search</a>
   <ul class="collapse">
   <li><a href="#pair-encoder-to-be-used-for-search" id="toc-pair-encoder-to-be-used-for-search" class="nav-link" data-scroll-target="#pair-encoder-to-be-used-for-search">Pair Encoder to be used for search</a></li>
   <li><a href="#cross-encoder-for-more-accurate-score" id="toc-cross-encoder-for-more-accurate-score" class="nav-link" data-scroll-target="#cross-encoder-for-more-accurate-score">Cross Encoder for more accurate score</a></li>
@@ -213,25 +215,25 @@ gtag('config', 'G-8TTMHMV8LK', { 'anonymize_ip': true});
 <p></p><figcaption class="figure-caption">Simplified Overview of a RAG system end to end</figcaption><p></p>
 </figure>
 </div>
-<ul>
-<li>Key components to RAG</li>
-<li>Fill in on details to the blog page</li>
-<li>Generate an image on the RAG process in steps</li>
-</ul>
+<p>There are many useful blogs and resources explaning about Retrieval Augmented Generation (RAG) and this is my attempt to explain it in simple terms with the basic components.</p>
+<ol type="1">
+<li>In the first step, relevant text is extracted and consolidated from the source documents.</li>
+<li>These documents are broken up into chunks, logical smaller pieces of information.</li>
+<li>Each of the text in the chunk is transformed into an embedding which is essentially representing the text in numbers and is usually in a matrix format.</li>
+<li>We get the query text.</li>
+<li>The query text is also transformed into an embedding and is compared against the collection of document embeddings to find the most relevant chunks of text.</li>
+<li>The query, together with the relevant chunks of text are fed into a Large Language Model as part of the context to output a coherent response.</li>
+</ol>
+<section id="concept-of-embedding-and-sentence-embedding" class="level3">
+<h3 class="anchored" data-anchor-id="concept-of-embedding-and-sentence-embedding">Concept of Embedding and sentence embedding</h3>
+<p>For the concept of embedding, I found that Jeremy Howard explains it best in his free course and the link to the lesson can be found here: <a href="https://course.fast.ai/Lessons/lesson7.html" class="uri">https://course.fast.ai/Lessons/lesson7.html</a>. In his lecture, he explains about embedding through the recommendation systems technique, collaborative filtering, which is about creating numeric representations of users and movies based on their interactions. In a much more complex manner, words and their positions can be transformed into a numeric representation. Often this is based on training of predition of a masked word. More details about sentence embedding can be found in <a href="https://docs.cohere.com/docs/text-embeddings" class="uri">https://docs.cohere.com/docs/text-embeddings</a></p>
+</section>
 </section>
 <section id="indexing-and-search" class="level2">
 <h2 class="anchored" data-anchor-id="indexing-and-search">Indexing and search</h2>
 <ul>
 <li>Revise on Jacquard similarity</li>
 <li>Example on how Jacquard similiarity works</li>
-</ul>
-</section>
-<section id="sentence-bert-transformers-model" class="level2">
-<h2 class="anchored" data-anchor-id="sentence-bert-transformers-model">Sentence Bert Transformers Model</h2>
-<ul>
-<li>Explain about embedding</li>
-<li>Find out how is the BERT transformers model trained</li>
-<li></li>
 </ul>
 <section id="pair-encoder-to-be-used-for-search" class="level3">
 <h3 class="anchored" data-anchor-id="pair-encoder-to-be-used-for-search">Pair Encoder to be used for search</h3>
