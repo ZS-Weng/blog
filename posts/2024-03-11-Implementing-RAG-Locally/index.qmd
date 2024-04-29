@@ -36,9 +36,11 @@ There are many useful blogs and resources explaning about Retrieval Augmented Ge
 
 For the concept of embedding, I found that Jeremy Howard explains it best in his free course and the link to the lesson can be found here: <https://course.fast.ai/Lessons/lesson7.html>. In his lecture, he explains about embedding through the recommendation systems technique, collaborative filtering, which is about creating numeric representations of users and movies based on their interactions. In a much more complex manner, words and their positions can be transformed into a numeric representation. Often this is based on training of predition of a masked word. More details about sentence embedding can be found in <https://docs.cohere.com/docs/text-embeddings>
 
+### Matching between query and existing information source
+
+For a retrieval augemented generation, there will be a base collection of information sources which can come from documents, online faqs, text information in a database etc. The documet will be broken up into smaller chunks and an embedding will be generated for each chunk. The query will then be compared against each chunk of information and find the top number of most similar results. 
 
 
-## Indexing and search
 
 - Revise on Jacquard similarity
 - Example on how Jacquard similiarity works
