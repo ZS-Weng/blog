@@ -40,17 +40,9 @@ For the concept of embedding, I found that Jeremy Howard explains it best in his
 
 For a retrieval augemented generation, there will be a base collection of information sources which can come from documents, online faqs, text information in a database etc. The documet will be broken up into smaller chunks and an embedding will be generated for each chunk. The query will then be compared against each chunk of information and find the top number of most similar results.
 
-Taking inspiration for an article on the basics of RAG <https://learnbybuilding.ai/tutorials/rag-from-scratch>, 
+Taking inspiration for an article on the basics of RAG <https://learnbybuilding.ai/tutorials/rag-from-scratch>, one of the common methods of measuring similarity is using Jacquard similiarity which is employed for the evaluation of object detection algorithms. The image below shows a graphical overview of how the jacquard similarity coefficient is calculated. 
 
 
-
-
-
-- Revise on Jacquard similarity
-- Example on how Jacquard similiarity works
-
-
-### Pair Encoder to be used for search
 
 ### Cross Encoder for more accurate score
 
