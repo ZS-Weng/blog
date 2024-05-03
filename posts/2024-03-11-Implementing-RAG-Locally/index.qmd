@@ -32,7 +32,6 @@ There are many useful blogs and resources explaning about Retrieval Augmented Ge
 5. The query text is also transformed into an embedding and is compared against the collection of document embeddings to find the most relevant chunks of text.
 6. The query, together with the relevant chunks of text are fed into a Large Language Model as part of the context to output a coherent response.
 
-
 ## Similarity matching of sentences
 
 For a retrieval augemented generation, there will be a base collection of information sources which can come from documents, online faqs, text information in a database etc. The documet will be broken up into smaller chunks and an embedding will be generated for each chunk. The query will then be compared against each chunk of information and find the top number of most similar results.
@@ -52,7 +51,7 @@ corpus_of_documents = [
     "The forecast predicts heavy rain for the entire week.",
     "A week of intense rainfall is expected according to the weather report.",
     "The weather outlook indicates a week-long period of intense rainfall.",
-    "The weather report anticipates a complete absence of rainfall throughout the week."
+    "The weather report anticipates dry weather throughout the week."
 ]
 ```
 
@@ -73,22 +72,15 @@ def return_response(query, corpus):
         similarities.append(similarity)
     return corpus_of_documents[similarities.index(max(similarities))]
 ```
-As we can see, based on the similarity using jacquard coefficent, it is not so useful for finding sentences with the same meaning since the sentence output is the opposite of the query. It is more about finding sentences with the highest proportion of words in common.
+We compare the sentences to a sample query: "The forecast predicts dry weather for the week.". As we can see, based on the similarity using jacquard coefficent, it is not so useful for finding sentences with the same meaning since the sentence output is the opposite of the query. It is more about finding sentences with the highest proportion of words in common.
 
 ![Output from Jacquard Similarity function](jacquard_similarity_output.png)
 
-## Concept of embedding and sentence embedding
+### Similarity matching based on sentence embedding
 
 For the concept of embedding, I found that Jeremy Howard explains it best in his free course and the link to the lesson can be found here: <https://course.fast.ai/Lessons/lesson7.html>. In his lecture, he explains about embedding through the recommendation systems technique, collaborative filtering, which is about creating numeric representations of users and movies based on their interactions. In a similar manner, words and their positions can be transformed into a numeric representation. More details about sentence embedding can be found in <https://docs.cohere.com/docs/text-embeddings>
 
-### Cross Encoder for more accurate score
-
-- Need to check on the limits of the score and what do they mean
-- Potentially this can also be used as a threshold filter to take out irrelevant results to prevetn hallucination
-- <https://www.sbert.net/examples/applications/cross-encoder/README.html>
-- Use the example sent out in the email
-
-## ChromaDB
+Using embeddings, the matching of similar sentences based on their meanings become more accurate. 
 
 ## Implementing Language Models Locally
 
