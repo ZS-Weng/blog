@@ -1,10 +1,10 @@
 ---
-title: "Simplified Approach to Implementing RAG on a local machine"
+title: "Simplified understanding of Retrieval Augmented Generation (RAG)"
 date: "2024-03-13"
 date-modified: "2024-03-13"
 categories: [GenAI, RAG, AI, Machine_Learning, Transformer]
 image: "Document_Extract_Info.png"
-priority: 1
+priority: 5
 draft: True
 ---
 
@@ -80,17 +80,42 @@ We compare the sentences to a sample query: "The forecast predicts dry weather f
 
 For the concept of embedding, I found that Jeremy Howard explains it best in his free course and the link to the lesson can be found here: <https://course.fast.ai/Lessons/lesson7.html>. In his lecture, he explains about embedding through the recommendation systems technique, collaborative filtering, which is about creating numeric representations of users and movies based on their interactions. In a similar manner, words and their positions can be transformed into a numeric representation. More details about sentence embedding can be found in <https://docs.cohere.com/docs/text-embeddings>
 
-Using embeddings, the matching of similar sentences based on their meanings become more accurate. 
+Using embeddings, the matching of similar sentences based on their meanings become more accurate. Some of the popular models in terms of the speed of inference and model accuracy can be found at the Sentence Bert webiste <https://www.sbert.net/docs/pretrained_models.html>. Using the all-MiniLM-L6-v2 model which is one of the most common starting models, we are able to get a more accurate search somewhat based more on meanings rather than purely common words as shown below. 
 
-## Implementing Language Models Locally
+```python
+from sentence_transformers import SentenceTransformer, util
+# Initialize the model
+model = SentenceTransformer('all-MiniLM-L6-v2')
+# Convert list of sentences into embedding
+corpus_embeddings = model.encode(corpus_of_documents)
+# Convert query into embedding and perform matching
+query_embedding = model.encode(query, convert_to_tensor=True)
+results = util.semantic_search(query_embedding, corpus_embeddings, top_k=5)
+most_similar_sentence = corpus_of_documents[results[0][0]['corpus_id']]
+print(f"query: {query}\nclosest sentence: {most_similar_sentence}")
+```
+The output from the sentence embedding code is shown below. We can see that the closest matching sentence from the sentence embedding is not only dependant on the number of common words.
 
-## Further learning
+![Output from sentence embedding similiarity matching](sentence_embedding_output.png)
 
-- Resource on prompt engineering: <https://www.promptingguide.ai/>
+## Feeding the query and context into a Language Model
 
-## Additional Ideas
+Once the top closest items are generated, they can be prepared as context as input to feed into a language model. That combined with the query are fed into a language model usually in a format optimized for RAG. An example can be found below:
 
-- Compare how is RAG search different from the traditional indexing and search
+```python
 
-## Conclusion
+qa_prompt_tmpl_str = (
+    "Context information is below.\n"
+    "---------------------\n"
+    "{context_str}\n"
+    "---------------------\n"
+    "Given the context information and not prior knowledge, "
+    "answer the query.\n"
+    "Query: {query_str}\n"
+    "Answer: "
+)
+```
 
+## Next Steps
+
+In this article, we examined the foundational concept of similarity matching and preparation of the context together with the query to be fed into a Large Language Model (LLM). There has been many developments in terms of making LLMs more efficient or quantizing a LLM such that it can be run on a local machine even without GPU. We target to follow up with the next article on the simplest way to implement a RAG solution locally ideally using a CPU for inference. 
