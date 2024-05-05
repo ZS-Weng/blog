@@ -7,9 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Zaishan Weng">
-<meta name="dcterms.date" content="2024-03-13">
+<meta name="dcterms.date" content="2024-05-05">
 
-<title>Zaishan Weng - Simplified Approach to Implementing RAG on a local machine</title>
+<title>Zaishan Weng - Simplified understanding of Retrieval Augmented Generation (RAG)</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -22,6 +22,69 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1.6em;
   vertical-align: middle;
 }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 
@@ -132,17 +195,13 @@ gtag('config', 'G-8TTMHMV8LK', { 'anonymize_ip': true});
   <li><a href="#most-straightforward---install-directly-from-nvidia" id="toc-most-straightforward---install-directly-from-nvidia" class="nav-link" data-scroll-target="#most-straightforward---install-directly-from-nvidia">Most straightforward - Install directly from NVIDIA</a></li>
   </ul></li>
   <li><a href="#high-level-illustration-of-rag" id="toc-high-level-illustration-of-rag" class="nav-link" data-scroll-target="#high-level-illustration-of-rag">High Level illustration of RAG</a></li>
-  <li><a href="#indexing-and-search" id="toc-indexing-and-search" class="nav-link" data-scroll-target="#indexing-and-search">Indexing and search</a></li>
-  <li><a href="#sentence-bert-transformers-model" id="toc-sentence-bert-transformers-model" class="nav-link" data-scroll-target="#sentence-bert-transformers-model">Sentence Bert Transformers Model</a>
+  <li><a href="#similarity-matching-of-sentences" id="toc-similarity-matching-of-sentences" class="nav-link" data-scroll-target="#similarity-matching-of-sentences">Similarity matching of sentences</a>
   <ul class="collapse">
-  <li><a href="#pair-encoder-to-be-used-for-search" id="toc-pair-encoder-to-be-used-for-search" class="nav-link" data-scroll-target="#pair-encoder-to-be-used-for-search">Pair Encoder to be used for search</a></li>
-  <li><a href="#cross-encoder-for-more-accurate-score" id="toc-cross-encoder-for-more-accurate-score" class="nav-link" data-scroll-target="#cross-encoder-for-more-accurate-score">Cross Encoder for more accurate score</a></li>
+  <li><a href="#basic-similarity-using-jacquard-similarity" id="toc-basic-similarity-using-jacquard-similarity" class="nav-link" data-scroll-target="#basic-similarity-using-jacquard-similarity">Basic similarity using Jacquard Similarity</a></li>
+  <li><a href="#similarity-matching-based-on-sentence-embedding" id="toc-similarity-matching-based-on-sentence-embedding" class="nav-link" data-scroll-target="#similarity-matching-based-on-sentence-embedding">Similarity matching based on sentence embedding</a></li>
   </ul></li>
-  <li><a href="#chromadb" id="toc-chromadb" class="nav-link" data-scroll-target="#chromadb">ChromaDB</a></li>
-  <li><a href="#implementing-language-models-locally" id="toc-implementing-language-models-locally" class="nav-link" data-scroll-target="#implementing-language-models-locally">Implementing Language Models Locally</a></li>
-  <li><a href="#further-learning" id="toc-further-learning" class="nav-link" data-scroll-target="#further-learning">Further learning</a></li>
-  <li><a href="#additional-ideas" id="toc-additional-ideas" class="nav-link" data-scroll-target="#additional-ideas">Additional Ideas</a></li>
-  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion</a></li>
+  <li><a href="#feeding-the-query-and-context-into-a-language-model" id="toc-feeding-the-query-and-context-into-a-language-model" class="nav-link" data-scroll-target="#feeding-the-query-and-context-into-a-language-model">Feeding the query and context into a Language Model</a></li>
+  <li><a href="#next-steps" id="toc-next-steps" class="nav-link" data-scroll-target="#next-steps">Next Steps</a></li>
   </ul>
 </nav>
     </div>
@@ -151,7 +210,7 @@ gtag('config', 'G-8TTMHMV8LK', { 'anonymize_ip': true});
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Simplified Approach to Implementing RAG on a local machine</h1>
+<h1 class="title">Simplified understanding of Retrieval Augmented Generation (RAG)</h1>
   <div class="quarto-categories">
     <div class="quarto-category">GenAI</div>
     <div class="quarto-category">RAG</div>
@@ -175,14 +234,14 @@ gtag('config', 'G-8TTMHMV8LK', { 'anonymize_ip': true});
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">March 13, 2024</p>
+      <p class="date">May 5, 2024</p>
     </div>
   </div>
   
     <div>
     <div class="quarto-title-meta-heading">Modified</div>
     <div class="quarto-title-meta-contents">
-      <p class="date-modified">March 13, 2024</p>
+      <p class="date-modified">May 5, 2024</p>
     </div>
   </div>
     
@@ -193,67 +252,124 @@ gtag('config', 'G-8TTMHMV8LK', { 'anonymize_ip': true});
 
 <section id="introduction" class="level2">
 <h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Document_Extract_Info.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Image Generated with the prompt info extraction from document</figcaption><p></p>
+</figure>
+</div>
 <p>One of the interesting applications of Generative AI is searching for information within your own documents which is termed as Retrieval Augemented Generation or RAG in short. There are many different combinations and software to setup a RAG on a local system. the ability to perform RAG entirely on a local system looks to be slightly more challenging. In this article, we would like to share on some of the more simple and straightforward ways RAG can be implemented on a local machine without the need to call an API over the internet.</p>
 <section id="most-straightforward---install-directly-from-nvidia" class="level3">
 <h3 class="anchored" data-anchor-id="most-straightforward---install-directly-from-nvidia">Most straightforward - Install directly from NVIDIA</h3>
-<p>The most straightforward way to experiment chatting with your documents is with the NVIDIA tool ChatRTX demo app which can be downloaded from the NVIDIA website and installed directly. More details about the tool can be found <a href="https://www.nvidia.com/en-us/ai-on-rtx/chat-with-rtx-generative-ai/">here</a></p>
+<p>The most straightforward way to experiment chatting with your documents is with the NVIDIA tool ChatRTX demo app which can be downloaded from the NVIDIA website and installed directly. More details about the tool can be found at <a href="https://www.nvidia.com/en-us/ai-on-rtx/chat-with-rtx-generative-ai/" class="uri">https://www.nvidia.com/en-us/ai-on-rtx/chat-with-rtx-generative-ai/</a></p>
 </section>
 </section>
 <section id="high-level-illustration-of-rag" class="level2">
 <h2 class="anchored" data-anchor-id="high-level-illustration-of-rag">High Level illustration of RAG</h2>
-<ul>
-<li>Key components to RAG</li>
-<li>Fill in on details to the blog page</li>
-<li>Generate an image on the RAG process in steps</li>
-</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="rag_simplified_overview.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Simplified Overview of a RAG system end to end</figcaption><p></p>
+</figure>
+</div>
+<p>There are many useful blogs and resources explaning about Retrieval Augmented Generation (RAG) and this is my attempt to explain it in simple terms with the basic components.</p>
+<ol type="1">
+<li>In the first step, relevant text is extracted and consolidated from the source documents.</li>
+<li>These documents are broken up into chunks, logical smaller pieces of information.</li>
+<li>Each of the text in the chunk is transformed into an embedding which is essentially representing the text in numbers and is usually in a matrix format.</li>
+<li>We get the query text.</li>
+<li>The query text is also transformed into an embedding and is compared against the collection of document embeddings to find the most relevant chunks of text.</li>
+<li>The query, together with the relevant chunks of text are fed into a Large Language Model as part of the context to output a coherent response.</li>
+</ol>
 </section>
-<section id="indexing-and-search" class="level2">
-<h2 class="anchored" data-anchor-id="indexing-and-search">Indexing and search</h2>
-<ul>
-<li>Revise on Jacquard similarity</li>
-<li>Example on how Jacquard similiarity works</li>
-</ul>
+<section id="similarity-matching-of-sentences" class="level2">
+<h2 class="anchored" data-anchor-id="similarity-matching-of-sentences">Similarity matching of sentences</h2>
+<p>For a retrieval augemented generation, there will be a base collection of information sources which can come from documents, online faqs, text information in a database etc. The documet will be broken up into smaller chunks and an embedding will be generated for each chunk. The query will then be compared against each chunk of information and find the top number of most similar results.</p>
+<section id="basic-similarity-using-jacquard-similarity" class="level3">
+<h3 class="anchored" data-anchor-id="basic-similarity-using-jacquard-similarity">Basic similarity using Jacquard Similarity</h3>
+<p>Taking inspiration for an article on the basics of RAG <a href="https://learnbybuilding.ai/tutorials/rag-from-scratch" class="uri">https://learnbybuilding.ai/tutorials/rag-from-scratch</a>, one of the common methods of measuring similarity is using Jacquard similiarity which is employed for the evaluation of object detection algorithms. The image below shows a graphical overview of how the jacquard similarity coefficient is calculated.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="jacquard_similarity_wiki.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Jacquard similarity coefficient calculation</figcaption><p></p>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="jacquard_simililarity_object_detection_bounding_boxes.jpg" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Jacquard similarity used in object detection</figcaption><p></p>
+</figure>
+</div>
+<p>First we have a collection of sentences to from a corpus. In our simple example, the corpus consist of four sentences with the first three having the same meaning, being the paraphrase of each other while the last sentence has the opposite meaning to the first sentence.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>corpus_of_documents <span class="op">=</span> [</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">"The forecast predicts heavy rain for the entire week."</span>,</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"A week of intense rainfall is expected according to the weather report."</span>,</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">"The weather outlook indicates a week-long period of intense rainfall."</span>,</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">"The weather report anticipates dry weather throughout the week."</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Next we define the simple functions to calculate the coefficients and find the closest sentence.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> jaccard_similarity(query, document):</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    query <span class="op">=</span> query.lower().split(<span class="st">" "</span>)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    document <span class="op">=</span> document.lower().split(<span class="st">" "</span>)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    intersection <span class="op">=</span> <span class="bu">set</span>(query).intersection(<span class="bu">set</span>(document))</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    union <span class="op">=</span> <span class="bu">set</span>(query).union(<span class="bu">set</span>(document))</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="bu">len</span>(intersection)<span class="op">/</span><span class="bu">len</span>(union)</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> return_response(query, corpus):</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>    similarities <span class="op">=</span> []</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> doc <span class="kw">in</span> corpus:</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>        similarity <span class="op">=</span> jaccard_similarity(user_input, doc)</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>        similarities.append(similarity)</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> corpus_of_documents[similarities.index(<span class="bu">max</span>(similarities))]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>We compare the sentences to a sample query: “The forecast predicts dry weather for the week.”. As we can see, based on the similarity using jacquard coefficent, it is not so useful for finding sentences with the same meaning since the sentence output is the opposite of the query. It is more about finding sentences with the highest proportion of words in common.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="jacquard_similarity_output.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Output from Jacquard Similarity function</figcaption><p></p>
+</figure>
+</div>
 </section>
-<section id="sentence-bert-transformers-model" class="level2">
-<h2 class="anchored" data-anchor-id="sentence-bert-transformers-model">Sentence Bert Transformers Model</h2>
-<ul>
-<li>Explain about embedding</li>
-<li>Find out how is the BERT transformers model trained</li>
-<li></li>
-</ul>
-<section id="pair-encoder-to-be-used-for-search" class="level3">
-<h3 class="anchored" data-anchor-id="pair-encoder-to-be-used-for-search">Pair Encoder to be used for search</h3>
+<section id="similarity-matching-based-on-sentence-embedding" class="level3">
+<h3 class="anchored" data-anchor-id="similarity-matching-based-on-sentence-embedding">Similarity matching based on sentence embedding</h3>
+<p>For the concept of embedding, I found that Jeremy Howard explains it best in his free course and the link to the lesson can be found here: <a href="https://course.fast.ai/Lessons/lesson7.html" class="uri">https://course.fast.ai/Lessons/lesson7.html</a>. In his lecture, he explains about embedding through the recommendation systems technique, collaborative filtering, which is about creating numeric representations of users and movies based on their interactions. In a similar manner, words and their positions can be transformed into a numeric representation. More details about sentence embedding can be found in <a href="https://docs.cohere.com/docs/text-embeddings" class="uri">https://docs.cohere.com/docs/text-embeddings</a></p>
+<p>Using embeddings, the matching of similar sentences based on their meanings become more accurate. Some of the popular models in terms of the speed of inference and model accuracy can be found at the Sentence Bert webiste <a href="https://www.sbert.net/docs/pretrained_models.html" class="uri">https://www.sbert.net/docs/pretrained_models.html</a>. Using the all-MiniLM-L6-v2 model which is one of the most common starting models, we are able to get a more accurate search somewhat based more on meanings rather than purely common words as shown below.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sentence_transformers <span class="im">import</span> SentenceTransformer, util</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Initialize the model</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> SentenceTransformer(<span class="st">'all-MiniLM-L6-v2'</span>)</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert list of sentences into embedding</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>corpus_embeddings <span class="op">=</span> model.encode(corpus_of_documents)</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert query into embedding and perform matching</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>query_embedding <span class="op">=</span> model.encode(query, convert_to_tensor<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>results <span class="op">=</span> util.semantic_search(query_embedding, corpus_embeddings, top_k<span class="op">=</span><span class="dv">5</span>)</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>most_similar_sentence <span class="op">=</span> corpus_of_documents[results[<span class="dv">0</span>][<span class="dv">0</span>][<span class="st">'corpus_id'</span>]]</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"query: </span><span class="sc">{</span>query<span class="sc">}</span><span class="ch">\n</span><span class="ss">closest sentence: </span><span class="sc">{</span>most_similar_sentence<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>The output from the sentence embedding code is shown below. We can see that the closest matching sentence from the sentence embedding is not only dependant on the number of common words.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="sentence_embedding_output.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Output from sentence embedding similiarity matching</figcaption><p></p>
+</figure>
+</div>
 </section>
-<section id="cross-encoder-for-more-accurate-score" class="level3">
-<h3 class="anchored" data-anchor-id="cross-encoder-for-more-accurate-score">Cross Encoder for more accurate score</h3>
-<ul>
-<li>Need to check on the limits of the score and what do they mean</li>
-<li>Potentially this can also be used as a threshold filter to take out irrelevant results to prevetn hallucination</li>
-<li><a href="https://www.sbert.net/examples/applications/cross-encoder/README.html" class="uri">https://www.sbert.net/examples/applications/cross-encoder/README.html</a></li>
-<li>Use the example sent out in the email</li>
-</ul>
 </section>
+<section id="feeding-the-query-and-context-into-a-language-model" class="level2">
+<h2 class="anchored" data-anchor-id="feeding-the-query-and-context-into-a-language-model">Feeding the query and context into a Language Model</h2>
+<p>Once the top closest items are generated, they can be prepared as context as input to feed into a language model. That combined with the query are fed into a language model usually in a format optimized for RAG. An example can be found below:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>qa_prompt_tmpl_str <span class="op">=</span> (</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Context information is below.</span><span class="ch">\n</span><span class="st">"</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">"---------------------</span><span class="ch">\n</span><span class="st">"</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">"</span><span class="sc">{context_str}</span><span class="ch">\n</span><span class="st">"</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">"---------------------</span><span class="ch">\n</span><span class="st">"</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Given the context information and not prior knowledge, "</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>    <span class="st">"answer the query.</span><span class="ch">\n</span><span class="st">"</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Query: </span><span class="sc">{query_str}</span><span class="ch">\n</span><span class="st">"</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Answer: "</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="chromadb" class="level2">
-<h2 class="anchored" data-anchor-id="chromadb">ChromaDB</h2>
-</section>
-<section id="implementing-language-models-locally" class="level2">
-<h2 class="anchored" data-anchor-id="implementing-language-models-locally">Implementing Language Models Locally</h2>
-</section>
-<section id="further-learning" class="level2">
-<h2 class="anchored" data-anchor-id="further-learning">Further learning</h2>
-<ul>
-<li>Resource on prompt engineering: <a href="https://www.promptingguide.ai/" class="uri">https://www.promptingguide.ai/</a></li>
-</ul>
-</section>
-<section id="additional-ideas" class="level2">
-<h2 class="anchored" data-anchor-id="additional-ideas">Additional Ideas</h2>
-<ul>
-<li>Compare how is RAG search different from the traditional indexing and search</li>
-</ul>
-</section>
-<section id="conclusion" class="level2">
-<h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
+<section id="next-steps" class="level2">
+<h2 class="anchored" data-anchor-id="next-steps">Next Steps</h2>
+<p>In this article, we examined the foundational concept of similarity matching and preparation of the context together with the query to be fed into a Large Language Model (LLM). There has been many developments in terms of making LLMs more efficient or quantizing a LLM such that it can be run on a local machine even without GPU. We target to follow up with the next article on the simplest way to implement a RAG solution locally ideally using a CPU for inference.</p>
 
 
 </section>
@@ -398,7 +514,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     <div class="nav-footer-left">
       <ul class="footer-items list-unstyled">
     <li class="nav-item">
- © Copyright 2023 Zaishan Weng
+ © Copyright 2024 Zaishan Weng
   </li>  
 </ul>
     </div>   
