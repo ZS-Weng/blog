@@ -1,11 +1,11 @@
 ---
 title: "Simplified understanding of Retrieval Augmented Generation (RAG)"
-date: "2024-03-13"
-date-modified: "2024-03-13"
+date: "2024-05-05"
+date-modified: "2024-05-05"
 categories: [GenAI, RAG, AI, Machine_Learning, Transformer]
 image: "Document_Extract_Info.png"
 priority: 5
-draft: True
+draft: False
 ---
 
 ## Introduction
