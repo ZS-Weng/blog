@@ -7,3 +7,12 @@ image: ".png"
 priority: 9
 draft: True
 ---
+
+# Introduction
+
+- Running locally has been a challenge due to the large size of language of models
+- 
+
+# Apple Open ELM
+
+#
