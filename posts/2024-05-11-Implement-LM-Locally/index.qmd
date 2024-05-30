@@ -11,7 +11,8 @@ draft: True
 # Introduction
 
 - Running locally has been a challenge due to the large size of language of models
-- 
+- Quantization
+- Running models small enough locally
 
 # Apple Open ELM
 
