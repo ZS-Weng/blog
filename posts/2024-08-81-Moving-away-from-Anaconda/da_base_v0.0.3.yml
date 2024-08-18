@@ -1,0 +1,36 @@
+name: da_base_0.0.3
+channels:
+  - conda-forge
+dependencies:
+  - beautifulsoup4==4.12
+  - python==3.12.4
+  - black==24.4
+  - bokeh==3.4
+  - cryptography==42.0
+  - dask==2024.5
+  - flask==3.0
+  - gensim
+  - imbalanced-learn==0.12
+  - ipykernel==6.28
+  - ipython==8.25
+  - jupyterlab
+  - llvmlite==0.42
+  - matplotlib==3.8
+  - networkx==3.2
+  - nltk==3.8
+  - notebook
+  - numba==0.59
+  - pandas==2.2
+  - pillow==10.3
+  - plotly==5.22
+  - pyarrow==14.0
+  - regex
+  - requests
+  - scikit-learn==1.4
+  - scipy==1.12
+  - seaborn==0.13
+  - setuptools
+  - streamlit==1.32
+  - tqdm==4.66
+  - openpyxl #For Excel xlsx IO
+  - python-docx #For Word docx IO

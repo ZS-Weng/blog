@@ -1,0 +1,19 @@
+---
+title: "Title Here"
+date: "YYYY-MM-DD"
+date-modified: "YYYY-MM-DD"
+categories: [DocVQA, Data Science, AI, Machine Learning, Transformer, Document Understanding]
+image: ".png"
+priority: 9
+draft: True
+---
+
+# Introduction
+
+- Running locally has been a challenge due to the large size of language of models
+- Quantization
+- Running models small enough locally
+
+# Apple Open ELM
+
+#

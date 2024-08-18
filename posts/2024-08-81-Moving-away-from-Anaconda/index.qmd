@@ -1,0 +1,9 @@
+---
+title: "Title Here"
+date: "YYYY-MM-DD"
+date-modified: "YYYY-MM-DD"
+categories: [DocVQA, Data Science, AI, Machine Learning, Transformer, Document Understanding]
+image: ".png"
+priority: 9
+draft: True
+---
