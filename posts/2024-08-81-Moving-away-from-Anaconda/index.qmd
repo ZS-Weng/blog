@@ -1,9 +1,19 @@
 ---
-title: "Title Here"
+title: "Migrating to MiniForge from Anaconda on local installation"
 date: "YYYY-MM-DD"
 date-modified: "YYYY-MM-DD"
-categories: [DocVQA, Data Science, AI, Machine Learning, Transformer, Document Understanding]
+categories: [Setup, Conda, Python Libraries]
 image: ".png"
 priority: 9
 draft: True
 ---
+
+## Introduction
+
+
+## Setting up MiniConda instead of Anaconda
+
+
+## 
+
+
