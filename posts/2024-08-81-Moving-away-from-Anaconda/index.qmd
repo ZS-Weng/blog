@@ -1,0 +1,19 @@
+---
+title: "Strategies and lessons for implementing Generative AI in the organization"
+date: "YYYY-MM-DD"
+date-modified: "YYYY-MM-DD"
+categories: [Generative AI, Conda, Python Libraries]
+image: ".png"
+priority: 9
+draft: True
+---
+
+## Introduction
+
+
+## Setting up MiniConda instead of Anaconda
+
+
+## 
+
+
