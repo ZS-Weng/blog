@@ -1,9 +1,19 @@
 ---
-title: "Title Here"
+title: "Strategies and lessons for implementing Generative AI in the organization"
 date: "YYYY-MM-DD"
 date-modified: "YYYY-MM-DD"
-categories: [DocVQA, Data Science, AI, Machine Learning, Transformer, Document Understanding]
+categories: [Generative AI, AI, Strategy]
 image: ".png"
 priority: 9
 draft: True
 ---
+
+## Introduction
+
+
+## Setting up Generative AI solutions research
+
+
+## Useful Resources
+
+## Responsible AI

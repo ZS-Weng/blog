@@ -1,5 +1,5 @@
 ---
-title: "Strategies and lessons for implementing Generative AI in the organization"
+title: "Implementing Miniconda in organization due to recent changes in Anaconda licensing"
 date: "YYYY-MM-DD"
 date-modified: "YYYY-MM-DD"
 categories: [Generative AI, AI, Strategy]
@@ -11,9 +11,10 @@ draft: True
 ## Introduction
 
 
-## Setting up MiniConda instead of Anaconda
+## Ensuring python packages are secured
+
+SCA (Software Component Analysis)
 
 
-## 
 
 
