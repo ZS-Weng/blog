@@ -16,5 +16,7 @@ draft: True
 SCA (Software Component Analysis)
 
 
+https://snyk.io/advisor/check/python
+
 
 
