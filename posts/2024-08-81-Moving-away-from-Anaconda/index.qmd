@@ -2,7 +2,7 @@
 title: "Implementing Miniconda in organization due to recent changes in Anaconda licensing"
 date: "YYYY-MM-DD"
 date-modified: "YYYY-MM-DD"
-categories: [Generative AI, AI, Strategy]
+categories: [Data Infrastructure, Mini Conda]
 image: ".png"
 priority: 9
 draft: True
