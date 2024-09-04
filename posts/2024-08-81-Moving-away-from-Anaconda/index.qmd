@@ -10,6 +10,10 @@ draft: True
 
 ## Introduction
 
+## Minimize package conflicts
+
+##
+
 
 ## Ensuring python packages are secured
 
