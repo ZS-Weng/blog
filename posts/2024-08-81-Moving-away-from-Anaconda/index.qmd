@@ -15,12 +15,25 @@ draft: True
 ##
 
 
-## Ensuring python packages are secured
+## Checking on open-source python packages security
 
 SCA (Software Component Analysis)
 
 
 https://snyk.io/advisor/check/python
 
+Reference link for details: https://docs.snyk.io/snyk-cli/scan-and-maintain-projects-using-the-cli/snyk-cli-for-open-source
+
+Step 1: Go to this page https://snyk.io/product/open-source-security-management/, scroll down and click start free with Google or Github
+
+Step 2: Login and follow the codes to install snyk.exe
+
+Step 3: Go to conda environment setup after packing and run command:
+
+pip list --format=freeze > requirements.txt
+
+Step 4: Copy the snyk.exe file to the folder
+
+Step 5: In the CLI run snyk test
 
 
