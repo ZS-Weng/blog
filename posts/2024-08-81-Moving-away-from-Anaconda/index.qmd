@@ -12,7 +12,23 @@ draft: True
 
 ## Minimize package conflicts
 
-##
+Step 1: Download latest miniconda distribution and install
+
+Step 2: Setup conda in base platform
+	conda config --add channels conda-forge
+	conda config --show channels (Ensure no defaults)
+	conda config --env --set channel_priority strict
+	conda update conda
+
+Step 3: Create new environment for installation
+	conda create --name da_base --clone base
+
+
+conda env create -f environment.yml
+
+conda install 
+
+conda pack -n <environment_name>
 
 
 ## Checking on open-source python packages security
