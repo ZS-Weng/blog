@@ -10,7 +10,7 @@ draft: True
 
 ## Introduction
 
-There have been changes to the posture of Anaconda in providing the licenses to even its Anaconda distribution. 
+There have been changes to the posture of Anaconda in providing the licenses to even its Anaconda distribution. There are alternatives to Anaconda that operates in a very similar fashion. The two options are either Miniforge or Minconda. 
 
 ## Minimize package conflicts
 
