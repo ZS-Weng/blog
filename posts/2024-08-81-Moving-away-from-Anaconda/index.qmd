@@ -25,13 +25,11 @@ Step 2: Setup conda in base platform
 Step 3: Create new environment for installation
 	conda create --name da_base --clone base
 
-
 conda env create -f environment.yml
 
 conda install 
 
 conda pack -n <environment_name>
-
 
 ## Checking on open-source python packages security
 
