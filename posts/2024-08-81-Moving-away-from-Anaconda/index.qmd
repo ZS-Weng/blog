@@ -53,3 +53,9 @@ Step 4: Copy the snyk.exe file to the folder
 Step 5: In the CLI run snyk test
 
 
+## Transferring pre-trained transformers weights to an offline machine
+
+
+
+
+## Transferring pre-trained transformers weights to an offline machine when the model is too large to be loaded
